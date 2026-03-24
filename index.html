@@ -25,10 +25,10 @@
         nav { background: #d9c2a3; display: flex; justify-content: center; padding: 15px 0; }
         nav a { margin: 0 20px; text-decoration: none; color: #3b2f2f; font-weight: bold; font-size: 1.1rem; }
 
-        /* SLIDER BEBIDAS */
+        /* SLIDER BEBIDAS CORREGIDO */
         .slider-section { padding: 40px 0; background: #fdfaf5; text-align: center; }
-        .slider-container { width: 100%; height: 480px; display: flex; justify-content: center; align-items: center; position: relative; }
-        .slide { position: absolute; width: 280px; height: 420px; opacity: 0; transform: scale(0.7); transition: 0.8s ease-in-out; pointer-events: none; }
+        .slider-container { width: 100%; height: 500px; display: flex; justify-content: center; align-items: center; position: relative; }
+        .slide { position: absolute; width: 280px; height: 420px; opacity: 0; transform: scale(0.7); transition: 0.8s ease-in-out; pointer-events: none; cursor: pointer; }
         .slide.active { opacity: 1; transform: scale(1); z-index: 10; pointer-events: auto; }
         .slide.prev { opacity: 0.4; transform: translateX(-110%) scale(0.7); z-index: 5; }
         .slide.next { opacity: 0.4; transform: translateX(110%) scale(0.7); z-index: 5; }
@@ -37,41 +37,26 @@
         .card img { width: 100%; height: 65%; object-fit: cover; }
         .card h3 { margin: 15px 10px 5px; font-size: 1.1rem; color: #5d4037; }
         
-        /* BOTÓN DE COMPRA */
-        .btn-comprar { background: #25d366; color: white; text-decoration: none; padding: 10px; margin: 5px 20px 15px; border-radius: 10px; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
-        .btn-comprar:hover { background: #1eb959; transform: scale(1.05); }
+        .btn-ver-mas { background: #5d4037; color: white; text-decoration: none; padding: 10px; margin: 5px 20px 15px; border-radius: 10px; font-weight: bold; font-size: 0.9rem; }
 
-        /* SECCIÓN PREGUNTAS (INFO CORREGIDA) */
+        /* INFO SECCIONES */
         .info { max-width: 1000px; margin: 50px auto; padding: 0 20px; }
         .info-item { background: white; padding: 40px; border-radius: 30px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .info-content { display: flex; flex-direction: column; align-items: center; gap: 30px; }
         .info-content img { width: 100%; max-width: 300px; border-radius: 20px; }
         .info-text { text-align: center; }
-        .info-text h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; margin-top: 0; font-size: 2rem; }
+        .info-text h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; font-size: 2rem; }
 
-        /* HORARIOS, UBICACIÓN */
-        .seccion-pova { max-width: 900px; margin: 40px auto; padding: 30px; background: white; border-radius: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
+        .seccion-pova { max-width: 900px; margin: 40px auto; padding: 30px; background: white; border-radius: 25px; text-align: center; }
         .map-container { width: 100%; height: 350px; border-radius: 15px; overflow: hidden; margin-top: 15px; border: 1px solid #ddd; }
 
-        /* VALORACIÓN */
-        .stars { font-size: 40px; color: #ccc; cursor: pointer; margin-bottom: 15px; }
-        .star.selected { color: #ffcc00; }
-        textarea { width: 90%; height: 80px; border-radius: 15px; padding: 15px; border: 1px solid #ddd; margin-bottom: 10px; }
-
-        /* FOOTER */
         footer { background: #5d4037; color: white; padding: 50px 20px; text-align: center; }
-        .social-links a { color: white; font-size: 35px; margin: 0 20px; text-decoration: none; transition: 0.3s; display: inline-block; }
-        .social-links a:hover { color: #ffcc00; transform: scale(1.2); }
+        .social-links a { color: white; font-size: 35px; margin: 0 20px; text-decoration: none; }
 
         @media (min-width: 768px) {
             .info-content { flex-direction: row; text-align: left; }
             .info-text { text-align: left; }
             .info-item:nth-child(even) .info-content { flex-direction: row-reverse; }
-        }
-        @media (max-width: 700px) {
-            body { padding-top: 180px; }
-            header { height: 120px; }
-            .logo-largo { height: 80px; position: static; transform: none; }
         }
     </style>
 </head>
@@ -94,68 +79,54 @@
         </nav>
     </div>
 
-   <section class="slider-section">
+    <section class="slider-section">
         <h2 style="font-family:'Lucida Handwriting', cursive; font-size: 2.2rem; color: #5d4037;">Elige tu bebida favorita</h2>
-        <div class="productos-grid">
-        <div class="producto" onclick="irMenu('taro')">
-            <img src="taro.jpg" alt="Frappé Taro">
-            <h3>Frappé Taro</h3>
-        </div>
-        <div class="producto" onclick="irMenu('matcha')">
-            <img src="mattcha.jpg" alt="Frappé Matcha">
-            <h3>Frappé Matcha</h3>
-        </div>
-        <div class="producto" onclick="irMenu('latte')">
-            <img src="latte.jpg" alt="Latte Frío">
-            <h3>Latte Frío</h3>
-        </div>
-        <div class="producto" onclick="irMenu('mango')">
-            <img src="mango.jpg" alt="Smoothie Mango">
-            <h3>Smoothie Mango</h3>
-        </div>
-        <div class="producto" onclick="irMenu('oreo')">
-            <img src="oreo.jpg" alt="Frappé Oreo">
-            <h3>Frappé Oreo</h3>
-        </div>
-        <div class="producto" onclick="irMenu('pinguino')">
-            <img src="pinguino.jpg" alt="Frappé Pingüino">
-            <h3>Frappé Pingüino</h3>
-        </div>
-        <div class="producto" onclick="irMenu('nutella')">
-            <img src="nutella.jpg" alt="Frappé Nutella">
-            <h3>Frappé Nutella</h3>
-        </div>
-        <div class="producto" onclick="irMenu('durazno')">
-            <img src="durazno.jpg" alt="Soda Durazno">
-            <h3>Soda Durazno</h3>
-        </div>
-        <div class="producto" onclick="irMenu('fresa')">
-            <img src="fresa.jpg" alt="Soda Fresa">
-            <h3>Soda Fresa</h3>
-        </div>
-        <div class="producto" onclick="irMenu('blueberry')">
-            <img src="blueberry.jpg" alt="Soda Blueberry">
-            <h3>Soda Blueberry</h3>
-        </div>
-        <div class="producto" onclick="irMenu('mazapan')">
-            <img src="mazapan.jpg" alt="Frappé Mazapán">
-            <h3>Frappé Mazapán</h3>
-        </div>
-        <div class="producto" onclick="irMenu('chocoreta')">
-            <img src="chocoreta.jpeg" alt="Frappé Chocoreta">
-            <h3>Frappé Chocoreta</h3>
-        </div>
-        <div class="producto" onclick="irMenu('redvelvet')">
-            <img src="redvelvet.jpg" alt="Frappé Red Velvet">
-            <h3>Frappé Red Velvet</h3>
-        </div>
-        <div class="producto" onclick="irMenu('piña')">
-            <img src="piña.jpg" alt="Smoothie Piña-Colada">
-            <h3>Smoothie Piña-Colada</h3>
-        </div>
-        <div class="producto" onclick="irMenu('limon')">
-            <img src="limon.jpg" alt="Soda Limón">
-            <h3>Soda Limón</h3>
+        
+        <div class="slider-container">
+            <div class="slide" onclick="irMenu('taro')">
+                <div class="card"><img src="taro.jpg"><h3>Frappé Taro</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('matcha')">
+                <div class="card"><img src="mattcha.jpg"><h3>Frappé Matcha</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('latte')">
+                <div class="card"><img src="latte.jpg"><h3>Latte Frío</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('mango')">
+                <div class="card"><img src="mango.jpg"><h3>Smoothie Mango</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('oreo')">
+                <div class="card"><img src="oreo.jpg"><h3>Frappé Oreo</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('pinguino')">
+                <div class="card"><img src="pinguino.jpg"><h3>Frappé Pingüino</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('nutella')">
+                <div class="card"><img src="nutella.jpg"><h3>Frappé Nutella</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('durazno')">
+                <div class="card"><img src="durazno.jpg"><h3>Soda Durazno</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('fresa')">
+                <div class="card"><img src="fresa.jpg"><h3>Soda Fresa</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('blueberry')">
+                <div class="card"><img src="blueberry.jpg"><h3>Soda Blueberry</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('mazapan')">
+                <div class="card"><img src="mazapan.jpg"><h3>Frappé Mazapán</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('chocoreta')">
+                <div class="card"><img src="chocoreta.jpeg"><h3>Frappé Chocoreta</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('redvelvet')">
+                <div class="card"><img src="redvelvet.jpg"><h3>Frappé Red Velvet</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('piña')">
+                <div class="card"><img src="piña.jpg"><h3>Smoothie Piña-Colada</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            </div>
+            <div class="slide" onclick="irMenu('limon')">
+                <div class="card"><img src="limon.jpg"><h3>Soda Limón</h3><span class="btn-ver-mas">Ver detalles</span></div>
             </div>
         </div>
     </section>
@@ -194,18 +165,8 @@
         <h2 style="font-family:'Lucida Handwriting', cursive;">Horarios y Ubicación</h2>
         <p>Lunes a Domingo: <strong>10:00 AM - 10:00 PM</strong></p>
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3727.123456789!2d-88.202!3d20.689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQxJzIwLjAiTiA4OMKwMTInMDcuMiJX!5e0!3m2!1ses!2smx!4v1647890000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.2504!2d-88.2031!3d20.6896" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
-    </div>
-
-    <div class="seccion-pova" data-aos="zoom-in">
-        <h2 style="font-family:'Lucida Handwriting', cursive;">¡Valora tu visita!</h2>
-        <div class="stars">
-            <span class="star" onclick="rate(1)">★</span><span class="star" onclick="rate(2)">★</span><span class="star" onclick="rate(3)">★</span><span class="star" onclick="rate(4)">★</span><span class="star" onclick="rate(5)">★</span>
-        </div>
-        <textarea id="opinion" placeholder="Cuéntanos qué te pareció..."></textarea><br>
-        <button onclick="postResena()" style="background:#5d4037; color:white; border:none; padding:12px 25px; border-radius:20px; cursor:pointer; font-weight:bold;">Enviar Comentario</button>
-        <div id="muro-opiniones"></div>
     </div>
 
     <footer>
@@ -222,36 +183,33 @@
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        // Slider Lógica
+        // Función para ir al menú
+        function irMenu(id) {
+            window.location.href = 'menu.html#' + id;
+        }
+
+        // Slider Lógica (CORREGIDA)
         let curIdx = 0;
         const slds = document.querySelectorAll(".slide");
+        
         function rotate() {
+            if (slds.length === 0) return;
             slds.forEach(s => s.classList.remove("active", "prev", "next"));
+            
             slds[curIdx].classList.add("active");
-            slds[(curIdx - 1 + slds.length) % slds.length].classList.add("prev");
-            slds[(curIdx + 1) % slds.length].classList.add("next");
+            
+            let prevIdx = (curIdx - 1 + slds.length) % slds.length;
+            let nextIdx = (curIdx + 1) % slds.length;
+            
+            slds[prevIdx].classList.add("prev");
+            slds[nextIdx].classList.add("next");
+            
             curIdx = (curIdx + 1) % slds.length;
         }
-        setInterval(rotate, 3000); rotate();
-
-        // Estrellas
-        let userRating = 0;
-        function rate(n) {
-            userRating = n;
-            document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('selected', i < n));
-        }
-
-        // Reseña
-        function postResena() {
-            const txt = document.getElementById('opinion').value;
-            if(!txt || userRating === 0) return alert("Por favor selecciona estrellas.");
-            const muro = document.getElementById('muro-opiniones');
-            const div = document.createElement('div');
-            div.style.background = "#f1f1f1"; div.style.padding = "10px"; div.style.marginTop = "10px"; div.style.borderRadius = "10px";
-            div.innerHTML = `<strong>Cliente - ${userRating} ★</strong><p>${txt}</p>`;
-            muro.prepend(div);
-            document.getElementById('opinion').value = ""; rate(0);
-        }
+        
+        // Iniciar rotación
+        setInterval(rotate, 3000);
+        rotate();
     </script>
 </body>
 </html>
