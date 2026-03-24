@@ -177,31 +177,42 @@ button {
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) { .info-item {
-    text-align: center;
-    margin: 0 auto;
-    width: 120%; /* O el ancho que quieras */
-}
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
     .producto {
         width: 90%;
     }
 
-    .info-content {
+    nav {
         flex-direction: column;
     }
 
-    .info-content img {
-        width: 90%;
-        height: auto;
-    }
-
-    .info-content p {
-        max-width: 90%;
+    /* 🔥 ARREGLO SECCIÓN INFO */
+    .info-content {
+        flex-direction: column !important;
+        align-items: center;
         text-align: center;
     }
 
-    nav {
-        flex-direction: column;
+    .info-content img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+    }
+
+    .info-content div {
+        width: 100%;
+    }
+
+    .info-content p {
+        text-align: center;
+        max-width: 90%;
+    }
+
+    /* 🔥 EVITA QUE SE VOLTEE EN MÓVIL */
+    .info-item:nth-child(even) .info-content {
+        flex-direction: column !important;
     }
 }
 
