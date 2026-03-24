@@ -3,43 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pova Tea - Oficial</title>
-
+    <title>Pova Tea - Sitio Oficial</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
     <style>
         html { scroll-behavior: smooth; }
-        body {
-            margin: 0;
-            padding-top: 240px; 
-            font-family: 'Segoe UI', sans-serif;
-            background: #f5f0e6;
-        }
+        body { margin: 0; padding-top: 240px; font-family: 'Segoe UI', sans-serif; background: #f5f0e6; color: #3b2f2f; }
 
-        /* --- HEADER Y NAV --- */
-        .fixed-top-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            z-index: 2000;
-            background: #e6d3b3;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        header {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 40px;
-            position: relative;
-        }
+        /* HEADER Y NAV */
+        .fixed-top-container { position: fixed; top: 0; width: 100%; z-index: 2000; background: #e6d3b3; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        header { height: 180px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; position: relative; }
         .brand-box { display: flex; align-items: center; gap: 15px; z-index: 10; }
-        .mini-loguito { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #5d4037; }
+        .mini-loguito { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid #5d4037; }
         .nombre-inicio { font-family: 'Lucida Handwriting', cursive; font-size: 2rem; color: #5d4037; text-decoration: none; font-weight: bold; }
-        .logo-largo { height: 160px; position: absolute; left: 50%; transform: translateX(-50%); }
-        nav { background: #d9c2a3; display: flex; justify-content: center; padding: 15px 0; border-top: 1px solid rgba(0,0,0,0.1); }
-        nav a { margin: 0 20px; text-decoration: none; color: #3b2f2f; font-weight: bold; }
+        .logo-largo { height: 165px; position: absolute; left: 50%; transform: translateX(-50%); }
+        nav { background: #d9c2a3; display: flex; justify-content: center; padding: 15px 0; }
+        nav a { margin: 0 20px; text-decoration: none; color: #3b2f2f; font-weight: bold; font-size: 1.1rem; }
 
-        /* --- SLIDER --- */
+        /* SLIDER DE 12 BEBIDAS */
         .slider-section { padding: 40px 0; background: #fdfaf5; text-align: center; }
         .slider-container { width: 100%; height: 400px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; }
         .slide { position: absolute; width: 280px; height: 350px; opacity: 0; transform: scale(0.7); transition: 0.8s ease-in-out; pointer-events: none; }
@@ -48,29 +28,28 @@
         .slide.next { opacity: 0.4; transform: translateX(110%) scale(0.7); z-index: 5; }
         .card { background: white; height: 100%; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); overflow: hidden; }
         .card img { width: 100%; height: 70%; object-fit: cover; }
-        .card button { background: #c8a97e; border: none; padding: 10px 20px; border-radius: 20px; color: white; cursor: pointer; font-weight: bold; margin-bottom: 10px; }
+        .card h3 { margin: 10px; font-size: 1.2rem; }
+        .card button { background: #c8a97e; border: none; padding: 10px 20px; border-radius: 20px; color: white; cursor: pointer; font-weight: bold; }
 
-        /* --- SECCIONES FINALES --- */
-        .seccion-final { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        /* SECCIONES SOLICITADAS */
+        .seccion-pova { max-width: 900px; margin: 50px auto; padding: 30px; background: white; border-radius: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
+        h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; font-size: 2.2rem; }
         
-        .box-style { background: #fff; padding: 30px; border-radius: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; margin-bottom: 40px; }
-        h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; }
+        /* Estrellas */
+        .stars { font-size: 40px; margin-bottom: 15px; }
+        .star { color: #ccc; cursor: pointer; transition: 0.3s; }
+        .star.selected { color: #ffcc00; }
+        textarea { width: 100%; max-width: 500px; height: 80px; border-radius: 15px; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
+        .btn-comentar { background: #5d4037; color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: bold; }
 
-        /* Valoración Estrellas */
-        .valoracion-box { background: #5d4037; color: white; padding: 40px; border-radius: 25px; text-align: center; }
-        .estrella { font-size: 35px; color: #ccc; cursor: pointer; transition: 0.3s; }
-        .estrella.active { color: #ffcc00; }
-        textarea { width: 90%; height: 80px; border-radius: 15px; padding: 15px; margin-top: 15px; border: none; }
-
-        /* Muro de Comentarios */
-        #muro-comentarios { margin-top: 30px; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .comentario-card { background: rgba(255,255,255,0.1); padding: 15px; border-radius: 15px; margin-bottom: 10px; border-left: 4px solid #ffcc00; }
-        .comentario-card strong { color: #ffcc00; display: block; margin-bottom: 5px; }
+        /* Muro */
+        #muro { margin-top: 30px; text-align: left; border-top: 1px solid #eee; padding-top: 20px; }
+        .resena { background: #f9f9f9; padding: 15px; border-radius: 15px; margin-bottom: 10px; border-left: 5px solid #ffcc00; }
 
         @media (max-width: 700px) {
             body { padding-top: 180px; }
-            header { height: 120px; flex-direction: column; justify-content: center; }
-            .logo-largo { position: static; height: 60px; transform: none; }
+            header { height: 120px; }
+            .logo-largo { height: 80px; position: static; transform: none; }
         }
     </style>
 </head>
@@ -79,11 +58,11 @@
     <div class="fixed-top-container">
         <header>
             <div class="brand-box">
-                <img src="buho.jpeg" class="mini-loguito" alt="Icono">
+                <img src="buho.jpeg" class="mini-loguito" alt="Loguito">
                 <a href="#inicio" class="nombre-inicio">Pova Tea</a>
             </div>
-            <img src="logo.png" class="logo-largo" alt="Logo Povatea">
-            <div style="width: 200px;"></div>
+            <img src="logo.png" class="logo-largo" alt="Logo Central">
+            <div style="width: 150px;"></div>
         </header>
         <nav>
             <a href="menu.html">Menú</a>
@@ -94,7 +73,7 @@
     </div>
 
     <section class="slider-section">
-        <h2 style="font-family:'Lucida Handwriting', cursive;">Selecciona tu favorita</h2>
+        <h2>Elige tu sabor favorito</h2>
         <div class="slider-container">
             <div class="slide"><div class="card"><img src="taro.jpg"><h3>Taro Frappé</h3><button>Pedir</button></div></div>
             <div class="slide"><div class="card"><img src="mattcha.jpg"><h3>Matcha Frappé</h3><button>Pedir</button></div></div>
@@ -111,77 +90,67 @@
         </div>
     </section>
 
-    <div class="seccion-final">
-        <div class="box-style" data-aos="fade-up">
-            <h2>Horarios de Apertura</h2>
-            <p>Lunes a Sábado: <strong>10:00 AM - 9:00 PM</strong><br>Domingos: <strong>Cerrado</strong></p>
-        </div>
+    <div class="seccion-pova" data-aos="fade-up">
+        <h2>Horarios</h2>
+        <p style="font-size: 1.2rem;">Lunes a Sábado: <strong>10:00 AM - 9:00 PM</strong></p>
+        <p style="color: #a00;">Domingos: <strong>Cerrado</strong></p>
+    </div>
 
-        <div class="box-style" data-aos="fade-up">
-            <h2>Ubícanos</h2>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.30!2d-88.0!3d20.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDAwJzAwLjAiTiA4OMKwMDAnMDAuMCJX!5e0!3m2!1ses!2smx!4v1620000000000!5m2!1ses!2smx" width="100%" height="300" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
+    <div class="seccion-pova" data-aos="fade-up">
+        <h2>Nuestra Ubicación</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=tu-enlace-aqui" width="100%" height="350" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
 
-        <div class="valoracion-box" data-aos="zoom-in">
-            <h2>Danos tu opinión</h2>
-            <div class="estrellas">
-                <span class="estrella" onclick="setRating(1)">★</span>
-                <span class="estrella" onclick="setRating(2)">★</span>
-                <span class="estrella" onclick="setRating(3)">★</span>
-                <span class="estrella" onclick="setRating(4)">★</span>
-                <span class="estrella" onclick="setRating(5)">★</span>
+    <div class="seccion-pova" data-aos="zoom-in">
+        <h2>¿Qué te pareció Pova Tea?</h2>
+        <div class="stars">
+            <span class="star" onclick="rate(1)">★</span>
+            <span class="star" onclick="rate(2)">★</span>
+            <span class="star" onclick="rate(3)">★</span>
+            <span class="star" onclick="rate(4)">★</span>
+            <span class="star" onclick="rate(5)">★</span>
+        </div>
+        <textarea id="comentario" placeholder="Escribe tu opinión aquí..."></textarea><br>
+        <button class="btn-comentar" onclick="publicar()">Publicar Comentario</button>
+
+        <div id="muro">
             </div>
-            <textarea id="texto-comentario" placeholder="¿Qué te pareció tu bebida?"></textarea>
-            <br>
-            <button style="background:#ffcc00; border:none; padding:10px 25px; border-radius:20px; font-weight:bold; cursor:pointer; margin-top:10px;" onclick="agregarComentario()">Publicar</button>
-
-            <div id="muro-comentarios">
-                </div>
-        </div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init();
 
-        // Slider Lógica
-        let currentIndex = 0;
-        const slides = document.querySelectorAll(".slide");
-        function moverSlider() {
-            slides.forEach(s => s.classList.remove("active", "prev", "next"));
-            slides[currentIndex].classList.add("active");
-            let prev = (currentIndex - 1 + slides.length) % slides.length;
-            let next = (currentIndex + 1) % slides.length;
-            slides[prev].classList.add("prev");
-            slides[next].classList.add("next");
-            currentIndex = (currentIndex + 1) % slides.length;
+        // Movimiento del Slider
+        let i = 0;
+        const s = document.querySelectorAll(".slide");
+        function mover() {
+            s.forEach(x => x.classList.remove("active", "prev", "next"));
+            s[i].classList.add("active");
+            s[(i - 1 + s.length) % s.length].classList.add("prev");
+            s[(i + 1) % s.length].classList.add("next");
+            i = (i + 1) % s.length;
         }
-        setInterval(moverSlider, 3000); moverSlider();
+        setInterval(mover, 3000); mover();
 
-        // Rating Lógica
-        let currentRating = 0;
-        function setRating(n) {
-            currentRating = n;
-            const estrellas = document.querySelectorAll('.estrella');
-            estrellas.forEach((est, i) => est.classList.toggle('active', i < n));
+        // Estrellas
+        let puntaje = 0;
+        function rate(n) {
+            puntaje = n;
+            document.querySelectorAll('.star').forEach((st, idx) => {
+                st.classList.toggle('selected', idx < n);
+            });
         }
 
-        // Muro de Comentarios Lógica
-        function agregarComentario() {
-            const texto = document.getElementById('texto-comentario').value;
-            if (texto.trim() === "" || currentRating === 0) {
-                alert("Por favor selecciona estrellas y escribe un comentario.");
-                return;
-            }
-            const muro = document.getElementById('muro-comentarios');
-            const nuevoComentario = document.createElement('div');
-            nuevoComentario.className = 'comentario-card';
-            nuevoComentario.innerHTML = `<strong>Invitado - ${currentRating} estrellas</strong><p>${texto}</p>`;
-            muro.prepend(nuevoComentario);
-            
-            // Limpiar
-            document.getElementById('texto-comentario').value = "";
-            setRating(0);
+        // Publicar
+        function publicar() {
+            const txt = document.getElementById('comentario').value;
+            if(!txt || puntaje === 0) return alert("Elige estrellas y escribe algo");
+            const div = document.createElement('div');
+            div.className = 'resena';
+            div.innerHTML = `<strong>Anónimo - ${puntaje} ★</strong><p>${txt}</p>`;
+            document.getElementById('muro').prepend(div);
+            document.getElementById('comentario').value = ""; rate(0);
         }
     </script>
 </body>
