@@ -23,40 +23,87 @@
         .nombre-inicio { font-family: 'Lucida Handwriting', cursive; font-size: 2rem; color: #5d4037; text-decoration: none; font-weight: bold; }
         .logo-largo { height: 165px; position: absolute; left: 50%; transform: translateX(-50%); }
         nav { background: #d9c2a3; display: flex; justify-content: center; padding: 15px 0; }
-        nav a { margin: 0 20px; text-decoration: none; color: #3b2f2f; font-weight: bold; font-size: 1.1rem; }
+        nav a { margin: 0 20px; text-decoration: none; color: #3b2f2f; font-weight: bold; font-size: 1.1rem; transition: 0.3s; }
+        nav a:hover { color: #8d6e63; }
 
-        /* SLIDER BEBIDAS CORREGIDO */
-        .slider-section { padding: 40px 0; background: #fdfaf5; text-align: center; }
-        .slider-container { width: 100%; height: 500px; display: flex; justify-content: center; align-items: center; position: relative; }
-        .slide { position: absolute; width: 280px; height: 420px; opacity: 0; transform: scale(0.7); transition: 0.8s ease-in-out; pointer-events: none; cursor: pointer; }
+        /* SLIDER SECCIÓN */
+        .slider-section { padding: 40px 0; background: #fdfaf5; text-align: center; min-height: 550px; }
+        .slider-container { 
+            width: 100%; 
+            height: 450px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            position: relative; 
+            overflow: hidden;
+        }
+
+        /* LAS TARJETAS (SLIDES) */
+        .slide { 
+            position: absolute; 
+            width: 280px; 
+            height: 400px; 
+            opacity: 0; 
+            transform: scale(0.6); 
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+            pointer-events: none; 
+            z-index: 1;
+        }
+
+        /* ESTADOS DEL SLIDER */
         .slide.active { opacity: 1; transform: scale(1); z-index: 10; pointer-events: auto; }
-        .slide.prev { opacity: 0.4; transform: translateX(-110%) scale(0.7); z-index: 5; }
-        .slide.next { opacity: 0.4; transform: translateX(110%) scale(0.7); z-index: 5; }
+        .slide.prev { opacity: 0.4; transform: translateX(-120%) scale(0.75); z-index: 5; }
+        .slide.next { opacity: 0.4; transform: translateX(120%) scale(0.75); z-index: 5; }
         
-        .card { background: white; height: 100%; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; }
+        /* DISEÑO DE LA TARJETA */
+        .card { 
+            background: white; 
+            height: 100%; 
+            border-radius: 25px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
         .card img { width: 100%; height: 65%; object-fit: cover; }
-        .card h3 { margin: 15px 10px 5px; font-size: 1.1rem; color: #5d4037; }
-        
-        .btn-ver-mas { background: #5d4037; color: white; text-decoration: none; padding: 10px; margin: 5px 20px 15px; border-radius: 10px; font-weight: bold; font-size: 0.9rem; }
+        .card h3 { margin: 15px 0 5px; font-size: 1.3rem; color: #5d4037; font-family: 'Segoe UI', sans-serif; }
+        .btn-ver { 
+            background: #5d4037; 
+            color: white; 
+            padding: 10px; 
+            margin: auto 20px 20px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 0.9rem;
+        }
 
-        /* INFO SECCIONES */
-        .info { max-width: 1000px; margin: 50px auto; padding: 0 20px; }
-        .info-item { background: white; padding: 40px; border-radius: 30px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .info-content { display: flex; flex-direction: column; align-items: center; gap: 30px; }
-        .info-content img { width: 100%; max-width: 300px; border-radius: 20px; }
-        .info-text { text-align: center; }
-        .info-text h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; font-size: 2rem; }
+        /* INFO Y PREGUNTAS */
+        .info { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+        .info-item { background: white; padding: 40px; border-radius: 35px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .info-content { display: flex; flex-direction: column; align-items: center; gap: 30px; text-align: center; }
+        .info-content img { width: 100%; max-width: 320px; border-radius: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .info-text h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; font-size: 2.2rem; margin-top: 0; }
+        .info-text p { font-size: 1.1rem; line-height: 1.7; color: #555; }
 
-        .seccion-pova { max-width: 900px; margin: 40px auto; padding: 30px; background: white; border-radius: 25px; text-align: center; }
-        .map-container { width: 100%; height: 350px; border-radius: 15px; overflow: hidden; margin-top: 15px; border: 1px solid #ddd; }
+        /* FOOTER */
+        footer { background: #5d4037; color: white; padding: 60px 20px; text-align: center; }
+        .social-links a { color: white; font-size: 35px; margin: 0 20px; transition: 0.3s; display: inline-block; }
+        .social-links a:hover { color: #ffcc00; transform: translateY(-5px); }
 
-        footer { background: #5d4037; color: white; padding: 50px 20px; text-align: center; }
-        .social-links a { color: white; font-size: 35px; margin: 0 20px; text-decoration: none; }
-
+        /* RESPONSIVE */
         @media (min-width: 768px) {
             .info-content { flex-direction: row; text-align: left; }
-            .info-text { text-align: left; }
             .info-item:nth-child(even) .info-content { flex-direction: row-reverse; }
+        }
+        @media (max-width: 700px) {
+            body { padding-top: 180px; }
+            header { height: 120px; }
+            .logo-largo { height: 80px; position: static; transform: none; }
+            .slider-section { min-height: 500px; }
+            .slide { width: 240px; height: 360px; }
         }
     </style>
 </head>
@@ -69,7 +116,7 @@
                 <a href="#inicio" class="nombre-inicio">Pova Tea</a>
             </div>
             <img src="logo.png" class="logo-largo" alt="Logo Central">
-            <div style="width: 150px;"></div>
+            <div style="width: 50px;"></div>
         </header>
         <nav>
             <a href="menu.html">Menú</a>
@@ -80,53 +127,53 @@
     </div>
 
     <section class="slider-section">
-        <h2 style="font-family:'Lucida Handwriting', cursive; font-size: 2.2rem; color: #5d4037;">Elige tu bebida favorita</h2>
+        <h2 style="font-family:'Lucida Handwriting', cursive; font-size: 2.5rem; color: #5d4037; margin-bottom: 30px;">Elige tu bebida favorita</h2>
         
-        <div class="slider-container">
-            <div class="slide" onclick="irMenu('taro')">
-                <div class="card"><img src="taro.jpg"><h3>Frappé Taro</h3><span class="btn-ver-mas">Ver detalles</span></div>
+        <div class="slider-container" id="sliderMain">
+            <div class="slide" onclick="location.href='menu.html#taro'">
+                <div class="card"><img src="taro.jpg"><h3>Frappé Taro</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('matcha')">
-                <div class="card"><img src="mattcha.jpg"><h3>Frappé Matcha</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#matcha'">
+                <div class="card"><img src="mattcha.jpg"><h3>Frappé Matcha</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('latte')">
-                <div class="card"><img src="latte.jpg"><h3>Latte Frío</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#latte'">
+                <div class="card"><img src="latte.jpg"><h3>Latte Frío</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('mango')">
-                <div class="card"><img src="mango.jpg"><h3>Smoothie Mango</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#mango'">
+                <div class="card"><img src="mango.jpg"><h3>Smoothie Mango</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('oreo')">
-                <div class="card"><img src="oreo.jpg"><h3>Frappé Oreo</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#oreo'">
+                <div class="card"><img src="oreo.jpg"><h3>Frappé Oreo</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('pinguino')">
-                <div class="card"><img src="pinguino.jpg"><h3>Frappé Pingüino</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#pinguino'">
+                <div class="card"><img src="pinguino.jpg"><h3>Frappé Pingüino</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('nutella')">
-                <div class="card"><img src="nutella.jpg"><h3>Frappé Nutella</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#nutella'">
+                <div class="card"><img src="nutella.jpg"><h3>Frappé Nutella</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('durazno')">
-                <div class="card"><img src="durazno.jpg"><h3>Soda Durazno</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#durazno'">
+                <div class="card"><img src="durazno.jpg"><h3>Soda Durazno</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('fresa')">
-                <div class="card"><img src="fresa.jpg"><h3>Soda Fresa</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#fresa'">
+                <div class="card"><img src="fresa.jpg"><h3>Soda Fresa</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('blueberry')">
-                <div class="card"><img src="blueberry.jpg"><h3>Soda Blueberry</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#blueberry'">
+                <div class="card"><img src="blueberry.jpg"><h3>Soda Blueberry</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('mazapan')">
-                <div class="card"><img src="mazapan.jpg"><h3>Frappé Mazapán</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#mazapan'">
+                <div class="card"><img src="mazapan.jpg"><h3>Frappé Mazapán</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('chocoreta')">
-                <div class="card"><img src="chocoreta.jpeg"><h3>Frappé Chocoreta</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#chocoreta'">
+                <div class="card"><img src="chocoreta.jpeg"><h3>Frappé Chocoreta</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('redvelvet')">
-                <div class="card"><img src="redvelvet.jpg"><h3>Frappé Red Velvet</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#redvelvet'">
+                <div class="card"><img src="redvelvet.jpg"><h3>Frappé Red Velvet</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('piña')">
-                <div class="card"><img src="piña.jpg"><h3>Smoothie Piña-Colada</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#piña'">
+                <div class="card"><img src="piña.jpg"><h3>Smoothie Piña</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
-            <div class="slide" onclick="irMenu('limon')">
-                <div class="card"><img src="limon.jpg"><h3>Soda Limón</h3><span class="btn-ver-mas">Ver detalles</span></div>
+            <div class="slide" onclick="location.href='menu.html#limon'">
+                <div class="card"><img src="limon.jpg"><h3>Soda Limón</h3><span class="btn-ver">Ver en Menú</span></div>
             </div>
         </div>
     </section>
@@ -155,61 +202,62 @@
                 <img src="ingredientes.jpg" alt="Calidad">
                 <div class="info-text">
                     <h2>¿Por qué elegir Pova Tea?</h2>
-                    <p>Porque no solo vendemos bebidas, creamos experiencias únicas con ingredientes de alta calidad.</p>
+                    <p>Porque no solo vendemos bebidas, creamos experiencias únicas con ingredientes de alta calidad seleccionados para ti.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="ubicacion" class="seccion-pova" data-aos="fade-up">
-        <h2 style="font-family:'Lucida Handwriting', cursive;">Horarios y Ubicación</h2>
-        <p>Lunes a Domingo: <strong>10:00 AM - 10:00 PM</strong></p>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.2504!2d-88.2031!3d20.6896" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </div>
-
-    <footer>
-        <h2 style="font-family:'Lucida Handwriting', cursive; color: #ffcc00;">Pova Tea</h2>
+    <footer id="ubicacion">
+        <h2 style="font-family:'Lucida Handwriting', cursive; color: #ffcc00; font-size: 2.5rem;">Pova Tea</h2>
         <div class="social-links">
             <a href="https://www.instagram.com/povatea_valladolid" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.facebook.com/share/1ArFhoHu7y" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="https://www.tiktok.com/@pova_teavalladolid" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
-        <p>© 2026 Pova Tea. Todos los derechos reservados.</p>
+        <p>© 2026 Pova Tea. Hecho con amor en Valladolid.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Inicializar animaciones de entrada
         AOS.init({ duration: 1000, once: true });
 
-        // Función para ir al menú
-        function irMenu(id) {
-            window.location.href = 'menu.html#' + id;
+        // LOGICA DEL SLIDER MEJORADA
+        let curIdx = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function updateSlider() {
+            if (slides.length === 0) return;
+
+            // Limpiar clases previas
+            slides.forEach(s => {
+                s.classList.remove("active", "prev", "next");
+            });
+
+            // Asignar Clase Activa
+            slides[curIdx].classList.add("active");
+
+            // Asignar Clase Previa (Circular)
+            let prevIdx = (curIdx - 1 + slides.length) % slides.length;
+            slides[prevIdx].classList.add("prev");
+
+            // Asignar Clase Siguiente (Circular)
+            let nextIdx = (curIdx + 1) % slides.length;
+            slides[nextIdx].classList.add("next");
         }
 
-        // Slider Lógica (CORREGIDA)
-        let curIdx = 0;
-        const slds = document.querySelectorAll(".slide");
-        
-        function rotate() {
-            if (slds.length === 0) return;
-            slds.forEach(s => s.classList.remove("active", "prev", "next"));
-            
-            slds[curIdx].classList.add("active");
-            
-            let prevIdx = (curIdx - 1 + slds.length) % slds.length;
-            let nextIdx = (curIdx + 1) % slds.length;
-            
-            slds[prevIdx].classList.add("prev");
-            slds[nextIdx].classList.add("next");
-            
-            curIdx = (curIdx + 1) % slds.length;
+        // Función para mover al siguiente
+        function nextSlide() {
+            curIdx = (curIdx + 1) % slides.length;
+            updateSlider();
         }
-        
-        // Iniciar rotación
-        setInterval(rotate, 3000);
-        rotate();
+
+        // Iniciar slider
+        if(slides.length > 0) {
+            updateSlider(); // Muestra el primero de inmediato
+            setInterval(nextSlide, 3500); // Cambia cada 3.5 segundos
+        }
     </script>
 </body>
 </html>
