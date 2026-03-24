@@ -10,7 +10,7 @@
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
     <style>
         html { scroll-behavior: smooth; }
         body { margin: 0; padding-top: 240px; font-family: 'Segoe UI', sans-serif; background: #f5f0e6; color: #3b2f2f; overflow-x: hidden; }
@@ -22,7 +22,7 @@
         .mini-loguito { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid #5d4037; }
         .nombre-inicio { font-family: 'Lucida Handwriting', cursive; font-size: 2rem; color: #5d4037; text-decoration: none; font-weight: bold; }
         .logo-largo { height: 165px; position: absolute; left: 50%; transform: translateX(-50%); }
-        nav { background: #d9c2a3; display: flex; justify-content: center; padding: 15px 0; }
+        nav { background: #d9c2a3; display: flex; justify-content: center; padding: 15px 0; flex-wrap: wrap; }
         nav a { margin: 0 20px; text-decoration: none; color: #3b2f2f; font-weight: bold; font-size: 1.1rem; transition: 0.3s; }
         nav a:hover { color: #8d6e63; }
 
@@ -41,8 +41,10 @@
         /* INFO Y SECCIONES NUEVAS */
         .info { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
         .info-item { background: white; padding: 40px; border-radius: 35px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .info-content { display: flex; flex-direction: column; align-items: center; gap: 30px; text-align: center; }
-        .info-content img { width: 100%; max-width: 320px; border-radius: 25px; }
+        .info-content { display: flex; gap: 20px; flex-wrap: wrap; align-items: stretch; }
+        .info-content img { width: 250px; height: 250px; border-radius: 15px; object-fit: cover; flex-shrink: 0; }
+        .info-text { flex: 1; min-width: 200px; display: flex; flex-direction: column; justify-content: center; }
+        .info-text p { margin-bottom: 1em; }
 
         /* HORARIO Y UBICACIÓN */
         .extra-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto 60px; padding: 0 20px; }
@@ -57,7 +59,9 @@
         footer { background: #5d4037; color: white; padding: 60px 20px; text-align: center; }
         .social-links a { color: white; font-size: 35px; margin: 0 20px; }
 
+        /* RESPONSIVE */
         @media (max-width: 700px) { body { padding-top: 180px; } .logo-largo { height: 80px; } }
+        @media (max-width: 768px) { .info-content { flex-direction: column; } .info-content img { width: 90%; height: auto; } .info-text p { max-width: 90%; text-align: center; } }
     </style>
 </head>
 <body id="inicio">
@@ -78,8 +82,9 @@
         </nav>
     </div>
 
+    <!-- SLIDER DE BEBIDAS -->
     <section class="slider-section" id="bebidas">
-        <h2 style="font-family:'Lucida Handwriting', cursive; font-size: 2.5rem; color: #5d4037;">Nuestras 15 Especialidades</h2>
+        <h2 style="font-family:'Lucida Handwriting', cursive; font-size: 2.5rem; color: #5d4037;">Nuestras Especialidades</h2>
         <div class="slider-container" id="sliderMain">
             <div class="slide"><div class="card"><img src="taro.jpg"><h3>Frappé Taro</h3><span class="btn-ver">Ver</span></div></div>
             <div class="slide"><div class="card"><img src="mattcha.jpg"><h3>Frappé Matcha</h3><span class="btn-ver">Ver</span></div></div>
@@ -99,6 +104,41 @@
         </div>
     </section>
 
+    <!-- INFO SOBRE BEBIDAS -->
+    <section class="info">
+        <div class="info-item">
+            <h2>¿Qué son las Bobas?</h2>
+            <div class="info-content">
+                <img src="boba.jpg" alt="Perlas de tapioca o bobas">
+                <div class="info-text">
+                    <p>Las bobas son pequeñas perlas de tapioca, conocidas también como “pearls”, que se agregan a los frappés y smoothies para brindar una textura única y divertida. Su consistencia suave y ligeramente masticable convierte cada sorbo en una experiencia sensorial especial. Además, pueden absorber parte del sabor de la bebida, creando combinaciones sorprendentes con cada sabor de nuestros frappés.</p>
+                    <p>En Pova Tea nos aseguramos de que nuestras bobas sean siempre frescas, tiernas y llenas de sabor, ofreciéndote la máxima calidad en cada bebida.</p>
+                </div>
+            </div>
+        </div>
+        <div class="info-item">
+            <h2>¿Qué son los Frappés?</h2>
+            <div class="info-content">
+                <img src="frappe.jpg" alt="Vaso de frappé frío">
+                <div class="info-text">
+                    <p>Los frappés son bebidas frías elaboradas con hielo triturado, leche y una variedad de sabores irresistibles. Son la opción perfecta para refrescarte en días calurosos o para darte un dulce gusto en cualquier momento del día. Su textura cremosa y fría se combina con ingredientes naturales o jarabes especiales para crear bebidas llenas de sabor y personalidad.</p>
+                    <p>En Pova Tea, cada frappé se prepara cuidadosamente, mezclando los ingredientes en proporciones perfectas y agregando nuestras bobas frescas para que cada sorbo sea memorable y delicioso.</p>
+                </div>
+            </div>
+        </div>
+        <div class="info-item">
+            <h2>¿Por qué Pova Tea tiene los mejores frappés?</h2>
+            <div class="info-content">
+                <img src="ingredientes.jpg" alt="Ingredientes de alta calidad para frappés">
+                <div class="info-text">
+                    <p>En Pova Tea, la excelencia está en cada detalle. Usamos ingredientes de la más alta calidad, desde leches frescas hasta jarabes naturales y frutas seleccionadas. Nuestras combinaciones de sabores son únicas, pensadas para sorprender tu paladar y crear experiencias deliciosas en cada sorbo.</p>
+                    <p>Nuestras bobas frescas, recién preparadas, complementan cada bebida con una textura increíble y sabor auténtico. Además, nuestro equipo cuida cada preparación con precisión y amor, asegurando que disfrutes de un frappé equilibrado, elegante y absolutamente delicioso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HORARIO Y UBICACIÓN -->
     <section class="extra-info" id="ubicacion">
         <div class="box-detalles" data-aos="fade-up">
             <h2 style="font-family:'Lucida Handwriting', cursive; color: #5d4037;">Horarios</h2>
@@ -112,6 +152,7 @@
         </div>
     </section>
 
+    <!-- SECCIÓN DE RESEÑAS -->
     <section class="seccion-pova" id="resenas" data-aos="zoom-in">
         <h2 style="font-family:'Lucida Handwriting', cursive; color: #5d4037; font-size: 2.2rem;">¿Qué te pareció Pova Tea?</h2>
         <div class="rating-box" style="background: #fff; padding: 30px; border-radius: 25px; max-width: 600px; margin: 0 auto; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
@@ -125,52 +166,48 @@
         <div id="muro-opiniones" style="max-width: 800px; margin: 40px auto 0; display: grid; gap: 20px;"></div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
         <div class="social-links">
             <a href="https://www.instagram.com/povatea_valladolid" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.facebook.com/share/1ArFhoHu7y" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@pova_teavalladolid" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
-        <p>© 2026 Pova Tea. Hecho con amor en Valladolid.</p>
+        <p style="margin-top: 20px;">© 2026 Pova Tea. Todos los derechos reservados.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init();
 
-        // Slider
-        let curIdx = 0;
-        const slides = document.querySelectorAll(".slide");
-        function updateSlider() {
-            slides.forEach(s => s.classList.remove("active", "prev", "next"));
-            slides[curIdx].classList.add("active");
-            slides[(curIdx - 1 + slides.length) % slides.length].classList.add("prev");
-            slides[(curIdx + 1) % slides.length].classList.add("next");
+        /* SLIDER */
+        let slides = document.querySelectorAll(".slide");
+        let index = 0;
+        function updateSlider(){
+            slides.forEach(s=>s.classList.remove("prev","active","next"));
+            slides[index].classList.add("active");
+            let prev = index-1; if(prev<0) prev=slides.length-1; slides[prev].classList.add("prev");
+            let next = index+1; if(next>=slides.length) next=0; slides[next].classList.add("next");
         }
-        setInterval(() => { curIdx = (curIdx + 1) % slides.length; updateSlider(); }, 3500);
         updateSlider();
+        setInterval(()=>{ index++; if(index>=slides.length) index=0; updateSlider(); },3000);
 
-        // Rating
-        let currentRating = 0;
-        function setRating(n) {
-            currentRating = n;
-            const stars = document.querySelectorAll('.star');
-            stars.forEach((s, i) => s.classList.toggle('selected', i < n));
-        }
-
-        function publicarResena() {
-            const name = document.getElementById('reviewer-name').value;
-            const text = document.getElementById('opinion-text').value;
-            if (currentRating === 0 || !name || !text) { alert("¡Contesta las 3 preguntas!"); return; }
-            
-            const card = document.createElement('div');
-            card.className = 'resena-card';
-            card.innerHTML = `<strong>${name}</strong><div style="color:#ffcc00">${"★".repeat(currentRating)}</div><p>"${text}"</p>`;
-            document.getElementById('muro-opiniones').prepend(card);
-            
-            document.getElementById('reviewer-name').value = "";
-            document.getElementById('opinion-text').value = "";
-            setRating(0);
+        /* RESEÑAS */
+        let rating=0;
+        function setRating(val){ rating=val; document.querySelectorAll(".star").forEach((s,i)=>s.style.color=(i<rating?'#ffcc00':'#ccc')); }
+        function publicarResena(){
+            const nombre=document.getElementById("reviewer-name").value||"Anónimo";
+            const texto=document.getElementById("opinion-text").value||"Sin comentario";
+            if(!rating){ alert("Selecciona una calificación"); return; }
+            const cont=document.getElementById("muro-opiniones");
+            const div=document.createElement("div");
+            div.className="resena-card";
+            div.innerHTML=`<div style="font-size:18px; color:#ffcc00;">${'★'.repeat(rating)+'☆'.repeat(5-rating)}</div><strong>${nombre}</strong><p>${texto}</p>`;
+            cont.prepend(div);
+            document.getElementById("reviewer-name").value=''; document.getElementById("opinion-text").value=''; rating=0;
+            document.querySelectorAll(".star").forEach(s=>s.style.color="#ccc");
         }
     </script>
+
 </body>
 </html>
