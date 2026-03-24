@@ -31,20 +31,29 @@
         .card h3 { margin: 10px; font-size: 1.2rem; }
         .card button { background: #c8a97e; border: none; padding: 10px 20px; border-radius: 20px; color: white; cursor: pointer; font-weight: bold; }
 
-        /* SECCIONES SOLICITADAS */
+        /* SECCIÓN PREGUNTAS (RECUPERADA) */
+        .info { max-width: 1000px; margin: 50px auto; padding: 0 20px; }
+        .info-item { background: white; padding: 40px; border-radius: 30px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .info-content { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        .info-content img { width: 100%; max-width: 300px; border-radius: 20px; }
+        .info-text p { font-size: 1.1rem; line-height: 1.6; }
+
+        /* SECCIONES FINALES */
         .seccion-pova { max-width: 900px; margin: 50px auto; padding: 30px; background: white; border-radius: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
         h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; font-size: 2.2rem; }
         
-        /* Estrellas */
+        /* Estrellas y Comentarios */
         .stars { font-size: 40px; margin-bottom: 15px; }
         .star { color: #ccc; cursor: pointer; transition: 0.3s; }
         .star.selected { color: #ffcc00; }
         textarea { width: 100%; max-width: 500px; height: 80px; border-radius: 15px; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
         .btn-comentar { background: #5d4037; color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: bold; }
+        .resena { background: #f9f9f9; padding: 15px; border-radius: 15px; margin-bottom: 10px; border-left: 5px solid #ffcc00; text-align: left; }
 
-        /* Muro */
-        #muro { margin-top: 30px; text-align: left; border-top: 1px solid #eee; padding-top: 20px; }
-        .resena { background: #f9f9f9; padding: 15px; border-radius: 15px; margin-bottom: 10px; border-left: 5px solid #ffcc00; }
+        @media (min-width: 768px) {
+            .info-content { flex-direction: row; }
+            .info-item:nth-child(even) .info-content { flex-direction: row-reverse; }
+        }
 
         @media (max-width: 700px) {
             body { padding-top: 180px; }
@@ -90,6 +99,28 @@
         </div>
     </section>
 
+    <section class="info">
+        <div class="info-item" data-aos="fade-up">
+            <h2>¿Qué son las Bobas?</h2>
+            <div class="info-content">
+                <img src="boba.jpg" alt="Bobas">
+                <div class="info-text">
+                    <p>Las bobas son pequeñas perlas de tapioca que brindan una textura única y divertida. Su consistencia suave y ligeramente masticable convierte cada sorbo en una experiencia sensorial especial.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-item" data-aos="fade-up">
+            <h2>Calidad Pova Tea</h2>
+            <div class="info-content">
+                <img src="ingredientes.jpg" alt="Ingredientes">
+                <div class="info-text">
+                    <p>En Pova Tea, la excelencia está en cada detalle. Usamos ingredientes de la más alta calidad, desde leches frescas hasta frutas seleccionadas con el mayor cuidado para ofrecerte un sabor inolvidable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="seccion-pova" data-aos="fade-up">
         <h2>Horarios</h2>
         <p style="font-size: 1.2rem;">Lunes a Sábado: <strong>10:00 AM - 9:00 PM</strong></p>
@@ -98,7 +129,7 @@
 
     <div class="seccion-pova" data-aos="fade-up">
         <h2>Nuestra Ubicación</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=tu-enlace-aqui" width="100%" height="350" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.480351300061!2d-99.167408!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMTAnMDIuNyJX!5e0!3m2!1ses!2smx!4v1631234567890!5m2!1ses!2smx" width="100%" height="350" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
     <div class="seccion-pova" data-aos="zoom-in">
@@ -112,16 +143,12 @@
         </div>
         <textarea id="comentario" placeholder="Escribe tu opinión aquí..."></textarea><br>
         <button class="btn-comentar" onclick="publicar()">Publicar Comentario</button>
-
-        <div id="muro">
-            </div>
+        <div id="muro" style="margin-top: 20px;"></div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
-
-        // Movimiento del Slider
         let i = 0;
         const s = document.querySelectorAll(".slide");
         function mover() {
@@ -133,16 +160,12 @@
         }
         setInterval(mover, 3000); mover();
 
-        // Estrellas
         let puntaje = 0;
         function rate(n) {
             puntaje = n;
-            document.querySelectorAll('.star').forEach((st, idx) => {
-                st.classList.toggle('selected', idx < n);
-            });
+            document.querySelectorAll('.star').forEach((st, idx) => st.classList.toggle('selected', idx < n));
         }
 
-        // Publicar
         function publicar() {
             const txt = document.getElementById('comentario').value;
             if(!txt || puntaje === 0) return alert("Elige estrellas y escribe algo");
