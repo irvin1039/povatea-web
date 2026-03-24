@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú - Pova Tea</title>
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f0e6;
+    color: #3b2f2f;
+}
+
+header { background: #e6d3b3; text-align: center; padding: 15px; }
+header img { width: 120px; }
+
+nav {
+    background: #d9c2a3;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+nav a { margin: 10px 15px; text-decoration: none; color: #3b2f2f; font-weight: bold; }
+
+/* Categorías */
+.categorias {
+    text-align: center;
+    margin: 20px 0;
+}
+.categorias button {
+    margin: 0 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #c8a97e;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.categorias button:hover { background: #b38b5c; }
+
+/* Menú */
+.menu {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+.item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    margin: 30px 0;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    transition: background 0.5s ease;
+}
+.item:nth-child(even) { flex-direction: row-reverse; }
+.item:hover { background: rgba(0,0,0,0.05); }
+
+.img-box { width: 220px; height: 220px; flex-shrink: 0; overflow: visible; }
+.img-box img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; transition: transform 0.5s ease; }
+
+.texto {
+    transition: transform 0.5s ease;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.item:hover .texto { transform: translateX(20px); }
+.item:nth-child(even):hover .texto { transform: translateX(-20px); }
+
+.item h2 { margin: 0; font-family: 'Lucida Handwriting', cursive; }
+.precio { font-size: 1.3rem; font-weight: bold; color: #7a5a3a; }
+.info { font-size: 0.95rem; margin: 2px 0; }
+
+button.agregar {
+    background: #c8a97e;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+button.agregar:hover { transform: scale(1.15); background: #b38b5c; }
+
+/* Carrito */
+#carrito {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #7a5a3a;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+}
+#carrito span { display: block; font-size: 1rem; }
+
+#carrito-items {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background: white;
+    color: #3b2f2f;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 350px;
+    display: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+    z-index: 1000;
+}
+#carrito-items.show { display: block; }
+#carrito-items h3 { margin: 0 0 10px 0; font-size: 1.2rem; }
+#carrito-items ul { list-style: none; padding: 0; margin: 0 0 10px 0; }
+#carrito-items li { display: flex; justify-content: space-between; margin-bottom: 5px; }
+#carrito-items button {
+    background: #c8a97e;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 0.8rem;
+}
+#carrito-items button:hover { background: #b38b5c; }
+
+/* Redes sociales */
+.redes-abajo {
+    text-align: center;
+    padding: 20px;
+    background: #d9c2a3;
+}
+.redes-abajo a {
+    margin: 0 12px;
+    display: inline-block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.redes-abajo a:hover {
+    transform: scale(1.25);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+.icono-redes {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .item { flex-direction: column !important; text-align: center; }
+    .texto { align-items: center !important; }
+    .item:hover .texto, .item:nth-child(even):hover .texto { transform: none; }
+}
+html{
+scroll-behavior:smooth;
+}
+.item{
+scroll-margin-top:120px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" style="width: 90%; height: 90%;">
+</header>
+
+<nav>
+    <a href="index.html">Inicio</a>
+    <a href="menu.html">Ver Menú</a>
+    <a href="ubicacion.html">Ubícanos</a>
+    <a href="galeria.html">Galería</a>
+    <a href="contacto.html">Contáctanos</a>
+</nav>
+
+<div class="categorias">
+    <button onclick="filtrar('todas')">Todas</button>
+    <button onclick="filtrar('frappe')">Frappés</button>
+    <button onclick="filtrar('smoothie')">Smoothies</button>
+    <button onclick="filtrar('soda')">Sodas</button>
+</div>
+
+<section class="menu">
+
+<!-- FRAPPÉS -->
+<div class="item" id="taro" data-precio="70" data-categoria="frappe">
+    <div class="img-box"><img src="taro.jpg"></div>
+    <div class="texto">
+        <h2>Frappé Taro</h2>
+        <p class="precio">$70 MXN</p>
+        <p class="info">Leche + hielo + taro dulce natural</p>
+        <p class="info">Incluye bobas frescas, tamaño 16 oz</p>
+        <p class="info">Sabor dulce y aterciopelado, ideal para tardes tranquilas o como antojo refrescante.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Frappé Taro',70)">Agregar</button>
+    </div>
+</div>
+
+<div class="item" id="matcha" data-precio="75" data-categoria="frappe">
+    <div class="img-box"><img src="mattcha.jpg"></div>
+    <div class="texto">
+        <h2>Frappé Matcha</h2>
+        <p class="precio">$75 MXN</p>
+        <p class="info">Leche + hielo + matcha japonés</p>
+        <p class="info">Opcional: bobas, tamaño 16 oz</p>
+        <p class="info">Refrescante y delicado, este té verde es la elección perfecta para quienes buscan un momento de calma con un toque de energía natural. Su sabor suave y aromático despierta los sentidos.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Frappé Matcha',75)">Agregar</button>
+    </div>
+</div>
+
+
+<div class="item" id="mazapan" data-precio="70" data-categoria="frappe">
+    <div class="img-box"><img src="mazapan.jpg"></div>
+    <div class="texto">
+        <h2>Frappé Mazapán</h2>
+        <p class="precio">$70 MXN</p>
+        <p class="info">Leche + hielo + pasta de mazapán</p>
+        <p class="info">Tamaño: 16 oz</p>
+        <p class="info">Dulce clásico con un toque tradicional, perfecto si te gusta el sabor auténtico mexicano.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Frappé Mazapán',70)">Agregar</button>
+    </div>
+</div>
+
+<div class="item" id="chocoreta" data-precio="75" data-categoria="frappe">
+    <div class="img-box"><img src="chocoreta.jpeg"></div>
+    <div class="texto">
+        <h2>Frappé Chocoreta</h2>
+        <p class="precio">$75 MXN</p>
+        <p class="info">Leche + hielo + chocolate + galleta</p>
+        <p class="info">Tamaño: 16 oz</p>
+        <p class="info">Recomendado para chocoadictos, con crujiente y cremoso en cada sorbo.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Frappé Chocoreta',75)">Agregar</button>
+    </div>
+</div>
+
+<div class="item" id="redvelvet" data-precio="80" data-categoria="frappe">
+    <div class="img-box"><img src="redvelvet.jpg"></div>
+    <div class="texto">
+        <h2>Frappé Red Velvet</h2>
+        <p class="precio">$80 MXN</p>
+        <p class="info">Leche + hielo + bizcocho Red Velvet</p>
+        <p class="info">Tamaño: 16 oz</p>
+        <p class="info">Elegante y suave, con notas de vainilla y cacao, ideal para fecha especial.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Frappé Red Velvet',80)">Agregar</button>
+    </div>
+</div>
+
+<div class="item" id="oreo" data-precio="75" data-categoria="frappe">
+    <div class="img-box"><img src="oreo.jpg"></div>
+    <div class="texto">
+        <h2>Frappé Oreo</h2>
+        <p class="precio">$75 MXN</p>
+        <p class="info">Leche + hielo + galletas Oreo</p>
+        <p class="info">Tamaño: 16 oz</p>
+        <p class="info">Perfecto para quienes aman la combinación de chocolate y textura crujiente.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Frappé Oreo',75)">Agregar</button>
+    </div>
+</div>
+
+<div class="item" id="nutella" data-precio="85" data-categoria="frappe">
+    <div class="img-box"><img src="nutella.jpg"></div>
+    <div class="texto">
+        <h2>Frappé Nutella</h2>
+        <p class="precio">$85 MXN</p>
+        <p class="info">Leche + hielo + Nutella</p>
+        <p class="info">Tamaño: 16 oz</p>
+        <p class="info">Cremoso y dulce, ideal como postre en forma de bebida.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Frappé Nutella',85)">Agregar</button>
+    </div>
+</div>
+
+<!-- SMOOTHIES -->
+<div class="item" id="mango" data-precio="70" data-categoria="smoothie">
+    <div class="img-box"><img src="mango.jpg"></div>
+    <div class="texto">
+        <h2>Smoothie Mango</h2>
+        <p class="precio">$70 MXN</p>
+        <p class="info">Mango natural + hielo</p>
+        <p class="info">Tamaño: 16 oz</p>
+        <p class="info">Tropical y refrescante, perfecto para días soleados y snacks frescos.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Smoothie Mango',70)">Agregar</button>
+    </div>
+</div>
+
+<div class="item" id="latte" data-precio="65" data-categoria="smoothie">
+    <div class="img-box"><img src="latte.jpg"></div>
+    <div class="texto">
+        <h2>Latte Frío</h2>
+        <p class="precio">$65 MXN</p>
+        <p class="info">Leche + café + hielo</p>
+        <p class="info">Tamaño: 16 oz</p>
+        <p class="info">Suave y estimulante, recomendado para empezar el día con energía.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Latte Frío',65)">Agregar</button>
+    </div>
+</div>
+
+<div class="item" id="fresa" data-precio="75" data-categoria="smoothie">
+    <div class="img-box"><img src="fresa_.jpg"></div>
+    <div class="texto">
+        <h2>Smoothie Fresa</h2>
+        <p class="precio">$75 MXN</p>
+        <p class="info">Fresas + plátano + hielo</p>
+        <p class="info">Tamaño: 16 oz</p>
+        <p class="info">Equilibrado y dulce, ideal para quienes buscan fruta natural en cada sorbo.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Smoothie Fresa-Banana',75)">Agregar</button>
+    </div>
+</div>
+
+<div class="item" id="piña" data-precio="80" data-categoria="smoothie">
+    <div class="img-box"><img src="piña.jpg"></div>
+    <div class="texto">
+        <h2>Smoothie Piña</h2>
+        <p class="precio">$80 MXN</p>
+        <p class="info">Piña + coco + hielo</p>
+        <p class="info">Tamaño: 16 oz</p>
+        <p class="info">Exótico y refrescante, recomendado para sentir vibras tropicales.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Smoothie Piña-Colada',80)">Agregar</button>
+    </div>
+</div>
+
+<!-- SODAS -->
+<div class="item" id="durazno" data-precio="50" data-categoria="soda">
+    <div class="img-box"><img src="durazno.jpg"></div>
+    <div class="texto">
+        <h2>Soda Durazno</h2>
+        <p class="precio">$50 MXN</p>
+        <p class="info">Soda sabor durazno</p>
+        <p class="info">Tamaño: 500 ml</p>
+        <p class="info">Refrescante y dulce, ideal para acompañar cualquier comida.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Soda Durazno',50)">Agregar</button>
+    </div>
+</div>
+
+<div class="item" id="Sfresa" data-precio="50" data-categoria="soda">
+    <div class="img-box"><img src="fresa.jpg"></div>
+    <div class="texto">
+        <h2>Soda Fresa</h2>
+        <p class="precio">$50 MXN</p>
+        <p class="info">Soda sabor fresa</p>
+        <p class="info">Tamaño: 500 ml</p>
+        <p class="info">Dulce y burbujeante, perfecta para compartir momentos especiales.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Soda Fresa',50)">Agregar</button>
+    </div>
+</div>
+
+<div class="item" id="blueberry" data-precio="50" data-categoria="soda">
+    <div class="img-box"><img src="blueberry.jpg"></div>
+    <div class="texto">
+        <h2>Soda Blueberry</h2>
+        <p class="precio">$50 MXN</p>
+        <p class="info">Soda sabor blueberry</p>
+        <p class="info">Tamaño: 500 ml</p>
+        <p class="info">Sabor frutal y refrescante, ideal para acompañar el calor del día.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Soda Blueberry',50)">Agregar</button>
+    </div>
+</div>
+
+<div class="item" id="limon" data-precio="50" data-categoria="soda">
+    <div class="img-box"><img src="limon.jpg"></div>
+    <div class="texto">
+        <h2>Soda Limón</h2>
+        <p class="precio">$50 MXN</p>
+        <p class="info">Soda sabor limón</p>
+        <p class="info">Tamaño: 500 ml</p>
+        <p class="info">Ácida y refrescante, perfecta para limpiar el paladar entre bocados.</p>
+        <button class="agregar" onclick="agregarAlCarrito('Soda Limón',50)">Agregar</button>
+    </div>
+</div>
+
+</section>
+<!-- UBICACIÓN DESTACADA CON FOTO DE FONDO -->
+<div id="ubicacion-resaltar">
+  <h2>📍 Visítanos</h2>
+  <p>Estamos en el corazón de Valladolid, Yucatán.</p>
+  <a href="https://maps.app.goo.gl/b86PeizduLALydFd9" target="_blank">Ver ubicación en Google Maps</a>
+</div>
+
+<style>
+#ubicacion-resaltar {
+  max-width: 950px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #3b2f2f;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  
+  /* Fondo con imagen y overlay */
+  background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),
+              url(banner.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+#ubicacion-resaltar h2 {
+  margin-bottom: 10px;
+  font-family: 'Lucida Handwriting', cursive;
+  position: relative;
+  z-index: 2;
+}
+
+#ubicacion-resaltar p,
+#ubicacion-resaltar a {
+  position: relative;
+  z-index: 2;
+}
+
+#ubicacion-resaltar a {
+  display: inline-block;
+  margin-top: 10px;
+  background: #7a5a3a;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#ubicacion-resaltar a:hover {
+  background: #9b6f4d;
+  transform: scale(1.05);
+}
+</style>
+
+<!-- CARRITO -->
+<div id="carrito" onclick="toggleCarrito()">
+    🛒
+    <span id="contador">0</span>
+</div>
+
+<div id="carrito-items">
+    <h3>Tu Pedido</h3>
+    <ul id="lista-carrito"></ul>
+    <p>Total: $<span id="total">0</span> MXN</p>
+    <button onclick="hacerPedido()">Llamar para pedir</button>
+</div>
+
+<!-- REDES SOCIALES -->
+<div class="redes-abajo">
+    <a href="https://www.facebook.com/share/1ArFhoHu7y" target="_blank">
+        <img src="facebook-icon.png" alt="Facebook" class="icono-redes">
+    </a>
+    <a href="https://www.instagram.com/povatea_valladolid" target="_blank">
+        <img src="instagram-icon.png" alt="Instagram" class="icono-redes">
+    </a>
+    <a href="https://www.tiktok.com/@pova_teavalladolid" target="_blank">
+        <img src="tiktok-icon.png" alt="TikTok" class="icono-redes">
+    </a>
+</div>
+
+<script>
+let carrito = [];
+
+function agregarAlCarrito(nombre, precio) {
+    carrito.push({nombre, precio});
+    actualizarCarrito();
+}
+
+function actualizarCarrito() {
+    const lista = document.getElementById('lista-carrito');
+    lista.innerHTML = '';
+    let total = 0;
+    carrito.forEach((item,index)=>{
+        const li = document.createElement('li');
+        li.textContent = `${item.nombre} - $${item.precio}`;
+        const btnEliminar = document.createElement('button');
+        btnEliminar.textContent = 'X';
+        btnEliminar.onclick = () => { carrito.splice(index,1); actualizarCarrito(); };
+        li.appendChild(btnEliminar);
+        lista.appendChild(li);
+        total += item.precio;
+    });
+    document.getElementById('total').textContent = total;
+    document.getElementById('contador').textContent = carrito.length;
+}
+
+function toggleCarrito() {
+    const div = document.getElementById('carrito-items');
+    div.classList.toggle('show');
+}
+
+function hacerPedido() {
+    if(carrito.length===0){ alert("No hay productos en el carrito."); return; }
+    let mensaje = `Hola, quiero pedir:\n`;
+    carrito.forEach(item => { mensaje += `- ${item.nombre} - $${item.precio}\n`; });
+    mensaje += `Total: $${carrito.reduce((sum,item)=>sum+item.precio,0)} MXN`;
+    window.location.href = 'tel:+529852578885';
+}
+
+function filtrar(categoria){
+    const items = document.querySelectorAll('.menu .item');
+    items.forEach(item=>{
+        if(categoria==='todas' || item.dataset.categoria===categoria){
+            item.style.display='flex';
+        }else{
+            item.style.display='none';
+        }
+    });
+}
+</script>
+
+</body>
+</html>
