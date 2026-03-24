@@ -48,6 +48,102 @@ nav a:hover {
     color: #7a5a3a;
 }
 
+/* SLIDER */
+.slider {
+    width: 100%;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f0e6;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    opacity: 0;
+    transform: translateX(200px) scale(.7) rotateY(40deg);
+    transition: 1s;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,.2);
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0) scale(1) rotateY(0);
+    z-index: 5;
+}
+
+.slide.prev {
+    opacity: .4;
+    transform: translateX(-300px) scale(.8) rotateY(-30deg);
+    z-index: 1;
+}
+
+.slide.next {
+    opacity: .4;
+    transform: translateX(300px) scale(.8) rotateY(30deg);
+    z-index: 1;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.card img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+}
+
+.card h3 {
+    margin: 15px;
+    font-size: 22px;
+    color: #3b2f2f;
+}
+
+.card button {
+    background: #c8a97e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.card button:hover {
+    transform: scale(1.1);
+}
+
+.titulo-slider {
+    text-align: center;
+    font-family: 'Lucida Handwriting', cursive;
+    font-size: 2rem;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: #3b2f2f;
+}
+
 /* SECCIONES INFORMATIVAS */
 .info-item {
     max-width: 900px;
@@ -63,22 +159,18 @@ nav a:hover {
 
 .info-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 20px;
+    align-items: center;
     flex-wrap: wrap;
-}
-
-/* 🔥 CAMBIO: alternar imágenes */
-.info-item:nth-child(even) .info-content {
-    flex-direction: row-reverse;
+    flex-direction: column;
+    text-align: center;
 }
 
 .info-content img {
     width: 100%;
-    max-width: 280px;      /* tamaño máximo */
-    aspect-ratio: 4 / 3;    /* todas mismas proporciones */
-    object-fit: cover;       /* que no se deforme */
+    max-width: 280px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
@@ -87,7 +179,6 @@ nav a:hover {
     max-width: 500px;
     font-size: 1rem;
     line-height: 1.5;
-    text-align: left;
 }
 
 /* PRODUCTOS */
@@ -108,7 +199,6 @@ nav a:hover {
     transition: all 0.3s ease;
     cursor: pointer;
     box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
-    overflow: hidden;
 }
 
 .producto:hover {
@@ -118,8 +208,8 @@ nav a:hover {
 
 .producto img {
     width: 100%;
-    height: 300px;       
-    object-fit: cover;   
+    height: 300px;
+    object-fit: cover;
     border-radius: 12px;
     transition: transform 0.4s ease;
 }
@@ -136,510 +226,7 @@ nav a:hover {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
-/* CONTACTO Y REDES */
-.contacto, .redes {
-    max-width: 900px;
-    margin: 30px auto;
-    text-align: center;
-}
-
-.contacto h2, .redes h2 {
-    font-family: 'Lucida Handwriting', cursive;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-.contacto p, .redes p {
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
-
-.redes a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #3b2f2f;
-    font-size: 1.5rem;
-    transition: 0.3s;
-}
-
-.redes a:hover {
-    color: #7a5a3a;
-}
-
-/* BOTONES */
-button {
-    background: #c8a97e;
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: 5px;
-}
-
-/* RESPONSIVE */
-/* RESPONSIVE */
-@media (max-width: 768px) {
-
-    .producto {
-        width: 90%;
-    }
-
-    nav {
-        flex-direction: column;
-    }
-
-    /* ===== ARREGLO SECCIÓN INFORMATIVA ===== */
-    .info-content {
-        flex-direction: column !important; /* fuerza columna en móvil */
-        align-items: center;               /* centra todo */
-        text-align: center;
-    }
-
-    .info-content img {
-        width: 100%;        /* ocupa todo el ancho disponible */
-        max-width: 280px;   /* no se haga gigante */
-        aspect-ratio: 4 / 3;/* mantiene proporción uniforme */
-        object-fit: cover;  /* no se deforma */
-    }
-
-    .info-content div {
-        width: 100%;        /* texto ocupa ancho completo */
-    }
-
-    .info-content p {
-        text-align: center;
-        max-width: 90%;
-    }
-
-    /* evita que los elementos pares se volteen */
-    .info-item:nth-child(even) .info-content {
-        flex-direction: column !important;
-    }
-}
-
-    /* 🔥 ARREGLO SECCIÓN INFO */
-    .info-content {
-        flex-direction: column !important;
-        align-items: center;
-        text-align: center;
-    }
-
-    .info-content img {
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-    }
-
-    .info-content div {
-        width: 100%;
-    }
-
-    .info-content p {
-        text-align: center;
-        max-width: 90%;
-    }
-
-    /* 🔥 EVITA QUE SE VOLTEE EN MÓVIL */
-    .info-item:nth-child(even) .info-content {
-        flex-direction: column !important;
-    }
-}
-
-@media (max-width: 480px) {
-    nav a {
-        margin: 5px 0;
-    }
-}
-.slider{
-width:100%;
-height:420px;
-display:flex;
-justify-content:center;
-align-items:center;
-background:#f5f0e6;
-position:relative;
-overflow:hidden;
-}
-
-.slide{
-position:absolute;
-width:350px;
-height:350px;
-opacity:0;
-transform:translateX(200px) scale(.7) rotateY(40deg);
-transition:1s;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 20px 40px rgba(0,0,0,.2);
-}
-
-.slide img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.slide.active{
-opacity:1;
-transform:translateX(0) scale(1) rotateY(0);
-z-index:5;
-}
-
-.slide.prev{
-opacity:.4;
-transform:translateX(-300px) scale(.8) rotateY(-30deg);
-z-index:1;
-}
-
-.slide.next{
-opacity:.4;
-transform:translateX(300px) scale(.8) rotateY(30deg);
-z-index:1;
-}
-.card{
-width:100%;
-height:100%;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-background:white;
-border-radius:20px;
-overflow:hidden;
-transform-style:preserve-3d;
-}
-
-.card img{
-width:100%;
-height:70%;
-object-fit:cover;
-}
-
-.card h3{
-margin:15px;
-font-size:22px;
-color:#3b2f2f;
-}
-
-.card button{
-background:#c8a97e;
-border:none;
-padding:10px 20px;
-border-radius:10px;
-color:white;
-cursor:pointer;
-transition:.3s;
-}
-
-.card button:hover{
-transform:scale(1.1);
-}
-.titulo-slider{
-text-align:center;
-font-family:'Lucida Handwriting',cursive;
-font-size:2rem;
-margin-top:25px;
-margin-bottom:10px;
-color:#3b2f2f;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <img src="logo.png" style="width: 90%; height: 90%;">
-</header>
-
-<nav>
-    <a href="menu.html">Ver Menú</a>
-    <a href="ubicacion.html">Ubícanos</a>
-    <a href="galeria.html">Galería</a>
-    <a href="contacto.html">Contáctanos</a>
-</nav>
-    
-	<h2 class="titulo-slider">Selecciona tu bebida favorita</h2>
-
-<section class="slider">
-
-<div class="slide active" id="taro">
-<div class="card">
-<img src="taro.jpg">
-<h3>Frappé Taro</h3>
-<button onclick="window.location.href='menu.html#taro'">
-Pedir
-</button>
-</div>
-</div>
-
-<div class="slide" id="matcha">
-<div class="card">
-<img src="mattcha.jpg">
-<h3>Frappé Matcha</h3>
-<button onclick="window.location.href='menu.html#matcha'">
-Pedir
-</div>
-</div>
-
-<div class="slide" id="latte">
-<div class="card">
-<img src="latte.jpg">
-<h3>Latte frío</h3>
-<button onclick="window.location.href='menu.html#latte'">
-Pedir
-</div>
-</div>
-
-<div class="slide" item" id="mango"> 
-<div class="card">
-<img src="mango.jpg">
-<h3>Smoothie Mango</h3>
-<button onclick="window.location.href='menu.html#mango'">
-Pedir
-</div>
-</div>
-
-<div class="slide" item" id="oreo">
-<div class="card">
-<img src="oreo.jpg">
-<h3>Frappé de Oreo</h3>
-<button onclick="window.location.href='menu.html#oreo'">
-Pedir
-</div>
-</div>
-
-<div class="slide">
-<div class="card">
-<img src="pinguino.jpg">
-<h3>Frappé Pingüino</h3>
-<button onclick="window.location.href='menu.html#pinguino'">
-Pedir
-</div>
-</div>
-
-<div class="slide" item" id="nutella">
-<div class="card">
-<img src="nutella.jpg">
-<h3>Frappé Nutella</h3>
-<button onclick="window.location.href='menu.html#nutella'">
-Pedir
-</div>
-</div>
-
-<div class="slide" item" id="durazno">
-<div class="card">
-<img src="durazno.jpg">
-<h3>Soda Durazno</h3>
-<button onclick="window.location.href='menu.html#durazno'">
-Pedir
-</div>
-</div>
-
-<div class="slide" item" id="Sfresa">
-<div class="card">
-<img src="fresa.jpg">
-<h3>Soda Fresa</h3>
-<button onclick="window.location.href='menu.html#Sfresa'">
-Pedir
-</div>
-</div>
-
-<div class="slide" item" id="blueberry">
-<div class="card">
-<img src="blueberry.jpg">
-<h3>Soda Blueberry</h3>
-<button onclick="window.location.href='menu.html#blueberry'">
-Pedir
-</div>
-</div>
-
-<div class="slide" item" id="mazapan">
-<div class="card">
-<img src="mazapan.jpg">
-<h3>Frappé Mazapán</h3>
-<button onclick="window.location.href='menu.html#mazapan'">
-Pedir
-</div>
-</div>
-
-<div class="slide" item" id="chocoreta">
-<div class="card">
-<img src="cochoreta.jpeg">
-<h3>Frappé Cochoreta</h3>
-<button onclick="window.location.href='menu.html#chocoreta'">
-Pedir
-</div>
-</div>
-
-<div class="slide" item" id="redvelvet">
-<div class="card">
-<img src="redvelvet.jpg">
-<h3>Frappé Red Velvet</h3>
-<button onclick="window.location.href='menu.html#redvelvet'">
-Pedir
-</div>
-</div>
-
-<div class="slide" item" id="piña">
-<div class="card">
-<img src="piña.jpg">
-<h3>Smoothie Piña</h3>
-<button onclick="window.location.href='menu.html#piña'">
-Pedir
-</div>
-</div>
-
-<div class="slide" item" id="limon">
-<div class="card">
-<img src="limon.jpg">
-<h3>Soda Limón</h3>
-<button onclick="window.location.href='menu.html#limon'">
-Pedir
-</div>
-</div>
-
-</section>
-
-<section class="info">
-
-    <div class="info-item">
-        <h2>¿Qué son las Bobas?</h2>
-       <div class="info-content" style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
-            <img src="boba.jpg" alt="Perlas de tapioca o bobas" style="max-width: 250px; border-radius: 15px;">
-            <div style="flex: 1; min-width: 200px;">
-                <p>Las bobas son pequeñas perlas de tapioca, conocidas también como “pearls”, que se agregan a los frappés y smoothies para brindar una textura única y divertida. Su consistencia suave y ligeramente masticable convierte cada sorbo en una experiencia sensorial especial. Además, pueden absorber parte del sabor de la bebida, creando combinaciones sorprendentes con cada sabor de nuestros frappés.</p>
-                <p>En Pova Tea nos aseguramos de que nuestras bobas sean siempre frescas, tiernas y llenas de sabor, ofreciéndote la máxima calidad en cada bebida.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="info-item">
-        <h2>¿Qué son los Frappés?</h2>
-        <div class="info-content" style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
-            <img src="frappe.jpg" alt="Vaso de frappé frío" style="max-width: 250px; border-radius: 15px;">
-            <div style="flex: 1; min-width: 200px;">
-                <p>Los frappés son bebidas frías elaboradas con hielo triturado, leche y una variedad de sabores irresistibles. Son la opción perfecta para refrescarte en días calurosos o para darte un dulce gusto en cualquier momento del día. Su textura cremosa y fría se combina con ingredientes naturales o jarabes especiales para crear bebidas llenas de sabor y personalidad.</p>
-                <p>En Pova Tea, cada frappé se prepara cuidadosamente, mezclando los ingredientes en proporciones perfectas y agregando nuestras bobas frescas para que cada sorbo sea memorable y delicioso.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="info-item">
-        <h2>¿Por qué Pova Tea tiene los mejores frappés?</h2>
-        <div class="info-content" style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
-            <img src="ingredientes.jpg" alt="Ingredientes de alta calidad para frappés" style="max-width: 250px; border-radius: 15px;">
-            <div style="flex: 1; min-width: 200px;">
-                <p>En Pova Tea, la excelencia está en cada detalle. Usamos ingredientes de la más alta calidad, desde leches frescas hasta jarabes naturales y frutas seleccionadas. Nuestras combinaciones de sabores son únicas, pensadas para sorprender tu paladar y crear experiencias deliciosas en cada sorbo.</p>
-                <p>Nuestras bobas frescas, recién preparadas, complementan cada bebida con una textura increíble y sabor auténtico. Además, nuestro equipo cuida cada preparación con precisión y amor, asegurando que disfrutes de un frappé equilibrado, elegante y absolutamente delicioso.</p>
-            </div>
-        </div>
-    </div>
-
-</section>
-
-
-
-<style>
-/* Título centrado */
-.productos h2 {
-    text-align: center;
-    font-family: 'Lucida Handwriting', cursive;
-    font-size: 2rem;
-    margin-bottom: 30px;
-}
-
-/* Contenedor de productos con filas horizontales */
-.productos-grid {
-    display: flex;
-    flex-wrap: wrap; /* Permite varias filas */
-    justify-content: center; /* Centra los productos en cada fila */
-    gap: 20px;
-    padding: 0 20px;
-}
-
-/* Cada producto */
-.producto {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 150px; /* ancho fijo para que haya varias filas */
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.producto:hover {
-    transform: scale(1.05);
-}
-
-/* Imagen del producto */
-.producto img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-/* Nombre del producto */
-.producto h3 {
-    font-size: 1rem;
-    margin: 0;
-    line-height: 1.2em;
-}
-</style>
-
-<script>
-function irMenu(idProducto) {
-    const elemento = document.querySelector(`.item[data-nombre*="${idProducto}"]`);
-    if (elemento) {
-        elemento.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-}
-</script>
-
-<!-- ===================== -->
-<!-- FOOTER / SECCIÓN FINAL -->
-<!-- ===================== -->
-<footer class="footer">
-    <div class="footer-container">
-        <!-- Logo pequeño -->
-        <div class="footer-logo">
-            <img src="buho.jpeg" alt="Logo Povatea" class="logo">
-        </div>
-
-        <!-- Contacto -->
-        <div class="footer-contacto">
-            <h2>Contáctanos</h2>
-            <p>Llama: 
-                <a href="tel:+529852578885" class="btn-llamar">Realiza tu encargo</a>
-            </p>
-            <p>Email: <a href="mailto:contacto@povatea.com">contacto@povatea.com</a></p>
-        </div>
-
-        <!-- Redes sociales -->
-        <div class="footer-redes">
-            <h2>Síguenos en Redes Sociales</h2>
-            <div class="iconos-redes">
-                <a href="https://www.facebook.com/share/1ArFhoHu7y/?mibextid=wwXIfr" target="_blank">
-                    <img src="facebook-icon.png" alt="Facebook" class="red-icon">
-                </a>
-                <a href="https://www.instagram.com/povatea_valladolid?igsh=MTc4MHRkNnJxbmxveg==" target="_blank">
-                    <img src="instagram-icon.png" alt="Instagram" class="red-icon">
-                </a>
-                <a href="https://www.tiktok.com/@pova_teavalladolid?_r=1&_t=ZS-94uMNwaqFB1" target="_blank">
-                    <img src="tiktok-icon.png" alt="TikTok" class="red-icon">
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<style>
-/* ===================== */
-/* Footer general         */
-/* ===================== */
+/* FOOTER */
 .footer {
     background-color: #f5f5f5;
     padding: 70px 20px;
@@ -651,7 +238,7 @@ function irMenu(idProducto) {
 .footer-container {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;      /* Permite que en móvil se apilen */
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
     max-width: 1200px;
@@ -659,7 +246,6 @@ function irMenu(idProducto) {
     gap: 40px;
 }
 
-/* Logo */
 .footer-logo {
     flex: 1;
     display: flex;
@@ -673,7 +259,6 @@ function irMenu(idProducto) {
     height: auto;
 }
 
-/* Contacto y redes */
 .footer-contacto,
 .footer-redes {
     flex: 2;
@@ -692,7 +277,6 @@ function irMenu(idProducto) {
     margin: 8px 0;
 }
 
-/* Botón de llamada */
 .footer .btn-llamar {
     display: inline-flex;
     align-items: center;
@@ -713,7 +297,6 @@ function irMenu(idProducto) {
     transform: scale(1.05);
 }
 
-/* Iconos redes */
 .iconos-redes {
     display: flex;
     justify-content: center;
@@ -731,28 +314,21 @@ function irMenu(idProducto) {
     transform: scale(1.2);
 }
 
-/* ===================== */
-/* Responsive             */
-/* ===================== */
+/* RESPONSIVE */
 @media (max-width: 768px) {
+    .producto {
+        width: 90%;
+    }
+    nav {
+        flex-direction: column;
+    }
+    .info-content {
+        flex-direction: column !important;
+    }
     .footer-container {
         flex-direction: column;
         align-items: center;
         gap: 30px;
-    }
-
-    .footer-contacto,
-    .footer-redes {
-        text-align: center;
-    }
-
-    .footer-logo .logo {
-        width: 80px;
-    }
-
-    .red-icon {
-        width: 50px;
-        height: 50px;
     }
 }
 
@@ -763,42 +339,152 @@ function irMenu(idProducto) {
     }
 }
 </style>
-<script>
+</head>
 
+<body>
+
+<header>
+    <img src="logo.png" alt="Logo Pova Tea" class="logo">
+</header>
+
+<nav>
+    <a href="menu.html">Ver Menú</a>
+    <a href="ubicacion.html">Ubícanos</a>
+    <a href="galeria.html">Galería</a>
+    <a href="contacto.html">Contáctanos</a>
+</nav>
+
+<h2 class="titulo-slider">Selecciona tu bebida favorita</h2>
+
+<section class="slider">
+  <!-- Slides con data-nombre -->
+  <div class="slide active" data-nombre="taro">
+    <div class="card">
+      <img src="taro.jpg" alt="Frappé Taro">
+      <h3>Frappé Taro</h3>
+      <button onclick="window.location.href='menu.html#taro'">Pedir</button>
+    </div>
+  </div>
+
+  <div class="slide" data-nombre="matcha">
+    <div class="card">
+      <img src="matcha.jpg" alt="Frappé Matcha">
+      <h3>Frappé Matcha</h3>
+      <button onclick="window.location.href='menu.html#matcha'">Pedir</button>
+    </div>
+  </div>
+
+  <div class="slide" data-nombre="latte">
+    <div class="card">
+      <img src="latte.jpg" alt="Latte frío">
+      <h3>Latte frío</h3>
+      <button onclick="window.location.href='menu.html#latte'">Pedir</button>
+    </div>
+  </div>
+
+  <div class="slide" data-nombre="mango">
+    <div class="card">
+      <img src="mango.jpg" alt="Smoothie Mango">
+      <h3>Smoothie Mango</h3>
+      <button onclick="window.location.href='menu.html#mango'">Pedir</button>
+    </div>
+  </div>
+
+  <!-- Agrega aquí el resto de slides de la misma manera -->
+</section>
+
+<!-- INFO -->
+<section class="info">
+    <div class="info-item">
+        <h2>¿Qué son las Bobas?</h2>
+        <div class="info-content">
+            <img src="boba.jpg" alt="Perlas de tapioca o bobas">
+            <div>
+                <p>Las bobas son pequeñas perlas de tapioca...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-item">
+        <h2>¿Qué son los Frappés?</h2>
+        <div class="info-content">
+            <img src="frappe.jpg" alt="Vaso de frappé frío">
+            <div>
+                <p>Los frappés son bebidas frías elaboradas con hielo triturado...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-item">
+        <h2>¿Por qué Pova Tea tiene los mejores frappés?</h2>
+        <div class="info-content">
+            <img src="ingredientes.jpg" alt="Ingredientes de alta calidad para frappés">
+            <div>
+                <p>En Pova Tea, la excelencia está en cada detalle...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="buho.jpeg" alt="Logo Povatea" class="logo">
+        </div>
+
+        <div class="footer-contacto">
+            <h2>Contáctanos</h2>
+            <p>Llama: <a href="tel:+529852578885" class="btn-llamar">Realiza tu encargo</a></p>
+            <p>Email: <a href="mailto:contacto@povatea.com">contacto@povatea.com</a></p>
+        </div>
+
+        <div class="footer-redes">
+            <h2>Síguenos en Redes Sociales</h2>
+            <div class="iconos-redes">
+                <a href="#" target="_blank" aria-label="Facebook">
+                    <img src="facebook-icon.png" alt="Facebook" class="red-icon">
+                </a>
+                <a href="#" target="_blank" aria-label="Instagram">
+                    <img src="instagram-icon.png" alt="Instagram" class="red-icon">
+                </a>
+                <a href="#" target="_blank" aria-label="TikTok">
+                    <img src="tiktok-icon.png" alt="TikTok" class="red-icon">
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Slider automático mejorado
 let slides = document.querySelectorAll(".slide");
 let index = 0;
 
-function update(){
+function update() {
+    slides.forEach(s => s.classList.remove("active","prev","next"));
+    slides[index].classList.add("active");
 
-slides.forEach(s=>{
-s.classList.remove("active","prev","next");
-});
+    let prev = (index - 1 + slides.length) % slides.length;
+    let next = (index + 1) % slides.length;
 
-slides[index].classList.add("active");
-
-let prev = index-1;
-let next = index+1;
-
-if(prev < 0) prev = slides.length-1;
-if(next >= slides.length) next = 0;
-
-slides[prev].classList.add("prev");
-slides[next].classList.add("next");
-
+    slides[prev].classList.add("prev");
+    slides[next].classList.add("next");
 }
 
 update();
+setInterval(() => {
+    index = (index + 1) % slides.length;
+    update();
+}, 3000);
 
-setInterval(()=>{
-
-index++;
-
-if(index >= slides.length) index = 0;
-
-update();
-
-},3000);
-
+// Función para scroll hacia producto
+function irMenu(idProducto) {
+    const elemento = document.querySelector(`.slide[data-nombre="${idProducto}"]`);
+    if (elemento) {
+        elemento.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
 </script>
 
 </body>
