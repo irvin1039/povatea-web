@@ -54,63 +54,42 @@ nav a {
     margin-bottom: 15px;
 }
 
-.info-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-
-/* Zig-zag solo en escritorio */
-.info-item:nth-child(even) .info-content {
-    flex-direction: row-reverse;
-}
-
-.info-content img {
-    width: 300px;
-    height: 250px;
-    object-fit: cover;
+.info-item img {
+    width: 90%;
+    max-width: 300px;
+    height: auto;
     border-radius: 12px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 15px auto;
 }
 
-.info-content p {
-    max-width: 500px;
-    text-align: left;
+.info-item p {
+    max-width: 90%;
+    margin: 0 auto 20px auto;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: justify;
 }
 
-/* 🔥 MOBILE FIX (AQUÍ ESTÁ LA CLAVE) */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-
-    .info-content {
-        flex-direction: column !important;
-        align-items: center;
+    .info-item img {
+        width: 100%;
     }
 
-    .info-item:nth-child(even) .info-content {
-        flex-direction: column !important;
-    }
-
-    .info-content img {
-        width: 90%;
-        height: auto;
-    }
-
-    .info-content p {
-        max-width: 90%;
-        text-align: justify;
-    }
-
-    nav {
-        flex-direction: column;
+    .info-item p {
+        max-width: 95%;
     }
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <img src="logo.png" style="width: 90%;">
+    <img src="logo.png" alt="Logo Pova Tea" class="logo">
 </header>
 
 <nav>
@@ -123,27 +102,21 @@ nav a {
 <section class="info">
 
   <div class="info-item">
-    <h2>¿Qué son las Bobas?</h2>
-    <div class="info-content">
-      <img src="boba.jpg">
+      <h2>¿Qué son las Bobas?</h2>
+      <img src="boba.jpg" alt="Bobas">
       <p>Las bobas son perlas de tapioca con textura suave y divertida.</p>
-    </div>
   </div>
 
   <div class="info-item">
-    <h2>¿Qué son los Frappés?</h2>
-    <div class="info-content">
-      <img src="frappe.jpg">
+      <h2>¿Qué son los Frappés?</h2>
+      <img src="frappe.jpg" alt="Frappé">
       <p>Bebidas frías con hielo triturado y sabores deliciosos.</p>
-    </div>
   </div>
 
   <div class="info-item">
-    <h2>¿Por qué elegir Pova Tea?</h2>
-    <div class="info-content">
-      <img src="ingredientes.jpg">
+      <h2>¿Por qué elegir Pova Tea?</h2>
+      <img src="ingredientes.jpg" alt="Ingredientes">
       <p>Usamos ingredientes de alta calidad para un sabor único.</p>
-    </div>
   </div>
 
 </section>
