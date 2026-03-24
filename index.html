@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pova Tea - Oficial</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         html { scroll-behavior: smooth; }
         body { margin: 0; padding-top: 240px; font-family: 'Segoe UI', sans-serif; background: #f5f0e6; color: #3b2f2f; }
@@ -17,7 +19,7 @@
         .nombre-inicio { font-family: 'Lucida Handwriting', cursive; font-size: 2rem; color: #5d4037; text-decoration: none; font-weight: bold; }
         .logo-largo { height: 165px; position: absolute; left: 50%; transform: translateX(-50%); }
         nav { background: #d9c2a3; display: flex; justify-content: center; padding: 15px 0; }
-        nav a { margin: 0 20px; text-decoration: none; color: #3b2f2f; font-weight: bold; font-size: 1.1rem; }
+        nav a { margin: 0 20px; text-decoration: none; color: #3b2f2f; font-weight: bold; }
 
         /* SLIDER 12 BEBIDAS */
         .slider-section { padding: 40px 0; background: #fdfaf5; text-align: center; }
@@ -28,33 +30,34 @@
         .slide.next { opacity: 0.4; transform: translateX(110%) scale(0.7); z-index: 5; }
         .card { background: white; height: 100%; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); overflow: hidden; }
         .card img { width: 100%; height: 70%; object-fit: cover; }
-        .card h3 { margin: 10px; font-size: 1.2rem; }
-        .card button { background: #c8a97e; border: none; padding: 10px 20px; border-radius: 20px; color: white; cursor: pointer; font-weight: bold; }
+        .card h3 { margin: 10px; font-size: 1.1rem; }
+        .card button { background: #c8a97e; border: none; padding: 8px 15px; border-radius: 20px; color: white; cursor: pointer; font-weight: bold; }
 
         /* SECCIÓN DE PREGUNTAS (INFO) */
-        .info { max-width: 1000px; margin: 50px auto; padding: 0 20px; }
-        .info-item { background: white; padding: 40px; border-radius: 30px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .info-content { display: flex; flex-direction: column; align-items: center; gap: 30px; }
-        .info-content img { width: 100%; max-width: 300px; border-radius: 20px; }
-        .info-text p { font-size: 1.1rem; line-height: 1.6; }
+        .info { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .info-item { background: white; padding: 30px; border-radius: 25px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .info-content { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .info-content img { width: 100%; max-width: 250px; border-radius: 20px; }
+        .info-text h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; }
 
-        /* SECCIONES FINALES (HORARIOS, MAPA, VALORACION) */
-        .seccion-pova { max-width: 900px; margin: 50px auto; padding: 30px; background: white; border-radius: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
-        h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; font-size: 2.2rem; margin-bottom: 20px; }
-        
-        /* Sistema de Estrellas */
-        .stars { font-size: 40px; margin-bottom: 15px; }
-        .star { color: #ccc; cursor: pointer; transition: 0.3s; }
+        /* SECCIONES FINALES */
+        .seccion-pova { max-width: 900px; margin: 40px auto; padding: 30px; background: white; border-radius: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
+        .stars { font-size: 35px; margin-bottom: 10px; color: #ccc; cursor: pointer; }
         .star.selected { color: #ffcc00; }
-        textarea { width: 100%; max-width: 500px; height: 80px; border-radius: 15px; border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; font-family: inherit; }
-        .btn-comentar { background: #5d4037; color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: bold; }
-        .resena { background: #f9f9f9; padding: 15px; border-radius: 15px; margin-bottom: 10px; border-left: 5px solid #ffcc00; text-align: left; }
+        textarea { width: 100%; max-width: 500px; height: 60px; border-radius: 15px; padding: 10px; border: 1px solid #ddd; }
+        .resena { background: #f9f9f9; padding: 10px; border-radius: 10px; margin-top: 10px; text-align: left; border-left: 4px solid #ffcc00; }
+
+        /* REDES SOCIALES Y CONTACTO */
+        footer { background: #5d4037; color: white; padding: 40px 20px; text-align: center; margin-top: 50px; }
+        .social-icons { font-size: 30px; margin: 20px 0; }
+        .social-icons a { color: white; margin: 0 15px; text-decoration: none; transition: 0.3s; }
+        .social-icons a:hover { color: #ffcc00; }
+        .btn-llamar { display: inline-block; background: #25d366; color: white; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: 10px; }
 
         @media (min-width: 768px) {
             .info-content { flex-direction: row; }
             .info-item:nth-child(even) .info-content { flex-direction: row-reverse; }
         }
-
         @media (max-width: 700px) {
             body { padding-top: 180px; }
             header { height: 120px; }
@@ -82,7 +85,7 @@
     </div>
 
     <section class="slider-section">
-        <h2>Selecciona tu favorita</h2>
+        <h2 style="font-family:'Lucida Handwriting', cursive;">Selecciona tu favorita</h2>
         <div class="slider-container">
             <div class="slide"><div class="card"><img src="taro.jpg"><h3>Taro Frappé</h3><button>Pedir</button></div></div>
             <div class="slide"><div class="card"><img src="mattcha.jpg"><h3>Matcha Frappé</h3><button>Pedir</button></div></div>
@@ -101,82 +104,84 @@
 
     <section class="info">
         <div class="info-item" data-aos="fade-up">
-            <h2>Nuestras Bobas</h2>
             <div class="info-content">
-                <img src="boba.jpg" alt="Bobas">
+                <img src="boba.jpg">
                 <div class="info-text">
-                    <p>Perlas de tapioca frescas preparadas diariamente para darte la mejor textura en cada sorbo. Nuestras bobas son famosas por su suavidad y ese toque dulce que complementa tu bebida favorita.</p>
+                    <h2>Nuestras Bobas</h2>
+                    <p>Perlas de tapioca frescas preparadas diariamente para darte la mejor textura.</p>
                 </div>
             </div>
         </div>
-
         <div class="info-item" data-aos="fade-up">
-            <h2>¿Por qué elegir Pova Tea?</h2>
             <div class="info-content">
-                <img src="ingredientes.jpg" alt="Calidad">
+                <img src="ingredientes.jpg">
                 <div class="info-text">
-                    <p>En Pova Tea nos obsesionamos con la calidad. Utilizamos ingredientes frescos y recetas artesanales para que cada visita sea una experiencia única. ¡Sabor real en cada vaso!</p>
+                    <h2>¿Por qué elegir Pova Tea?</h2>
+                    <p>Porque usamos ingredientes de primera y recetas que no encontrarás en otro lugar.</p>
+                </div>
+            </div>
+        </div>
+        <div class="info-item" data-aos="fade-up">
+            <div class="info-content">
+                <img src="calidad.jpg">
+                <div class="info-text">
+                    <h2>Nuestra Calidad</h2>
+                    <p>Cuidamos cada detalle desde el grano de té hasta la última boba en tu vaso.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <div class="seccion-pova" data-aos="fade-up">
-        <h2>Horarios de Atención</h2>
-        <p style="font-size: 1.2rem;">Lunes a Sábado: <strong>10:00 AM - 9:00 PM</strong></p>
-        <p style="color: #d32f2f;">Domingos: <strong>Cerrado</strong></p>
-    </div>
-
-    <div class="seccion-pova" data-aos="fade-up">
-        <h2>Nuestra Ubicación</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1!2d0!3d0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM3DCsDAwJzAwLjAiTiAwwrAwMCcwMC4wIlc!5e0!3m2!1ses!2s!4v1" width="100%" height="350" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy"></iframe>
+        <h2>Horarios y Ubicación</h2>
+        <p>Lunes a Sábado: <strong>10am - 9pm</strong> | Domingo: <strong>Cerrado</strong></p>
+        <iframe src="http://googleusercontent.com/maps.google.com/final" width="100%" height="300" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
     <div class="seccion-pova" data-aos="zoom-in">
-        <h2>Califica tu Experiencia</h2>
+        <h2>Danos 5 Estrellas</h2>
         <div class="stars">
-            <span class="star" onclick="rate(1)">★</span>
-            <span class="star" onclick="rate(2)">★</span>
-            <span class="star" onclick="rate(3)">★</span>
-            <span class="star" onclick="rate(4)">★</span>
-            <span class="star" onclick="rate(5)">★</span>
+            <span class="star" onclick="rate(1)">★</span><span class="star" onclick="rate(2)">★</span><span class="star" onclick="rate(3)">★</span><span class="star" onclick="rate(4)">★</span><span class="star" onclick="rate(5)">★</span>
         </div>
-        <textarea id="comentario" placeholder="¿Qué te pareció Pova Tea?..."></textarea><br>
-        <button class="btn-comentar" onclick="publicar()">Publicar Comentario</button>
-        <div id="muro" style="margin-top: 30px;"></div>
+        <textarea id="comentario" placeholder="Escribe tu reseña..."></textarea><br>
+        <button onclick="publicar()" style="background:#5d4037; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Publicar</button>
+        <div id="muro"></div>
     </div>
+
+    <footer>
+        <h2>¡Síguenos y Contáctanos!</h2>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p>¿Tienes dudas? ¡Llámanos ahora!</p>
+        <a href="tel:+123456789" class="btn-llamar"><i class="fas fa-phone"></i> Llamar a Pova Tea</a>
+        <p style="margin-top: 30px; font-size: 0.8rem;">© 2026 Pova Tea - Todos los derechos reservados.</p>
+    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-
-        // Lógica del Slider Circular
-        let idx = 0;
-        const slides = document.querySelectorAll(".slide");
-        function mover() {
-            slides.forEach(s => s.classList.remove("active", "prev", "next"));
-            slides[idx].classList.add("active");
-            slides[(idx - 1 + slides.length) % slides.length].classList.add("prev");
-            slides[(idx + 1) % slides.length].classList.add("next");
-            idx = (idx + 1) % slides.length;
+        AOS.init();
+        // Slider
+        let cur = 0; const sld = document.querySelectorAll(".slide");
+        function mov() {
+            sld.forEach(s => s.classList.remove("active", "prev", "next"));
+            sld[cur].classList.add("active");
+            sld[(cur - 1 + sld.length) % sld.length].classList.add("prev");
+            sld[(cur + 1) % sld.length].classList.add("next");
+            cur = (cur + 1) % sld.length;
         }
-        setInterval(mover, 3000); mover();
-
-        // Lógica de Estrellas y Muro
-        let ratingActual = 0;
-        function rate(n) {
-            ratingActual = n;
-            document.querySelectorAll('.star').forEach((st, i) => st.classList.toggle('selected', i < n));
-        }
-
+        setInterval(mov, 3000); mov();
+        // Estrellas
+        let pt = 0; function rate(n) { pt = n; document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('selected', i < n)); }
+        // Publicar
         function publicar() {
-            const txt = document.getElementById('comentario').value;
-            if(!txt || ratingActual === 0) return alert("Por favor elige estrellas y escribe algo.");
-            const muro = document.getElementById('muro');
-            const resena = document.createElement('div');
-            resena.className = 'resena';
-            resena.innerHTML = `<strong>Cliente Satisfecho - ${ratingActual} ★</strong><p>${txt}</p>`;
-            muro.prepend(resena);
+            const t = document.getElementById('comentario').value;
+            if(!t || pt === 0) return alert("Escribe algo y califica");
+            const d = document.createElement('div'); d.className = 'resena';
+            d.innerHTML = `<strong>Anónimo - ${pt} ★</strong><p>${t}</p>`;
+            document.getElementById('muro').prepend(d);
             document.getElementById('comentario').value = ""; rate(0);
         }
     </script>
