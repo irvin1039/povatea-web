@@ -14,34 +14,54 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f5f0e6;
             color: #3b2f2f;
-            overflow-x: hidden; /* Evita scroll horizontal no deseado */
+            overflow-x: hidden;
+            /* 3. AGREGADO: Espacio superior para compensar el header fijo. 
+               Ajusta este valor si cambias el alto del header/nav. */
+            padding-top: 170px; 
         }
 
+        /* --- HEADER FIJO (STICKY) --- MODIFICADO */
         header {
             background: #e6d3b3;
             text-align: center;
-            padding: 20px;
+            padding: 15px 20px; /* Un poco menos de padding */
+            
+            /* 1. AGREGADO: Hacer el header fijo */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1001; /* Mayor que el nav y el slider */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            
+            /* Asegurar que el padding no agrande el ancho total */
+            box-sizing: border-box; 
         }
 
         header img {
-            max-width: 200px; /* Logo más estético */
+            max-width: 150px; /* Logo un poco más pequeño para que no ocupe tanto fijo */
             height: auto;
+            transition: max-width 0.3s ease; /* Transición suave si decides achicarlo más al hacer scroll (requiere JS adicional) */
         }
 
+        /* --- NAVEGACIÓN FIJA (STICKY) --- MODIFICADO */
         nav {
             background: #d9c2a3;
             display: flex;
             justify-content: center;
             padding: 10px;
             flex-wrap: wrap;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            
+            /* 2. MODIFICADO: Hacer el nav fijo debajo del header */
+            position: fixed;
+            top: 100px; /* Alto aproximado del header. Ajusta si es necesario. */
+            width: 100%;
+            z-index: 1000; /* Debajo del header pero sobre el contenido */
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-sizing: border-box;
         }
 
         nav a {
-            margin: 10px 15px;
+            margin: 5px 15px; /* Un poco menos de margen vertical */
             text-decoration: none;
             color: #3b2f2f;
             font-weight: bold;
@@ -51,7 +71,7 @@
 
         nav a:hover { color: #7a5a3a; }
 
-        /* --- SECCIÓN INFORMACIÓN (PREGUNTAS) --- CORREGIDO Y ANIMADO */
+        /* --- SECCIÓN INFORMACIÓN (PREGUNTAS) --- (Mantenido) */
         .info {
             max-width: 1000px;
             margin: 40px auto;
@@ -59,12 +79,11 @@
         }
 
         .info-item {
-            margin-bottom: 60px; /* Espacio entre preguntas */
+            margin-bottom: 60px;
             background: white;
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            /* Asegura que la animación funcione bien */
             overflow: hidden; 
         }
 
@@ -78,14 +97,14 @@
 
         .info-content {
             display: flex;
-            flex-direction: column; /* Móvil primero: apilado */
+            flex-direction: column;
             align-items: center;
             gap: 30px;
         }
 
         .info-content img {
             width: 100%;
-            max-width: 350px; /* Tamaño máximo de imagen */
+            max-width: 350px;
             height: 250px;
             object-fit: cover;
             border-radius: 15px;
@@ -104,7 +123,7 @@
             color: #555;
         }
 
-        /* --- SLIDER --- */
+        /* --- SLIDER --- (Mantenido) */
         .titulo-slider {
             text-align: center;
             font-family: 'Lucida Handwriting', cursive;
@@ -121,7 +140,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            background: #fdfaf5; /* Fondo ligero para destacar tarjetas */
+            background: #fdfaf5;
             margin-bottom: 40px;
         }
 
@@ -135,7 +154,6 @@
             z-index: 1;
         }
 
-        /* Estados del slider circular */
         .slide.active { opacity: 1; transform: translateX(0) scale(1); z-index: 5; }
         .slide.prev { opacity: 0.4; transform: translateX(-100%) scale(0.8); z-index: 2; }
         .slide.next { opacity: 0.4; transform: translateX(100%) scale(0.8); z-index: 2; }
@@ -166,7 +184,7 @@
         }
         .card button:hover { background: #b09166; transform: scale(1.05); }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER --- (Mantenido) */
         .footer {
             background-color: #e6d3b3;
             padding: 50px 20px;
@@ -218,14 +236,13 @@
         /* --- MEDIA QUERIES (PC) --- */
         @media (min-width: 768px) {
             .info-content {
-                flex-direction: row; /* Alineación horizontal en PC */
+                flex-direction: row;
                 text-align: left;
                 justify-content: space-between;
             }
 
             .info-text { text-align: left; }
 
-            /* Efecto Alternado: Una imagen izquierda, la siguiente derecha */
             .info-item:nth-child(even) .info-content {
                 flex-direction: row-reverse;
             }
@@ -235,10 +252,21 @@
             nav { flex-direction: row; }
         }
 
-        @media (max-width: 480px) {
-            .titulo-slider { font-size: 1.5rem; }
-            .info-item { padding: 20px; }
+        /* --- MEDIA QUERIES (MÓVIL) --- MODIFICADO */
+        @media (max-width: 767px) {
+            /* 4. MODIFICADO: Ajustes para el header fijo en móvil */
+            body { padding-top: 140px; } /* Menos espacio superior en móvil */
+            
+            header { padding: 10px 15px; }
+            header img { max-width: 100px; } /* Logo más pequeño en móvil */
+            
+            nav { top: 70px; padding: 5px; } /* Nav más arriba y compacto */
+            nav a { font-size: 0.95rem; margin: 3px 8px; }
+
+            .titulo-slider { font-size: 1.5rem; margin-top: 20px; }
+            .info-item { padding: 20px; margin-bottom: 40px; }
             .card h3 { font-size: 1.1rem; }
+            .info-item h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -327,11 +355,11 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <script>
-    // 4. AGREGADO: Inicializar las animaciones
+    // 4. Inicializar las animaciones (Mantenido)
     AOS.init({
-        duration: 1000, // Duración de la animación (1 segundo)
-        once: true,     // La animación ocurre solo una vez al bajar
-        offset: 100     // La animación empieza 100px antes de que el elemento aparezca
+        duration: 1000, 
+        once: true,     
+        offset: 100     
     });
 
     // --- Script del Slider (Mantenido igual) ---
@@ -352,7 +380,7 @@
     setInterval(() => {
         index = (index + 1) % slides.length;
         update();
-    }, 3500); // Un poco más lento para que se aprecie mejor
+    }, 3500); 
     
     update();
 </script>
