@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pova Tea - Sitio Oficial</title>
+    <title>Pova Tea - Oficial</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         html { scroll-behavior: smooth; }
@@ -19,7 +19,7 @@
         nav { background: #d9c2a3; display: flex; justify-content: center; padding: 15px 0; }
         nav a { margin: 0 20px; text-decoration: none; color: #3b2f2f; font-weight: bold; font-size: 1.1rem; }
 
-        /* SLIDER DE 12 BEBIDAS */
+        /* SLIDER 12 BEBIDAS */
         .slider-section { padding: 40px 0; background: #fdfaf5; text-align: center; }
         .slider-container { width: 100%; height: 400px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; }
         .slide { position: absolute; width: 280px; height: 350px; opacity: 0; transform: scale(0.7); transition: 0.8s ease-in-out; pointer-events: none; }
@@ -31,22 +31,22 @@
         .card h3 { margin: 10px; font-size: 1.2rem; }
         .card button { background: #c8a97e; border: none; padding: 10px 20px; border-radius: 20px; color: white; cursor: pointer; font-weight: bold; }
 
-        /* SECCIÓN PREGUNTAS (RECUPERADA) */
+        /* SECCIÓN DE PREGUNTAS (INFO) */
         .info { max-width: 1000px; margin: 50px auto; padding: 0 20px; }
         .info-item { background: white; padding: 40px; border-radius: 30px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .info-content { display: flex; flex-direction: column; align-items: center; gap: 30px; }
         .info-content img { width: 100%; max-width: 300px; border-radius: 20px; }
         .info-text p { font-size: 1.1rem; line-height: 1.6; }
 
-        /* SECCIONES FINALES */
+        /* SECCIONES FINALES (HORARIOS, MAPA, VALORACION) */
         .seccion-pova { max-width: 900px; margin: 50px auto; padding: 30px; background: white; border-radius: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
-        h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; font-size: 2.2rem; }
+        h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; font-size: 2.2rem; margin-bottom: 20px; }
         
-        /* Estrellas y Comentarios */
+        /* Sistema de Estrellas */
         .stars { font-size: 40px; margin-bottom: 15px; }
         .star { color: #ccc; cursor: pointer; transition: 0.3s; }
         .star.selected { color: #ffcc00; }
-        textarea { width: 100%; max-width: 500px; height: 80px; border-radius: 15px; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
+        textarea { width: 100%; max-width: 500px; height: 80px; border-radius: 15px; border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; font-family: inherit; }
         .btn-comentar { background: #5d4037; color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: bold; }
         .resena { background: #f9f9f9; padding: 15px; border-radius: 15px; margin-bottom: 10px; border-left: 5px solid #ffcc00; text-align: left; }
 
@@ -67,7 +67,7 @@
     <div class="fixed-top-container">
         <header>
             <div class="brand-box">
-                <img src="buho.jpeg" class="mini-loguito" alt="Loguito">
+                <img src="buho.jpeg" class="mini-loguito" alt="Icono">
                 <a href="#inicio" class="nombre-inicio">Pova Tea</a>
             </div>
             <img src="logo.png" class="logo-largo" alt="Logo Central">
@@ -82,7 +82,7 @@
     </div>
 
     <section class="slider-section">
-        <h2>Elige tu sabor favorito</h2>
+        <h2>Selecciona tu favorita</h2>
         <div class="slider-container">
             <div class="slide"><div class="card"><img src="taro.jpg"><h3>Taro Frappé</h3><button>Pedir</button></div></div>
             <div class="slide"><div class="card"><img src="mattcha.jpg"><h3>Matcha Frappé</h3><button>Pedir</button></div></div>
@@ -101,39 +101,39 @@
 
     <section class="info">
         <div class="info-item" data-aos="fade-up">
-            <h2>¿Qué son las Bobas?</h2>
+            <h2>Nuestras Bobas</h2>
             <div class="info-content">
                 <img src="boba.jpg" alt="Bobas">
                 <div class="info-text">
-                    <p>Las bobas son pequeñas perlas de tapioca que brindan una textura única y divertida. Su consistencia suave y ligeramente masticable convierte cada sorbo en una experiencia sensorial especial.</p>
+                    <p>Perlas de tapioca frescas preparadas diariamente para darte la mejor textura en cada sorbo. Nuestras bobas son famosas por su suavidad y ese toque dulce que complementa tu bebida favorita.</p>
                 </div>
             </div>
         </div>
 
         <div class="info-item" data-aos="fade-up">
-            <h2>Calidad Pova Tea</h2>
+            <h2>¿Por qué elegir Pova Tea?</h2>
             <div class="info-content">
-                <img src="ingredientes.jpg" alt="Ingredientes">
+                <img src="ingredientes.jpg" alt="Calidad">
                 <div class="info-text">
-                    <p>En Pova Tea, la excelencia está en cada detalle. Usamos ingredientes de la más alta calidad, desde leches frescas hasta frutas seleccionadas con el mayor cuidado para ofrecerte un sabor inolvidable.</p>
+                    <p>En Pova Tea nos obsesionamos con la calidad. Utilizamos ingredientes frescos y recetas artesanales para que cada visita sea una experiencia única. ¡Sabor real en cada vaso!</p>
                 </div>
             </div>
         </div>
     </section>
 
     <div class="seccion-pova" data-aos="fade-up">
-        <h2>Horarios</h2>
+        <h2>Horarios de Atención</h2>
         <p style="font-size: 1.2rem;">Lunes a Sábado: <strong>10:00 AM - 9:00 PM</strong></p>
-        <p style="color: #a00;">Domingos: <strong>Cerrado</strong></p>
+        <p style="color: #d32f2f;">Domingos: <strong>Cerrado</strong></p>
     </div>
 
     <div class="seccion-pova" data-aos="fade-up">
         <h2>Nuestra Ubicación</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.480351300061!2d-99.167408!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMTAnMDIuNyJX!5e0!3m2!1ses!2smx!4v1631234567890!5m2!1ses!2smx" width="100%" height="350" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1!2d0!3d0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM3DCsDAwJzAwLjAiTiAwwrAwMCcwMC4wIlc!5e0!3m2!1ses!2s!4v1" width="100%" height="350" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
     <div class="seccion-pova" data-aos="zoom-in">
-        <h2>¿Qué te pareció Pova Tea?</h2>
+        <h2>Califica tu Experiencia</h2>
         <div class="stars">
             <span class="star" onclick="rate(1)">★</span>
             <span class="star" onclick="rate(2)">★</span>
@@ -141,38 +141,42 @@
             <span class="star" onclick="rate(4)">★</span>
             <span class="star" onclick="rate(5)">★</span>
         </div>
-        <textarea id="comentario" placeholder="Escribe tu opinión aquí..."></textarea><br>
+        <textarea id="comentario" placeholder="¿Qué te pareció Pova Tea?..."></textarea><br>
         <button class="btn-comentar" onclick="publicar()">Publicar Comentario</button>
-        <div id="muro" style="margin-top: 20px;"></div>
+        <div id="muro" style="margin-top: 30px;"></div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
-        let i = 0;
-        const s = document.querySelectorAll(".slide");
+        AOS.init({ duration: 1000, once: true });
+
+        // Lógica del Slider Circular
+        let idx = 0;
+        const slides = document.querySelectorAll(".slide");
         function mover() {
-            s.forEach(x => x.classList.remove("active", "prev", "next"));
-            s[i].classList.add("active");
-            s[(i - 1 + s.length) % s.length].classList.add("prev");
-            s[(i + 1) % s.length].classList.add("next");
-            i = (i + 1) % s.length;
+            slides.forEach(s => s.classList.remove("active", "prev", "next"));
+            slides[idx].classList.add("active");
+            slides[(idx - 1 + slides.length) % slides.length].classList.add("prev");
+            slides[(idx + 1) % slides.length].classList.add("next");
+            idx = (idx + 1) % slides.length;
         }
         setInterval(mover, 3000); mover();
 
-        let puntaje = 0;
+        // Lógica de Estrellas y Muro
+        let ratingActual = 0;
         function rate(n) {
-            puntaje = n;
-            document.querySelectorAll('.star').forEach((st, idx) => st.classList.toggle('selected', idx < n));
+            ratingActual = n;
+            document.querySelectorAll('.star').forEach((st, i) => st.classList.toggle('selected', i < n));
         }
 
         function publicar() {
             const txt = document.getElementById('comentario').value;
-            if(!txt || puntaje === 0) return alert("Elige estrellas y escribe algo");
-            const div = document.createElement('div');
-            div.className = 'resena';
-            div.innerHTML = `<strong>Anónimo - ${puntaje} ★</strong><p>${txt}</p>`;
-            document.getElementById('muro').prepend(div);
+            if(!txt || ratingActual === 0) return alert("Por favor elige estrellas y escribe algo.");
+            const muro = document.getElementById('muro');
+            const resena = document.createElement('div');
+            resena.className = 'resena';
+            resena.innerHTML = `<strong>Cliente Satisfecho - ${ratingActual} ★</strong><p>${txt}</p>`;
+            muro.prepend(resena);
             document.getElementById('comentario').value = ""; rate(0);
         }
     </script>
