@@ -189,6 +189,35 @@ button {
         flex-direction: column;
     }
 
+    /* ===== ARREGLO SECCIÓN INFORMATIVA ===== */
+    .info-content {
+        flex-direction: column !important; /* fuerza columna en móvil */
+        align-items: center;               /* centra todo */
+        text-align: center;
+    }
+
+    .info-content img {
+        width: 100%;        /* ocupa todo el ancho disponible */
+        max-width: 280px;   /* no se haga gigante */
+        aspect-ratio: 4 / 3;/* mantiene proporción uniforme */
+        object-fit: cover;  /* no se deforma */
+    }
+
+    .info-content div {
+        width: 100%;        /* texto ocupa ancho completo */
+    }
+
+    .info-content p {
+        text-align: center;
+        max-width: 90%;
+    }
+
+    /* evita que los elementos pares se volteen */
+    .info-item:nth-child(even) .info-content {
+        flex-direction: column !important;
+    }
+}
+
     /* 🔥 ARREGLO SECCIÓN INFO */
     .info-content {
         flex-direction: column !important;
