@@ -5,180 +5,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pova Tea - Sitio Oficial</title>
 
-    <link rel="shortcut icon" href="buho.jpeg" type="image/x-icon">
-    <link rel="icon" href="buho.jpeg" type="image/x-icon">
-
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
+        /* RESET BÁSICO PARA EVITAR PANTALLA BLANCA */
+        * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { margin: 0; padding-top: 240px; font-family: 'Segoe UI', sans-serif; background: #f5f0e6; color: #3b2f2f; overflow-x: hidden; }
+        body { 
+            margin: 0; 
+            padding-top: 220px; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f5f0e6; /* Color crema de fondo */
+            color: #3b2f2f; 
+        }
 
-        /* HEADER Y NAV */
-        .fixed-top-container { position: fixed; top: 0; width: 100%; z-index: 2000; background: #e6d3b3; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        header { height: 180px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; position: relative; }
-        .brand-box { display: flex; align-items: center; gap: 15px; z-index: 10; }
-        .mini-loguito { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid #5d4037; }
-        .nombre-inicio { font-family: 'Lucida Handwriting', cursive; font-size: 2rem; color: #5d4037; text-decoration: none; font-weight: bold; }
-        .logo-largo { height: 165px; position: absolute; left: 50%; transform: translateX(-50%); }
-        nav { background: #d9c2a3; display: flex; justify-content: center; padding: 15px 0; }
-        nav a { margin: 0 20px; text-decoration: none; color: #3b2f2f; font-weight: bold; font-size: 1.1rem; transition: 0.3s; }
-        nav a:hover { color: #8d6e63; }
+        /* HEADER FIJO */
+        .fixed-top-container { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            z-index: 2000; 
+            background: #e6d3b3; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        header { 
+            height: 120px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 40px; 
+        }
+        .nombre-inicio { 
+            font-size: 2rem; 
+            color: #5d4037; 
+            text-decoration: none; 
+            font-weight: bold; 
+        }
+        nav { 
+            background: #d9c2a3; 
+            display: flex; 
+            justify-content: center; 
+            padding: 15px 0; 
+        }
+        nav a { 
+            margin: 0 20px; 
+            text-decoration: none; 
+            color: #3b2f2f; 
+            font-weight: bold; 
+        }
 
-        /* SLIDER SECCIÓN */
-        .slider-section { padding: 40px 0; background: #fdfaf5; text-align: center; min-height: 550px; }
-        .slider-container { width: 100%; height: 450px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; }
+        /* SECCIÓN SLIDER */
+        .slider-section { 
+            padding: 60px 0; 
+            text-align: center; 
+            background: #ffffff; 
+        }
+        .slider-container { 
+            position: relative; 
+            height: 450px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            overflow: hidden; 
+        }
+        .slide { 
+            position: absolute; 
+            width: 280px; 
+            height: 380px; 
+            background: #eee; /* Color de respaldo si no hay imagen */
+            border-radius: 20px;
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        .slide.active { opacity: 1; transform: scale(1); z-index: 10; }
+        .slide.prev { opacity: 0.5; transform: translateX(-110%) scale(0.8); z-index: 5; }
+        .slide.next { opacity: 0.5; transform: translateX(110%) scale(0.8); z-index: 5; }
 
-        .slide { position: absolute; width: 280px; height: 400px; opacity: 0; transform: scale(0.6); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); pointer-events: none; z-index: 1; }
-        .slide.active { opacity: 1; transform: scale(1); z-index: 10; pointer-events: auto; }
-        .slide.prev { opacity: 0.4; transform: translateX(-120%) scale(0.75); z-index: 5; }
-        .slide.next { opacity: 0.4; transform: translateX(120%) scale(0.75); z-index: 5; }
-        
-        .card { background: white; height: 100%; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; cursor: pointer; border: 1px solid rgba(0,0,0,0.05); }
-        .card img { width: 100%; height: 65%; object-fit: cover; }
-        .card h3 { margin: 15px 0 5px; font-size: 1.3rem; color: #5d4037; }
-        .btn-ver { background: #5d4037; color: white; padding: 10px; margin: auto 20px 20px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+        /* TARJETAS */
+        .card { 
+            background: white; 
+            height: 100%; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .card img { width: 100%; height: 200px; object-fit: cover; background: #ccc; }
 
-        /* INFO */
-        .info { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
-        .info-item { background: white; padding: 40px; border-radius: 35px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .info-content { display: flex; flex-direction: column; align-items: center; gap: 30px; text-align: center; }
-        .info-content img { width: 100%; max-width: 320px; border-radius: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-        .info-text h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; font-size: 2.2rem; }
-        .info-text p { font-size: 1.1rem; line-height: 1.7; color: #555; }
+        /* RESEÑAS */
+        .seccion-pova { padding: 50px 20px; text-align: center; }
+        .rating-box { 
+            background: #fff; 
+            padding: 30px; 
+            border-radius: 20px; 
+            max-width: 500px; 
+            margin: 0 auto; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .star { font-size: 40px; color: #ccc; cursor: pointer; }
+        .star.selected { color: #ffcc00; }
+        #muro-opiniones { margin-top: 30px; display: flex; flex-direction: column; gap: 15px; align-items: center; }
+        .resena-card { background: white; padding: 15px; border-radius: 10px; width: 100%; max-width: 400px; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
 
-        /* RESEÑAS / PREGUNTAS */
-        .seccion-pova { text-align: center; padding: 60px 20px; }
-        .star.selected { color: #ffcc00; text-shadow: 0 0 10px rgba(255, 204, 0, 0.5); }
-        .resena-card { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: left; border-left: 5px solid #5d4037; animation: fadeIn 0.5s ease; }
-        .resena-card strong { color: #5d4037; display: block; margin-bottom: 5px; }
-        .resena-card .stars-mini { color: #ffcc00; font-size: 14px; margin-bottom: 10px; }
-        
-        /* FOOTER */
-        footer { background: #5d4037; color: white; padding: 60px 20px; text-align: center; }
-        .social-links a { color: white; font-size: 35px; margin: 0 20px; transition: 0.3s; display: inline-block; }
-        .social-links a:hover { color: #ffcc00; transform: translateY(-5px); }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        @media (min-width: 768px) { .info-content { flex-direction: row; text-align: left; } .info-item:nth-child(even) .info-content { flex-direction: row-reverse; } }
-        @media (max-width: 700px) { body { padding-top: 180px; } header { height: 120px; } .logo-largo { height: 80px; position: static; transform: none; } }
+        footer { background: #5d4037; color: white; padding: 40px; text-align: center; margin-top: 50px; }
     </style>
 </head>
-<body id="inicio">
+<body>
 
     <div class="fixed-top-container">
         <header>
-            <div class="brand-box">
-                <img src="buho.jpeg" class="mini-loguito" alt="Icono">
-                <a href="#inicio" class="nombre-inicio">Pova Tea</a>
-            </div>
-            <img src="logo.png" class="logo-largo" alt="Logo Central">
-            <div style="width: 50px;"></div>
+            <a href="#" class="nombre-inicio">Pova Tea</a>
+            <div style="font-weight: bold; color: #5d4037;">VALLADOLID</div>
         </header>
         <nav>
-            <a href="menu.html">Menú</a>
-            <a href="#ubicacion">Ubícanos</a>
-            <a href="galeria.html">Galería</a>
-            <a href="contacto.html">Contacto</a>
+            <a href="#">Menú</a>
+            <a href="#">Ubícanos</a>
+            <a href="#">Galería</a>
         </nav>
     </div>
 
     <section class="slider-section">
-        <h2 style="font-family:'Lucida Handwriting', cursive; font-size: 2.5rem; color: #5d4037; margin-bottom: 30px;">Elige tu bebida favorita</h2>
+        <h2>Nuestras Bebidas</h2>
         <div class="slider-container" id="sliderMain">
-            <div class="slide" onclick="location.href='menu.html#taro'"><div class="card"><img src="taro.jpg"><h3>Frappé Taro</h3><span class="btn-ver">Ver en Menú</span></div></div>
-            <div class="slide" onclick="location.href='menu.html#matcha'"><div class="card"><img src="matcha.jpg"><h3>Frappé Matcha</h3><span class="btn-ver">Ver en Menú</span></div></div>
-            <div class="slide" onclick="location.href='menu.html#oreo'"><div class="card"><img src="oreo.jpg"><h3>Frappé Oreo</h3><span class="btn-ver">Ver en Menú</span></div></div>
-            <div class="slide" onclick="location.href='menu.html#mango'"><div class="card"><img src="mango.jpg"><h3>Smoothie Mango</h3><span class="btn-ver">Ver en Menú</span></div></div>
+            <div class="slide"><div class="card"><img src="taro.jpg" alt="Taro"><h3>Frappé Taro</h3></div></div>
+            <div class="slide"><div class="card"><img src="matcha.jpg" alt="Matcha"><h3>Frappé Matcha</h3></div></div>
+            <div class="slide"><div class="card"><img src="oreo.jpg" alt="Oreo"><h3>Frappé Oreo</h3></div></div>
         </div>
     </section>
 
-    <section class="info">
-        <div class="info-item" data-aos="fade-up">
-            <div class="info-content">
-                <img src="boba.jpg" alt="Bobas">
-                <div class="info-text">
-                    <h2>Nuestras Bobas</h2>
-                    <p>Son perlas de tapioca con una textura única, masticables y dulces.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="seccion-pova" data-aos="zoom-in">
-        <h2 style="font-family:'Lucida Handwriting', cursive; color: #5d4037; font-size: 2.2rem;">¿Qué te pareció Pova Tea?</h2>
-        <p style="color: #8d6e63; font-weight: bold;">Tu opinión nos ayuda a crecer</p>
-        
-        <div class="rating-box" style="background: #fff; padding: 30px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); max-width: 600px; margin: 0 auto;">
-            <div class="stars" id="star-container" style="font-size: 45px; color: #ccc; cursor: pointer; margin-bottom: 15px;">
+    <section class="seccion-pova">
+        <h2>¿Qué te pareció Pova Tea?</h2>
+        <div class="rating-box">
+            <div id="star-container">
                 <span class="star" onclick="setRating(1)">★</span>
                 <span class="star" onclick="setRating(2)">★</span>
                 <span class="star" onclick="setRating(3)">★</span>
                 <span class="star" onclick="setRating(4)">★</span>
                 <span class="star" onclick="setRating(5)">★</span>
             </div>
-            <input type="text" id="reviewer-name" placeholder="Tu nombre" style="width: 90%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px;">
-            <textarea id="opinion-text" placeholder="Escribe aquí tu reseña..." style="width: 90%; height: 100px; border-radius: 15px; padding: 15px; border: 1px solid #ddd; margin-bottom: 15px; resize: none;"></textarea>
-            <br>
-            <button onclick="publicarResena()" style="background: #5d4037; color: white; border: none; padding: 15px 40px; border-radius: 50px; cursor: pointer; font-weight: bold;">Publicar Comentario</button>
+            <input type="text" id="reviewer-name" placeholder="Tu nombre" style="width:100%; margin: 10px 0; padding: 10px;">
+            <textarea id="opinion-text" placeholder="Tu reseña..." style="width:100%; padding: 10px;"></textarea>
+            <button onclick="publicarResena()" style="margin-top:10px; padding: 10px 20px; background: #5d4037; color: white; border: none; border-radius: 5px; cursor: pointer;">Publicar</button>
         </div>
-
-        <div id="muro-opiniones" style="max-width: 800px; margin: 40px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 0 20px;"></div>
+        <div id="muro-opiniones"></div>
     </section>
 
-    <footer id="ubicacion">
-        <h2 style="font-family:'Lucida Handwriting', cursive; color: #ffcc00; font-size: 2.5rem;">Pova Tea</h2>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-        </div>
-        <p>© 2026 Pova Tea. Hecho con amor en Valladolid.</p>
+    <footer>
+        <p>© 2026 Pova Tea Oficial</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        // Inicializar animaciones
+        AOS.init();
 
-        // SLIDER
+        // Lógica Slider
         let curIdx = 0;
         const slides = document.querySelectorAll(".slide");
-
         function updateSlider() {
-            if (slides.length === 0) return;
-            slides.forEach(s => s.classList.remove("active", "prev", "next"));
+            slides.forEach((s, i) => {
+                s.classList.remove("active", "prev", "next");
+            });
             slides[curIdx].classList.add("active");
             slides[(curIdx - 1 + slides.length) % slides.length].classList.add("prev");
             slides[(curIdx + 1) % slides.length].classList.add("next");
         }
+        setInterval(() => {
+            curIdx = (curIdx + 1) % slides.length;
+            updateSlider();
+        }, 3000);
+        updateSlider();
 
-        function nextSlide() { curIdx = (curIdx + 1) % slides.length; updateSlider(); }
-        if(slides.length > 0) { updateSlider(); setInterval(nextSlide, 3500); }
-
-        // RESEÑAS
+        // Lógica Reseñas
         let currentRating = 0;
         function setRating(n) {
             currentRating = n;
-            const stars = document.querySelectorAll('.star');
-            stars.forEach((s, i) => s.classList.toggle('selected', i < n));
+            document.querySelectorAll('.star').forEach((s, i) => {
+                s.classList.toggle('selected', i < n);
+            });
         }
 
         function publicarResena() {
             const name = document.getElementById('reviewer-name').value;
             const text = document.getElementById('opinion-text').value;
+            if(!name || !text || currentRating === 0) return alert("Llena todo, no seas gacho.");
+
             const muro = document.getElementById('muro-opiniones');
-
-            if (currentRating === 0 || name.trim() === "" || text.trim() === "") {
-                alert("Completa todos los campos y la puntuación.");
-                return;
-            }
-
             const card = document.createElement('div');
             card.className = 'resena-card';
-            card.innerHTML = `<strong>${name}</strong><div class="stars-mini">${"★".repeat(currentRating)}${"☆".repeat(5-currentRating)}</div><p>"${text}"</p>`;
+            card.innerHTML = `<strong>${name}</strong><div>${"★".repeat(currentRating)}</div><p>${text}</p>`;
             muro.prepend(card);
-
+            
+            // Limpiar
             document.getElementById('reviewer-name').value = "";
             document.getElementById('opinion-text').value = "";
             setRating(0);
