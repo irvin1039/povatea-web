@@ -6,6 +6,7 @@
 <title>Pova Tea</title>
 
 <style>
+/* ====== BODY ====== */
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -13,7 +14,7 @@ body {
     color: #3b2f2f;
 }
 
-/* HEADER */
+/* ====== HEADER ====== */
 header {
     background: #e6d3b3;
     text-align: center;
@@ -26,7 +27,7 @@ header {
     max-width: 40%;
 }
 
-/* NAV SUPERIOR */
+/* ====== NAV ====== */
 nav {
     background: #d9c2a3;
     display: flex;
@@ -48,7 +49,7 @@ nav a:hover {
     color: #7a5a3a;
 }
 
-/* SLIDER */
+/* ====== SLIDER ====== */
 .slider {
     width: 100%;
     height: 420px;
@@ -62,8 +63,8 @@ nav a:hover {
 
 .slide {
     position: absolute;
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
     opacity: 0;
     transform: translateX(200px) scale(.7) rotateY(40deg);
     transition: 1s;
@@ -107,28 +108,32 @@ nav a:hover {
     border-radius: 20px;
     overflow: hidden;
     transform-style: preserve-3d;
+    text-align: center;
 }
 
 .card img {
     width: 100%;
     height: 70%;
     object-fit: cover;
+    border-radius: 20px 20px 0 0;
 }
 
 .card h3 {
-    margin: 15px;
-    font-size: 22px;
+    margin: 10px 0;
+    font-size: 18px;
     color: #3b2f2f;
+    font-family: 'Lucida Handwriting', cursive;
 }
 
 .card button {
     background: #c8a97e;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 20px;
     border-radius: 10px;
     color: white;
     cursor: pointer;
     transition: .3s;
+    margin-bottom: 10px;
 }
 
 .card button:hover {
@@ -144,44 +149,45 @@ nav a:hover {
     color: #3b2f2f;
 }
 
-/* SECCIONES INFORMATIVAS */
+/* ====== INFO ====== */
 .info-item {
     max-width: 900px;
     margin: 30px auto;
-    text-align: center;
 }
 
 .info-item h2 {
     font-family: 'Lucida Handwriting', cursive;
     font-size: 1.8rem;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .info-content {
     display: flex;
     gap: 20px;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
-    flex-direction: column;
-    text-align: center;
+    justify-content: center;
 }
 
 .info-content img {
     width: 100%;
-    max-width: 280px;
+    max-width: 250px;
     aspect-ratio: 4 / 3;
     object-fit: cover;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.info-content div {
+    max-width: 500px;
 }
 
 .info-content p {
-    max-width: 500px;
     font-size: 1rem;
     line-height: 1.5;
 }
 
-/* PRODUCTOS */
+/* ====== PRODUCTOS ====== */
 .productos {
     display: flex;
     flex-wrap: wrap;
@@ -191,10 +197,10 @@ nav a:hover {
 
 .producto {
     background: white;
-    margin: 20px;
+    margin: 10px;
     padding: 15px;
     border-radius: 15px;
-    width: 280px;
+    width: 200px;
     text-align: center;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -202,34 +208,28 @@ nav a:hover {
 }
 
 .producto:hover {
-    transform: translateY(-10px) scale(1.05);
+    transform: translateY(-5px) scale(1.05);
     box-shadow: 0px 15px 30px rgba(0,0,0,0.2);
 }
 
 .producto img {
     width: 100%;
-    height: 300px;
+    height: 180px;
     object-fit: cover;
     border-radius: 12px;
-    transition: transform 0.4s ease;
-}
-
-.producto:hover img {
-    transform: scale(1.1);
 }
 
 .producto h3 {
-    margin-top: 12px;
-    font-size: 1.4rem;
+    margin-top: 10px;
+    font-size: 1rem;
     font-family: 'Lucida Handwriting', cursive;
     color: #3b2f2f;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
-/* FOOTER */
+/* ====== FOOTER ====== */
 .footer {
     background-color: #f5f5f5;
-    padding: 70px 20px;
+    padding: 50px 20px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -268,28 +268,27 @@ nav a:hover {
 
 .footer-contacto h2,
 .footer-redes h2 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin-bottom: 15px;
 }
 
 .footer-contacto p {
     font-size: 1rem;
-    margin: 8px 0;
+    margin: 5px 0;
 }
 
 .footer .btn-llamar {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     background-color: #28a745;
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 8px 15px;
     border-radius: 25px;
     font-weight: bold;
     font-size: 1rem;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: 0.2s;
 }
 
 .footer .btn-llamar:hover {
@@ -305,8 +304,8 @@ nav a:hover {
 }
 
 .red-icon {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     transition: transform 0.2s;
 }
 
@@ -314,29 +313,25 @@ nav a:hover {
     transform: scale(1.2);
 }
 
-/* RESPONSIVE */
+/* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
-    .producto {
-        width: 90%;
-    }
-    nav {
-        flex-direction: column;
-    }
-    .info-content {
-        flex-direction: column !important;
-    }
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
+    .slide { width: 250px; height: 250px; }
+    .card img { height: 60%; }
+    .producto { width: 45%; margin: 10px; }
+    .info-content { flex-direction: column; align-items: center; text-align: center; }
+    nav { flex-direction: column; }
+    .footer-container { flex-direction: column; align-items: center; gap: 20px; }
 }
 
-@media (max-width: 500px) {
-    .footer .btn-llamar {
-        width: 100%;
-        max-width: 250px;
-    }
+@media (max-width: 480px) {
+    .slide { width: 200px; height: 200px; }
+    .card img { height: 55%; }
+    .producto { width: 90%; margin: 10px auto; }
+    nav a { margin: 5px 0; }
+    .titulo-slider { font-size: 1.5rem; }
+    .info-item h2 { font-size: 1.5rem; }
+    .footer-logo .logo { width: 80px; }
+    .red-icon { width: 30px; height: 30px; }
 }
 </style>
 </head>
@@ -357,7 +352,6 @@ nav a:hover {
 <h2 class="titulo-slider">Selecciona tu bebida favorita</h2>
 
 <section class="slider">
-  <!-- Slides con data-nombre -->
   <div class="slide active" data-nombre="taro">
     <div class="card">
       <img src="taro.jpg" alt="Frappé Taro">
@@ -381,16 +375,6 @@ nav a:hover {
       <button onclick="window.location.href='menu.html#latte'">Pedir</button>
     </div>
   </div>
-
-  <div class="slide" data-nombre="mango">
-    <div class="card">
-      <img src="mango.jpg" alt="Smoothie Mango">
-      <h3>Smoothie Mango</h3>
-      <button onclick="window.location.href='menu.html#mango'">Pedir</button>
-    </div>
-  </div>
-
-  <!-- Agrega aquí el resto de slides de la misma manera -->
 </section>
 
 <!-- INFO -->
@@ -400,30 +384,22 @@ nav a:hover {
         <div class="info-content">
             <img src="boba.jpg" alt="Perlas de tapioca o bobas">
             <div>
-                <p>Las bobas son pequeñas perlas de tapioca...</p>
+                <p>Las bobas son pequeñas perlas de tapioca, suaves y deliciosas...</p>
             </div>
         </div>
     </div>
+</section>
 
-    <div class="info-item">
-        <h2>¿Qué son los Frappés?</h2>
-        <div class="info-content">
-            <img src="frappe.jpg" alt="Vaso de frappé frío">
-            <div>
-                <p>Los frappés son bebidas frías elaboradas con hielo triturado...</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="info-item">
-        <h2>¿Por qué Pova Tea tiene los mejores frappés?</h2>
-        <div class="info-content">
-            <img src="ingredientes.jpg" alt="Ingredientes de alta calidad para frappés">
-            <div>
-                <p>En Pova Tea, la excelencia está en cada detalle...</p>
-            </div>
-        </div>
-    </div>
+<!-- PRODUCTOS -->
+<section class="productos">
+  <div class="producto">
+    <img src="taro.jpg" alt="Frappé Taro">
+    <h3>Frappé Taro</h3>
+  </div>
+  <div class="producto">
+    <img src="matcha.jpg" alt="Frappé Matcha">
+    <h3>Frappé Matcha</h3>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -448,16 +424,12 @@ nav a:hover {
                 <a href="#" target="_blank" aria-label="Instagram">
                     <img src="instagram-icon.png" alt="Instagram" class="red-icon">
                 </a>
-                <a href="#" target="_blank" aria-label="TikTok">
-                    <img src="tiktok-icon.png" alt="TikTok" class="red-icon">
-                </a>
             </div>
         </div>
     </div>
 </footer>
 
 <script>
-// Slider automático mejorado
 let slides = document.querySelectorAll(".slide");
 let index = 0;
 
@@ -477,14 +449,6 @@ setInterval(() => {
     index = (index + 1) % slides.length;
     update();
 }, 3000);
-
-// Función para scroll hacia producto
-function irMenu(idProducto) {
-    const elemento = document.querySelector(`.slide[data-nombre="${idProducto}"]`);
-    if (elemento) {
-        elemento.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-}
 </script>
 
 </body>
