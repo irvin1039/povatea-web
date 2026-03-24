@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pova Tea - Oficial</title>
+    <title>Pova Tea - Sitio Oficial</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
         html { scroll-behavior: smooth; }
-        body { margin: 0; padding-top: 240px; font-family: 'Segoe UI', sans-serif; background: #f5f0e6; color: #3b2f2f; }
+        body { margin: 0; padding-top: 240px; font-family: 'Segoe UI', sans-serif; background: #f5f0e6; color: #3b2f2f; overflow-x: hidden; }
 
         /* HEADER Y NAV */
         .fixed-top-container { position: fixed; top: 0; width: 100%; z-index: 2000; background: #e6d3b3; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -19,40 +18,39 @@
         .nombre-inicio { font-family: 'Lucida Handwriting', cursive; font-size: 2rem; color: #5d4037; text-decoration: none; font-weight: bold; }
         .logo-largo { height: 165px; position: absolute; left: 50%; transform: translateX(-50%); }
         nav { background: #d9c2a3; display: flex; justify-content: center; padding: 15px 0; }
-        nav a { margin: 0 20px; text-decoration: none; color: #3b2f2f; font-weight: bold; }
+        nav a { margin: 0 20px; text-decoration: none; color: #3b2f2f; font-weight: bold; font-size: 1.1rem; }
 
-        /* SLIDER 12 BEBIDAS */
+        /* SLIDER 15 BEBIDAS */
         .slider-section { padding: 40px 0; background: #fdfaf5; text-align: center; }
-        .slider-container { width: 100%; height: 400px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; }
+        .slider-container { width: 100%; height: 400px; display: flex; justify-content: center; align-items: center; position: relative; }
         .slide { position: absolute; width: 280px; height: 350px; opacity: 0; transform: scale(0.7); transition: 0.8s ease-in-out; pointer-events: none; }
         .slide.active { opacity: 1; transform: scale(1); z-index: 10; pointer-events: auto; }
         .slide.prev { opacity: 0.4; transform: translateX(-110%) scale(0.7); z-index: 5; }
         .slide.next { opacity: 0.4; transform: translateX(110%) scale(0.7); z-index: 5; }
         .card { background: white; height: 100%; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); overflow: hidden; }
         .card img { width: 100%; height: 70%; object-fit: cover; }
-        .card h3 { margin: 10px; font-size: 1.1rem; }
-        .card button { background: #c8a97e; border: none; padding: 8px 15px; border-radius: 20px; color: white; cursor: pointer; font-weight: bold; }
+        .card h3 { margin: 15px; font-size: 1.1rem; color: #5d4037; }
 
-        /* SECCIÓN DE PREGUNTAS (INFO) */
-        .info { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-        .info-item { background: white; padding: 30px; border-radius: 25px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .info-content { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-        .info-content img { width: 100%; max-width: 250px; border-radius: 20px; }
-        .info-text h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; }
+        /* SECCIÓN PREGUNTAS (LAS 3) */
+        .info { max-width: 1000px; margin: 50px auto; padding: 0 20px; }
+        .info-item { background: white; padding: 40px; border-radius: 30px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .info-content { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        .info-content img { width: 100%; max-width: 300px; border-radius: 20px; }
+        .info-text h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; margin-top: 0; }
 
-        /* SECCIONES FINALES */
+        /* HORARIOS, UBICACIÓN Y VALORACIÓN */
         .seccion-pova { max-width: 900px; margin: 40px auto; padding: 30px; background: white; border-radius: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
-        .stars { font-size: 35px; margin-bottom: 10px; color: #ccc; cursor: pointer; }
+        .stars { font-size: 40px; color: #ccc; cursor: pointer; margin-bottom: 15px; }
         .star.selected { color: #ffcc00; }
-        textarea { width: 100%; max-width: 500px; height: 60px; border-radius: 15px; padding: 10px; border: 1px solid #ddd; }
-        .resena { background: #f9f9f9; padding: 10px; border-radius: 10px; margin-top: 10px; text-align: left; border-left: 4px solid #ffcc00; }
+        textarea { width: 90%; height: 80px; border-radius: 15px; padding: 15px; border: 1px solid #ddd; margin-bottom: 10px; }
+        .resena { background: #f9f9f9; padding: 15px; border-radius: 15px; margin-top: 10px; border-left: 5px solid #ffcc00; text-align: left; }
 
-        /* REDES SOCIALES Y CONTACTO */
-        footer { background: #5d4037; color: white; padding: 40px 20px; text-align: center; margin-top: 50px; }
-        .social-icons { font-size: 30px; margin: 20px 0; }
-        .social-icons a { color: white; margin: 0 15px; text-decoration: none; transition: 0.3s; }
-        .social-icons a:hover { color: #ffcc00; }
-        .btn-llamar { display: inline-block; background: #25d366; color: white; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: 10px; }
+        /* FOOTER REDES Y CONTACTO */
+        footer { background: #5d4037; color: white; padding: 50px 20px; text-align: center; }
+        .social-links { margin: 25px 0; }
+        .social-links a { color: white; font-size: 35px; margin: 0 20px; text-decoration: none; transition: 0.3s; }
+        .social-links a:hover { color: #ffcc00; transform: scale(1.2); display: inline-block; }
+        .btn-call { display: inline-block; background: #25d366; color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2rem; margin-top: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
         @media (min-width: 768px) {
             .info-content { flex-direction: row; }
@@ -85,104 +83,120 @@
     </div>
 
     <section class="slider-section">
-        <h2 style="font-family:'Lucida Handwriting', cursive;">Selecciona tu favorita</h2>
+        <h2 style="font-family:'Lucida Handwriting', cursive; font-size: 2rem;">Nuestras Especialidades</h2>
         <div class="slider-container">
-            <div class="slide"><div class="card"><img src="taro.jpg"><h3>Taro Frappé</h3><button>Pedir</button></div></div>
-            <div class="slide"><div class="card"><img src="mattcha.jpg"><h3>Matcha Frappé</h3><button>Pedir</button></div></div>
-            <div class="slide"><div class="card"><img src="latte.jpg"><h3>Latte Frío</h3><button>Pedir</button></div></div>
-            <div class="slide"><div class="card"><img src="mango.jpg"><h3>Mango Smoothie</h3><button>Pedir</button></div></div>
-            <div class="slide"><div class="card"><img src="durazno.jpg"><h3>Soda Durazno</h3><button>Pedir</button></div></div>
-            <div class="slide"><div class="card"><img src="fresa.jpg"><h3>Soda Fresa</h3><button>Pedir</button></div></div>
-            <div class="slide"><div class="card"><img src="blueberry.jpg"><h3>Soda Blueberry</h3><button>Pedir</button></div></div>
-            <div class="slide"><div class="card"><img src="mazapan.jpg"><h3>Frappé Mazapán</h3><button>Pedir</button></div></div>
-            <div class="slide"><div class="card"><img src="chocoreta.jpeg"><h3>Frappé Chocoreta</h3><button>Pedir</button></div></div>
-            <div class="slide"><div class="card"><img src="redvelvet.jpg"><h3>Frappé Red Velvet</h3><button>Pedir</button></div></div>
-            <div class="slide"><div class="card"><img src="piña.jpg"><h3>Smoothie Piña</h3><button>Pedir</button></div></div>
-            <div class="slide"><div class="card"><img src="limon.jpg"><h3>Soda Limón</h3><button>Pedir</button></div></div>
+            <div class="slide"><div class="card"><img src="taro.jpg"><h3>Frappé Taro</h3></div></div>
+            <div class="slide"><div class="card"><img src="mattcha.jpg"><h3>Frappé Matcha</h3></div></div>
+            <div class="slide"><div class="card"><img src="latte.jpg"><h3>Latte Frío</h3></div></div>
+            <div class="slide"><div class="card"><img src="mango.jpg"><h3>Smoothie Mango</h3></div></div>
+            <div class="slide"><div class="card"><img src="oreo.jpg"><h3>Frappé Oreo</h3></div></div>
+            <div class="slide"><div class="card"><img src="pinguino.jpg"><h3>Frappé Pingüino</h3></div></div>
+            <div class="slide"><div class="card"><img src="nutella.jpg"><h3>Frappé Nutella</h3></div></div>
+            <div class="slide"><div class="card"><img src="durazno.jpg"><h3>Soda Durazno</h3></div></div>
+            <div class="slide"><div class="card"><img src="fresa.jpg"><h3>Soda Fresa</h3></div></div>
+            <div class="slide"><div class="card"><img src="blueberry.jpg"><h3>Soda Blueberry</h3></div></div>
+            <div class="slide"><div class="card"><img src="mazapan.jpg"><h3>Frappé Mazapán</h3></div></div>
+            <div class="slide"><div class="card"><img src="chocoreta.jpeg"><h3>Frappé Chocoreta</h3></div></div>
+            <div class="slide"><div class="card"><img src="redvelvet.jpg"><h3>Frappé Red Velvet</h3></div></div>
+            <div class="slide"><div class="card"><img src="piña.jpg"><h3>Smoothie Piña-Colada</h3></div></div>
+            <div class="slide"><div class="card"><img src="limon.jpg"><h3>Soda Limón</h3></div></div>
         </div>
     </section>
 
     <section class="info">
         <div class="info-item" data-aos="fade-up">
             <div class="info-content">
-                <img src="boba.jpg">
+                <img src="boba.jpg" alt="Bobas">
                 <div class="info-text">
                     <h2>Nuestras Bobas</h2>
-                    <p>Perlas de tapioca frescas preparadas diariamente para darte la mejor textura.</p>
+                    <p>Son perlas de tapioca con una textura única, masticables y dulces, que elevan tu bebida a otro nivel de diversión y sabor.</p>
                 </div>
             </div>
         </div>
+
         <div class="info-item" data-aos="fade-up">
             <div class="info-content">
-                <img src="ingredientes.jpg">
+                <img src="frappe_info.jpg" alt="Frappes">
+                <div class="info-text">
+                    <h2>¿Qué son los Frappés?</h2>
+                    <p>Son bebidas granizadas a base de hielo, perfectamente batidas para lograr una consistencia cremosa y refrescante, ideales para cualquier momento del día.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-item" data-aos="fade-up">
+            <div class="info-content">
+                <img src="calidad.jpg" alt="Calidad">
                 <div class="info-text">
                     <h2>¿Por qué elegir Pova Tea?</h2>
-                    <p>Porque usamos ingredientes de primera y recetas que no encontrarás en otro lugar.</p>
-                </div>
-            </div>
-        </div>
-        <div class="info-item" data-aos="fade-up">
-            <div class="info-content">
-                <img src="calidad.jpg">
-                <div class="info-text">
-                    <h2>Nuestra Calidad</h2>
-                    <p>Cuidamos cada detalle desde el grano de té hasta la última boba en tu vaso.</p>
+                    <p>Porque no solo vendemos bebidas, creamos experiencias. Usamos ingredientes de alta gama y cada vaso se prepara con dedicación artesanal.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <div class="seccion-pova" data-aos="fade-up">
-        <h2>Horarios y Ubicación</h2>
-        <p>Lunes a Sábado: <strong>10am - 9pm</strong> | Domingo: <strong>Cerrado</strong></p>
-        <iframe src="http://googleusercontent.com/maps.google.com/final" width="100%" height="300" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
+        <h2 style="font-family:'Lucida Handwriting', cursive;">Horarios y Ubicación</h2>
+        <p>Lunes a Sábado: <strong>10:00 AM - 9:00 PM</strong><br>Domingos: <strong>Cerrado</strong></p>
+        <iframe src="http://googleusercontent.com/maps.google.com/pova" width="100%" height="300" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
     <div class="seccion-pova" data-aos="zoom-in">
-        <h2>Danos 5 Estrellas</h2>
+        <h2 style="font-family:'Lucida Handwriting', cursive;">¡Valora tu visita!</h2>
         <div class="stars">
             <span class="star" onclick="rate(1)">★</span><span class="star" onclick="rate(2)">★</span><span class="star" onclick="rate(3)">★</span><span class="star" onclick="rate(4)">★</span><span class="star" onclick="rate(5)">★</span>
         </div>
-        <textarea id="comentario" placeholder="Escribe tu reseña..."></textarea><br>
-        <button onclick="publicar()" style="background:#5d4037; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Publicar</button>
-        <div id="muro"></div>
+        <textarea id="opinion" placeholder="Cuéntanos qué te pareció..."></textarea><br>
+        <button onclick="postResena()" style="background:#5d4037; color:white; border:none; padding:12px 25px; border-radius:20px; cursor:pointer; font-weight:bold;">Enviar Comentario</button>
+        <div id="muro-opiniones" style="margin-top:20px;"></div>
     </div>
 
     <footer>
-        <h2>¡Síguenos y Contáctanos!</h2>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
+        <h2 style="font-family:'Lucida Handwriting', cursive; color: #ffcc00;">Pova Tea</h2>
+        <p>Síguenos en nuestras redes sociales para promociones y nuevos sabores:</p>
+        <div class="social-links">
+            <a href="https://instagram.com/tu_cuenta" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com/tu_cuenta" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://tiktok.com/@tu_cuenta" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
-        <p>¿Tienes dudas? ¡Llámanos ahora!</p>
-        <a href="tel:+123456789" class="btn-llamar"><i class="fas fa-phone"></i> Llamar a Pova Tea</a>
-        <p style="margin-top: 30px; font-size: 0.8rem;">© 2026 Pova Tea - Todos los derechos reservados.</p>
+        <p>¿Dudas o pedidos? ¡Contáctanos directamente!</p>
+        <a href="tel:+1234567890" class="btn-call"><i class="fas fa-phone"></i> LLAMAR AHORA</a>
+        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.7;">© 2026 Pova Tea. Todos los derechos reservados.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
-        // Slider
-        let cur = 0; const sld = document.querySelectorAll(".slide");
-        function mov() {
-            sld.forEach(s => s.classList.remove("active", "prev", "next"));
-            sld[cur].classList.add("active");
-            sld[(cur - 1 + sld.length) % sld.length].classList.add("prev");
-            sld[(cur + 1) % sld.length].classList.add("next");
-            cur = (cur + 1) % sld.length;
+        AOS.init({ duration: 1000, once: true });
+
+        // Slider Lógica (15 bebidas)
+        let curIdx = 0;
+        const slds = document.querySelectorAll(".slide");
+        function rotate() {
+            slds.forEach(s => s.classList.remove("active", "prev", "next"));
+            slds[curIdx].classList.add("active");
+            slds[(curIdx - 1 + slds.length) % slds.length].classList.add("prev");
+            slds[(curIdx + 1) % slds.length].classList.add("next");
+            curIdx = (curIdx + 1) % slds.length;
         }
-        setInterval(mov, 3000); mov();
+        setInterval(rotate, 3000); rotate();
+
         // Estrellas
-        let pt = 0; function rate(n) { pt = n; document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('selected', i < n)); }
-        // Publicar
-        function publicar() {
-            const t = document.getElementById('comentario').value;
-            if(!t || pt === 0) return alert("Escribe algo y califica");
-            const d = document.createElement('div'); d.className = 'resena';
-            d.innerHTML = `<strong>Anónimo - ${pt} ★</strong><p>${t}</p>`;
-            document.getElementById('muro').prepend(d);
-            document.getElementById('comentario').value = ""; rate(0);
+        let userRating = 0;
+        function rate(n) {
+            userRating = n;
+            document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('selected', i < n));
+        }
+
+        // Muro
+        function postResena() {
+            const txt = document.getElementById('opinion').value;
+            if(!txt || userRating === 0) return alert("Por favor selecciona estrellas y escribe un mensaje.");
+            const muro = document.getElementById('muro-opiniones');
+            const div = document.createElement('div');
+            div.className = 'resena';
+            div.innerHTML = `<strong>Cliente Satisfecho - ${userRating} ★</strong><p>${txt}</p>`;
+            muro.prepend(div);
+            document.getElementById('opinion').value = ""; rate(0);
         }
     </script>
 </body>
