@@ -1,448 +1,231 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pova Tea - Bebidas con Boba</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pova Tea - Oficial</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-<style>
-/* =========================================
-   1. GENERAL STYLES & RESET
-   ========================================= */
-* {
-    box-sizing: border-box;
-}
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            padding-top: 240px; /* Espacio para el nuevo header gigante */
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f0e6;
+        }
 
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f5f0e6;
-    color: #3b2f2f;
-    overflow-x: hidden;
-    /* Spacing to compensate for sticky header/nav */
-    padding-top: 250px; 
-}
+        /* --- HEADER GIGANTE Y FIJO --- */
+        .fixed-top-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2000;
+            background: #e6d3b3;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
 
-/* =========================================
-   2. HEADER & STICKY BEHAVIOR
-   ========================================= */
-header {
-    background: #e6d3b3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* Adjust padding to make room for logos */
-    padding: 10px 30px; 
-    height: 180px; /* Base height for header */
-    box-sizing: border-box;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1001;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
+        header {
+            height: 180px; /* Header mucho más alto */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: relative;
+        }
 
-/* Container for left brand logo and text */
-.brand-container {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* Spacing between small logo and text */
-}
+        /* Lado izquierdo: Mini loguito + Nombre */
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 10;
+        }
 
-/* Small, circle brand logo next to name */
-.small-logo {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%; /* Circle shape */
-    object-fit: cover;
-    border: 3px white solid;
-}
+        .mini-loguito {
+            width: 50px; /* El loguito chiquito al lado del nombre */
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #5d4037;
+        }
 
-/* Centered Brand Name text */
-.brand-name {
-    margin: 0;
-    font-family: 'Lucida Handwriting', cursive;
-    font-size: 2.2rem;
-    color: #5d4037;
-    flex-grow: 1; /* Allow to expand and push other items */
-    text-align: center; /* Center the text within itself */
-}
+        .nombre-inicio {
+            font-family: 'Lucida Handwriting', cursive;
+            font-size: 2rem;
+            color: #5d4037;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-/* Big, "extra long" centered logo stretching toward the brand name */
-.big-logo {
-    height: 160px; /* Stretch high, close to brand name height */
-    max-width: 60%; /* Occupy significant horizontal space */
-    object-fit: contain; /* Ensure full image is visible, even if it has blank space */
-}
+        /* LOGO LARGO Y CENTRADO (El que querías que casi llegue al nombre) */
+        .logo-largo {
+            height: 160px; /* Casi llena todo el alto del header */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: 0.3s;
+        }
 
-/* Place-holder for spacing on the right to keep name centered */
-.header-right-space {
-    width: 60px; /* Same width as small logo + gap on left */
-}
+        /* NAV PEGADO AL HEADER */
+        nav {
+            background: #d9c2a3;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
 
-/* =========================================
-   3. STICKY NAV
-   ========================================= */
-nav {
-    background: #d9c2a3;
-    display: flex;
-    justify-content: center;
-    padding: 15px;
-    flex-wrap: wrap;
-    position: fixed;
-    top: 180px; /* Same height as header */
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #3b2f2f;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
 
-nav a {
-    margin: 5px 20px;
-    text-decoration: none;
-    color: #3b2f2f;
-    font-weight: bold;
-    font-size: 1.2rem;
-    transition: 0.3s;
-}
+        /* --- EL SLIDER DE BEBIDAS (MOVIMIENTO) --- */
+        .slider-section {
+            padding: 40px 0;
+            background: #fdfaf5;
+            text-align: center;
+        }
 
-nav a:hover { color: #7a5a3a; }
+        .slider-container {
+            width: 100%;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-/* =========================================
-   4. SECCIÓN INFORMACIÓN (PREGUNTAS) - MOBILE FIRST
-   ========================================= */
-.info {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
+        .slide {
+            position: absolute;
+            width: 280px;
+            height: 350px;
+            opacity: 0;
+            transform: scale(0.7);
+            transition: 0.8s ease-in-out;
+            pointer-events: none;
+        }
 
-.info-item {
-    margin-bottom: 60px;
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
+        /* Estados del movimiento */
+        .slide.active { opacity: 1; transform: scale(1); z-index: 10; pointer-events: auto; }
+        .slide.prev { opacity: 0.4; transform: translateX(-100%) scale(0.7); z-index: 5; }
+        .slide.next { opacity: 0.4; transform: translateX(100%) scale(0.7); z-index: 5; }
 
-.info-item h2 {
-    font-family: 'Lucida Handwriting', cursive, sans-serif;
-    font-size: 1.8rem;
-    text-align: center;
-    margin-bottom: 25px;
-    color: #5d4037;
-}
+        .card {
+            background: white;
+            height: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
 
-.info-content {
-    display: flex;
-    flex-direction: column; /* MOBILE: Vertical stacking */
-    align-items: center;
-    gap: 30px;
-}
+        .card img { width: 100%; height: 70%; object-fit: cover; }
+        .card h3 { margin: 10px; font-size: 1.2rem; }
+        .card button {
+            background: #c8a97e;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-.info-content img {
-    width: 100%;
-    max-width: 350px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
+        /* --- SECCIÓN INFO --- */
+        .info { max-width: 1000px; margin: 50px auto; padding: 0 20px; }
+        .info-item { background: white; padding: 40px; border-radius: 30px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .info-content { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        .info-content img { width: 100%; max-width: 300px; border-radius: 20px; }
 
-.info-text {
-    flex: 1;
-    text-align: center;
-}
+        @media (min-width: 768px) {
+            .info-content { flex-direction: row; }
+            .info-item:nth-child(even) .info-content { flex-direction: row-reverse; }
+        }
 
-.info-text p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    color: #555;
-}
-
-/* =========================================
-   5. SLIDER STYLES (MOVING BEVERAGES)
-   ========================================= */
-.titulo-slider {
-    text-align: center;
-    font-family: 'Lucida Handwriting', cursive;
-    font-size: 2rem;
-    margin: 40px 0 10px;
-}
-
-.slider {
-    width: 100%;
-    height: 450px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fdfaf5; /* Background to highlight cards */
-    position: relative;
-    overflow: hidden;
-}
-
-.slide {
-    position: absolute;
-    width: 280px;
-    height: 380px;
-    opacity: 0;
-    transform: translateX(100%) scale(0.8);
-    transition: all 0.8s ease-in-out;
-    z-index: 1;
-}
-
-/* Moving animation states */
-.slide.active { opacity: 1; transform: translateX(0) scale(1); z-index: 5; }
-.slide.prev { opacity: 0.4; transform: translateX(-100%) scale(0.8); z-index: 2; }
-.slide.next { opacity: 0.4; transform: translateX(100%) scale(0.8); z-index: 2; }
-
-.card {
-    background: white;
-    height: 100%;
-    border-radius: 20px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.card img { width: 100%; height: 70%; object-fit: cover; }
-.card h3 { margin: 15px; font-size: 1.2rem; }
-.card button {
-    background: #c8a97e;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 20px;
-    color: white;
-    cursor: pointer;
-    margin-bottom: 15px;
-    transition: 0.3s;
-}
-.card button:hover { background: #b09166; transform: scale(1.05); }
-
-/* =========================================
-   6. FOOTER
-   ========================================= */
-.footer {
-    background-color: #e6d3b3;
-    padding: 50px 20px;
-    margin-top: 50px;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    max-width: 1100px;
-    margin: 0 auto;
-    gap: 30px;
-    text-align: center;
-}
-
-.btn-llamar {
-    display: inline-block;
-    background: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.red-icon { width: 40px; margin: 0 10px; transition: 0.3s; }
-.red-icon:hover { transform: scale(1.2); }
-
-/* =========================================
-   7. RESPONSIVE / MEDIA QUERIES
-   ========================================= */
-/* Tablet & Desktop Layouts */
-@media (min-width: 768px) {
-    .info-content {
-        flex-direction: row; /* Horizontal alignment */
-        text-align: left;
-    }
-
-    .info-text { text-align: left; }
-
-    /* Alternate Effect: Image left, then Image right */
-    .info-item:nth-child(even) .info-content {
-        flex-direction: row-reverse;
-    }
-
-    .slide { width: 320px; }
-}
-
-/* Mobile Specifics (Less than 768px) */
-@media (max-width: 767px) {
-    body { padding-top: 220px; } /* Adjust padding for mobile header */
-
-    header {
-        height: 150px;
-        padding: 10px 15px;
-        flex-direction: column; /* Stack header items */
-        justify-content: center;
-        gap: 5px;
-    }
-
-    .brand-container { justify-content: center; width: 100%; }
-    .brand-name { font-size: 1.5rem; text-align: center; width: auto;}
-    .small-logo { width: 40px; height: 40px;}
-
-    .big-logo { height: 70px; max-width: 80%; }
-    .header-right-space { display: none; } /* Hide placeholder space */
-
-    nav { top: 150px; padding: 10px; } /* Adjust sticky top */
-    nav a { font-size: 1rem; margin: 3px 10px; }
-
-    .titulo-slider { font-size: 1.5rem; }
-    .card h3 { font-size: 1rem; }
-    .info-item h2 { font-size: 1.5rem; }
-}
-</style>
+        @media (max-width: 700px) {
+            body { padding-top: 180px; }
+            header { height: 120px; flex-direction: column; justify-content: center; gap: 10px; }
+            .logo-largo { position: static; height: 60px; transform: none; }
+            .nombre-inicio { font-size: 1.2rem; }
+        }
+    </style>
 </head>
+<body id="inicio">
 
-<body>
+    <div class="fixed-top-container">
+        <header>
+            <div class="brand-box">
+                <img src="buho.jpeg" class="mini-loguito" alt="Icono">
+                <a href="#inicio" class="nombre-inicio">Pova Tea</a>
+            </div>
 
-<header>
-    <div class="brand-container">
-        <img src="buho.jpeg" alt="Icon Pova" class="small-logo">
-        <h1 class="brand-name">Pova Tea</h1>
+            <img src="logo.png" class="logo-largo" alt="Logo Povatea">
+            
+            <div style="width: 200px;" class="pc-only"></div>
+        </header>
+
+        <nav>
+            <a href="menu.html">Menú</a>
+            <a href="ubicacion.html">Ubícanos</a>
+            <a href="galeria.html">Galería</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
     </div>
 
-    <img src="logo.png" alt="Logo Povatea Extendido" class="big-logo">
-
-    <div class="header-right-space"></div>
-</header>
-
-<nav>
-    <a href="menu.html">Ver Menú</a>
-    <a href="ubicacion.html">Ubícanos</a>
-    <a href="galeria.html">Galería</a>
-    <a href="contacto.html">Contáctanos</a>
-</nav>
-    
-<h2 class="titulo-slider">Selecciona tu bebida favorita</h2>
-
-<section class="slider">
-    <div class="slide active">
-        <div class="card">
-            <img src="taro.jpg" alt="Taro Frappé">
-            <h3>Frappé Taro</h3>
-            <button onclick="window.location.href='menu.html#taro'">Pedir</button>
+    <section class="slider-section">
+        <h2 style="font-family:'Lucida Handwriting', cursive;">Selecciona tu favorita</h2>
+        <div class="slider-container">
+            <div class="slide active"><div class="card"><img src="taro.jpg"><h3>Taro Frappé</h3><button>Pedir</button></div></div>
+            <div class="slide"><div class="card"><img src="mattcha.jpg"><h3>Matcha Frappé</h3><button>Pedir</button></div></div>
+            <div class="slide"><div class="card"><img src="latte.jpg"><h3>Latte Frío</h3><button>Pedir</button></div></div>
+            <div class="slide"><div class="card"><img src="mango.jpg"><h3>Mango Smoothie</h3><button>Pedir</button></div></div>
         </div>
-    </div>
+    </section>
 
-    <div class="slide">
-        <div class="card">
-            <img src="mattcha.jpg" alt="Matcha Frappé">
-            <h3>Frappé Matcha</h3>
-            <button onclick="window.location.href='menu.html#matcha'">Pedir</button>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="card">
-            <img src="latte.jpg" alt="Cold Latte">
-            <h3>Latte frío</h3>
-            <button onclick="window.location.href='menu.html#latte'">Pedir</button>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="card">
-            <img src="mango.jpg" alt="Mango Smoothie">
-            <h3>Smoothie Mango</h3>
-            <button onclick="window.location.href='menu.html#mango'">Pedir</button>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="card">
-            <img src="oreo.jpg" alt="Oreo Frappé">
-            <h3>Frappé Oreo</h3>
-            <button onclick="window.location.href='menu.html#oreo'">Pedir</button>
-        </div>
-    </div>
-</section>
-
-<section class="info">
-    <div class="info-item">
-        <h2>¿Qué son las Bobas?</h2>
-        <div class="info-content">
-            <img src="boba.jpg" alt="Perlas de tapioca">
-            <div class="info-text">
-                <p>Las bobas son pequeñas perlas de tapioca que brindan una textura única y divertida. Su consistencia suave convierte cada sorbo en una experiencia sensorial especial.</p>
-                <p>En Pova Tea nos aseguramos de que sean siempre frescas, tiernas y llenas de sabor.</p>
+    <section class="info">
+        <div class="info-item" data-aos="fade-up">
+            <h2>Nuestras Bobas</h2>
+            <div class="info-content">
+                <img src="boba.jpg">
+                <div class="info-text">
+                    <p>Perlas de tapioca frescas preparadas diariamente para darte la mejor textura en cada sorbo.</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="info-item">
-        <h2>¿Por qué Pova Tea?</h2>
-        <div class="info-content">
-            <img src="ingredientes.jpg" alt="Ingredientes calidad">
-            <div class="info-text">
-                <p>Usamos ingredientes de la más alta calidad: leches frescas, frutas seleccionadas y mucho amor en cada preparación.</p>
-                <p>Nuestro equipo cuida cada detalle para asegurar un sabor equilibrado, elegante y absolutamente delicioso.</p>
-            </div>
-        </div>
-    </div>
-</section>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
 
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-logo">
-            <img src="buho.jpeg" alt="Logo" style="width: 80px; border-radius: 50%;">
-        </div>
-        <div class="footer-contacto">
-            <h2>Contáctanos</h2>
-            <p>Llama al: <br> <a href="tel:+529852578885" class="btn-llamar">Realiza tu encargo</a></p>
-            <p>Email: contacto@povatea.com</p>
-        </div>
-        <div class="footer-redes">
-            <h2>Síguenos en Redes Sociales</h2>
-            <div class="iconos-redes">
-                <a href="#"><img src="facebook-icon.png" class="red-icon"></a>
-                <a href="#"><img src="instagram-icon.png" class="red-icon"></a>
-            </div>
-        </div>
-    </div>
-</footer>
+        // --- LÓGICA DEL MOVIMIENTO DE LAS BEBIDAS ---
+        let slides = document.querySelectorAll(".slide");
+        let index = 0;
 
-<script>
-    // --- JS DO MOVING BEVERAGE SLIDER (Activated and Repaired) ---
-    let slides = document.querySelectorAll(".slide");
-    let index = 0;
+        function moverSlider() {
+            slides.forEach(s => s.classList.remove("active", "prev", "next"));
+            
+            slides[index].classList.add("active");
+            
+            let prevIndex = (index - 1 + slides.length) % slides.length;
+            let nextIndex = (index + 1) % slides.length;
+            
+            slides[prevIndex].classList.add("prev");
+            slides[nextIndex].classList.add("next");
+            
+            index = (index + 1) % slides.length;
+        }
 
-    function update(){
-        // Remove all state classes from all slides
-        slides.forEach(s => s.classList.remove("active","prev","next"));
-        
-        // Add active class to current slide
-        slides[index].classList.add("active");
-        
-        // Calculate previous and next indices circularly
-        let prev = (index - 1 + slides.length) % slides.length;
-        let next = (index + 1) % slides.length;
-
-        // Add corresponding classes to neighbor slides
-        slides[prev].classList.add("prev");
-        slides[next].classList.add("next");
-    }
-
-    // Set interval to change slides automatically every 3 seconds
-    setInterval(() => {
-        index = (index + 1) % slides.length;
-        update();
-    }, 3000); 
-    
-    // Initial call to set the state
-    update();
-</script>
-
+        // Inicia el movimiento automático cada 3 segundos
+        setInterval(moverSlider, 3000);
+        moverSlider(); // Carga la primera vez
+    </script>
 </body>
 </html>
