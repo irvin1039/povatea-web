@@ -96,111 +96,66 @@
 
    <section class="slider-section">
         <h2 style="font-family:'Lucida Handwriting', cursive; font-size: 2.2rem; color: #5d4037;">Elige tu bebida favorita</h2>
-        <div class="slider-container">
-            <div class="slide">
-                <div class="card">
-                    <img src="taro.jpg">
-                    <h3>Frappé Taro</h3>
-                    <a href="menu.html#taro" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="mattcha.jpg">
-                    <h3>Frappé Matcha</h3>
-                    <a href="menu.html#matcha" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="latte.jpg">
-                    <h3>Latte Frío</h3>
-                    <a href="menu.html#latte" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="mango.jpg">
-                    <h3>Smoothie Mango</h3>
-                    <a href="menu.html#mango" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="oreo.jpg">
-                    <h3>Frappé Oreo</h3>
-                    <a href="menu.html#oreo" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="pinguino.jpg">
-                    <h3>Frappé Pingüino</h3>
-                    <a href="menu.html#pinguino" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="nutella.jpg">
-                    <h3>Frappé Nutella</h3>
-                    <a href="menu.html#nutella" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="durazno.jpg">
-                    <h3>Soda Durazno</h3>
-                    <a href="menu.html#durazno" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="fresa.jpg">
-                    <h3>Soda Fresa</h3>
-                    <a href="menu.html#fresa" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="blueberry.jpg">
-                    <h3>Soda Blueberry</h3>
-                    <a href="menu.html#blueberry" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="mazapan.jpg">
-                    <h3>Frappé Mazapán</h3>
-                    <a href="menu.html#mazapan" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="chocoreta.jpeg">
-                    <h3>Frappé Chocoreta</h3>
-                    <a href="menu.html#chocoreta" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="redvelvet.jpg">
-                    <h3>Frappé Red Velvet</h3>
-                    <a href="menu.html#redvelvet" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="piña.jpg">
-                    <h3>Smoothie Piña-Colada</h3>
-                    <a href="menu.html#piña" class="btn-comprar">Ver en Menú</a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="card">
-                    <img src="limon.jpg">
-                    <h3>Soda Limón</h3>
-                    <a href="menu.html#limon" class="btn-comprar">Ver en Menú</a>
-                </div>
+        <div class="productos-grid">
+        <div class="producto" onclick="irMenu('taro')">
+            <img src="taro.jpg" alt="Frappé Taro">
+            <h3>Frappé Taro</h3>
+        </div>
+        <div class="producto" onclick="irMenu('matcha')">
+            <img src="mattcha.jpg" alt="Frappé Matcha">
+            <h3>Frappé Matcha</h3>
+        </div>
+        <div class="producto" onclick="irMenu('latte')">
+            <img src="latte.jpg" alt="Latte Frío">
+            <h3>Latte Frío</h3>
+        </div>
+        <div class="producto" onclick="irMenu('mango')">
+            <img src="mango.jpg" alt="Smoothie Mango">
+            <h3>Smoothie Mango</h3>
+        </div>
+        <div class="producto" onclick="irMenu('oreo')">
+            <img src="oreo.jpg" alt="Frappé Oreo">
+            <h3>Frappé Oreo</h3>
+        </div>
+        <div class="producto" onclick="irMenu('pinguino')">
+            <img src="pinguino.jpg" alt="Frappé Pingüino">
+            <h3>Frappé Pingüino</h3>
+        </div>
+        <div class="producto" onclick="irMenu('nutella')">
+            <img src="nutella.jpg" alt="Frappé Nutella">
+            <h3>Frappé Nutella</h3>
+        </div>
+        <div class="producto" onclick="irMenu('durazno')">
+            <img src="durazno.jpg" alt="Soda Durazno">
+            <h3>Soda Durazno</h3>
+        </div>
+        <div class="producto" onclick="irMenu('fresa')">
+            <img src="fresa.jpg" alt="Soda Fresa">
+            <h3>Soda Fresa</h3>
+        </div>
+        <div class="producto" onclick="irMenu('blueberry')">
+            <img src="blueberry.jpg" alt="Soda Blueberry">
+            <h3>Soda Blueberry</h3>
+        </div>
+        <div class="producto" onclick="irMenu('mazapan')">
+            <img src="mazapan.jpg" alt="Frappé Mazapán">
+            <h3>Frappé Mazapán</h3>
+        </div>
+        <div class="producto" onclick="irMenu('chocoreta')">
+            <img src="chocoreta.jpeg" alt="Frappé Chocoreta">
+            <h3>Frappé Chocoreta</h3>
+        </div>
+        <div class="producto" onclick="irMenu('redvelvet')">
+            <img src="redvelvet.jpg" alt="Frappé Red Velvet">
+            <h3>Frappé Red Velvet</h3>
+        </div>
+        <div class="producto" onclick="irMenu('piña')">
+            <img src="piña.jpg" alt="Smoothie Piña-Colada">
+            <h3>Smoothie Piña-Colada</h3>
+        </div>
+        <div class="producto" onclick="irMenu('limon')">
+            <img src="limon.jpg" alt="Soda Limón">
+            <h3>Soda Limón</h3>
             </div>
         </div>
     </section>
