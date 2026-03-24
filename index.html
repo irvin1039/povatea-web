@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pova Tea - Sitio Oficial</title>
-    
-    <link rel="icon" href="buho.jpeg" type="image/jpeg">
-    
+
+    <link rel="shortcut icon" href="buho.jpeg" type="image/x-icon">
+    <link rel="icon" href="buho.jpeg" type="image/x-icon">
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -24,45 +25,50 @@
         nav { background: #d9c2a3; display: flex; justify-content: center; padding: 15px 0; }
         nav a { margin: 0 20px; text-decoration: none; color: #3b2f2f; font-weight: bold; font-size: 1.1rem; }
 
-        /* SLIDER BEBIDAS CON BOTÓN COMPRAR */
-        .slider-section { padding: 60px 0; background: #fdfaf5; text-align: center; }
-        .slider-container { width: 100%; height: 500px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; }
+        /* SLIDER BEBIDAS */
+        .slider-section { padding: 40px 0; background: #fdfaf5; text-align: center; }
+        .slider-container { width: 100%; height: 480px; display: flex; justify-content: center; align-items: center; position: relative; }
         .slide { position: absolute; width: 280px; height: 420px; opacity: 0; transform: scale(0.7); transition: 0.8s ease-in-out; pointer-events: none; }
         .slide.active { opacity: 1; transform: scale(1); z-index: 10; pointer-events: auto; }
-        .slide.prev { opacity: 0.4; transform: translateX(-120%) scale(0.7); z-index: 5; }
-        .slide.next { opacity: 0.4; transform: translateX(120%) scale(0.7); z-index: 5; }
+        .slide.prev { opacity: 0.4; transform: translateX(-110%) scale(0.7); z-index: 5; }
+        .slide.next { opacity: 0.4; transform: translateX(110%) scale(0.7); z-index: 5; }
         
         .card { background: white; height: 100%; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; }
-        .card img { width: 100%; height: 60%; object-fit: cover; }
-        .card h3 { margin: 10px 0 5px; font-size: 1.2rem; color: #5d4037; }
-        .btn-comprar { background: #5d4037; color: white; text-decoration: none; padding: 10px; margin: 10px 20px 20px; border-radius: 10px; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
-        .btn-comprar:hover { background: #8d6e63; }
+        .card img { width: 100%; height: 65%; object-fit: cover; }
+        .card h3 { margin: 15px 10px 5px; font-size: 1.1rem; color: #5d4037; }
+        
+        /* BOTÓN DE COMPRA */
+        .btn-comprar { background: #25d366; color: white; text-decoration: none; padding: 10px; margin: 5px 20px 15px; border-radius: 10px; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
+        .btn-comprar:hover { background: #1eb959; transform: scale(1.05); }
 
         /* SECCIÓN PREGUNTAS (INFO CORREGIDA) */
-        .info { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
-        .info-item { background: white; padding: 40px; border-radius: 30px; margin-bottom: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .info-content { display: flex; flex-direction: column; align-items: center; gap: 40px; text-align: center; }
-        .info-content img { width: 100%; max-width: 350px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-        .info-text h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; font-size: 2.2rem; }
-        .info-text p { font-size: 1.1rem; line-height: 1.6; color: #555; }
+        .info { max-width: 1000px; margin: 50px auto; padding: 0 20px; }
+        .info-item { background: white; padding: 40px; border-radius: 30px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .info-content { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        .info-content img { width: 100%; max-width: 300px; border-radius: 20px; }
+        .info-text { text-align: center; }
+        .info-text h2 { font-family: 'Lucida Handwriting', cursive; color: #5d4037; margin-top: 0; font-size: 2rem; }
 
-        /* MAPA Y OTROS */
+        /* HORARIOS, UBICACIÓN */
         .seccion-pova { max-width: 900px; margin: 40px auto; padding: 30px; background: white; border-radius: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
-        .map-container { position: relative; width: 100%; height: 350px; border-radius: 15px; overflow: hidden; margin-top: 20px; }
-        .stars { font-size: 40px; color: #ccc; cursor: pointer; }
+        .map-container { width: 100%; height: 350px; border-radius: 15px; overflow: hidden; margin-top: 15px; border: 1px solid #ddd; }
+
+        /* VALORACIÓN */
+        .stars { font-size: 40px; color: #ccc; cursor: pointer; margin-bottom: 15px; }
         .star.selected { color: #ffcc00; }
-        textarea { width: 90%; height: 80px; border-radius: 15px; padding: 15px; border: 1px solid #ddd; margin: 10px 0; }
+        textarea { width: 90%; height: 80px; border-radius: 15px; padding: 15px; border: 1px solid #ddd; margin-bottom: 10px; }
 
         /* FOOTER */
-        footer { background: #5d4037; color: white; padding: 60px 20px; text-align: center; }
-        .social-links a { color: white; font-size: 35px; margin: 0 20px; text-decoration: none; }
-        .btn-call { display: inline-block; background: #25d366; color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 15px; }
+        footer { background: #5d4037; color: white; padding: 50px 20px; text-align: center; }
+        .social-links a { color: white; font-size: 35px; margin: 0 20px; text-decoration: none; transition: 0.3s; display: inline-block; }
+        .social-links a:hover { color: #ffcc00; transform: scale(1.2); }
 
         @media (min-width: 768px) {
             .info-content { flex-direction: row; text-align: left; }
+            .info-text { text-align: left; }
             .info-item:nth-child(even) .info-content { flex-direction: row-reverse; }
         }
-        @media (max-width: 768px) {
+        @media (max-width: 700px) {
             body { padding-top: 180px; }
             header { height: 120px; }
             .logo-largo { height: 80px; position: static; transform: none; }
@@ -78,7 +84,7 @@
                 <a href="#inicio" class="nombre-inicio">Pova Tea</a>
             </div>
             <img src="logo.png" class="logo-largo" alt="Logo Central">
-            <div style="width: 50px;"></div>
+            <div style="width: 150px;"></div>
         </header>
         <nav>
             <a href="menu.html">Menú</a>
@@ -89,28 +95,40 @@
     </div>
 
     <section class="slider-section">
-        <h2 style="font-family:'Lucida Handwriting', cursive; font-size: 2.5rem; color: #5d4037;">Elige tu bebida favorita</h2>
+        <h2 style="font-family:'Lucida Handwriting', cursive; font-size: 2.2rem; color: #5d4037;">Elige tu bebida favorita</h2>
         <div class="slider-container">
-            <div class="slide"><div class="card"><img src="taro.jpg"><h3>Frappé Taro</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir un Frappé Taro" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="mattcha.jpg"><h3>Frappé Matcha</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir un Frappé Matcha" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="latte.jpg"><h3>Latte Frío</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir un Latte Frío" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="mango.jpg"><h3>Smoothie Mango</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir un Smoothie Mango" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="oreo.jpg"><h3>Frappé Oreo</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir un Frappé Oreo" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="pinguino.jpg"><h3>Frappé Pingüino</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir un Frappé Pingüino" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="nutella.jpg"><h3>Frappé Nutella</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir un Frappé Nutella" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="durazno.jpg"><h3>Soda Durazno</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir una Soda de Durazno" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="fresa.jpg"><h3>Soda Fresa</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir una Soda de Fresa" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="blueberry.jpg"><h3>Soda Blueberry</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir una Soda de Blueberry" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="mazapan.jpg"><h3>Frappé Mazapán</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir un Frappé de Mazapán" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="chocoreta.jpeg"><h3>Frappé Chocoreta</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir un Frappé de Chocoreta" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="redvelvet.jpg"><h3>Frappé Red Velvet</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir un Frappé Red Velvet" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="piña.jpg"><h3>Smoothie Piña-Colada</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir un Smoothie Piña Colada" class="btn-comprar">Pedir ahora</a></div></div>
-            <div class="slide"><div class="card"><img src="limon.jpg"><h3>Soda Limón</h3><a href="https://wa.me/521234567890?text=Hola! Quiero pedir una Soda de Limón" class="btn-comprar">Pedir ahora</a></div></div>
+            <div class="slide">
+                <div class="card">
+                    <img src="taro.jpg">
+                    <h3>Frappé Taro</h3>
+                    <a href="https://wa.me/521234567890?text=Hola! Quiero pedir un Frappé Taro" class="btn-comprar">Pedir ahora <i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="card">
+                    <img src="mattcha.jpg">
+                    <h3>Frappé Matcha</h3>
+                    <a href="https://wa.me/521234567890?text=Hola! Quiero pedir un Frappé Matcha" class="btn-comprar">Pedir ahora <i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="slide"><div class="card"><img src="latte.jpg"><h3>Latte Frío</h3><a href="#" class="btn-comprar">Pedir ahora</a></div></div>
+            <div class="slide"><div class="card"><img src="mango.jpg"><h3>Smoothie Mango</h3><a href="#" class="btn-comprar">Pedir ahora</a></div></div>
+            <div class="slide"><div class="card"><img src="oreo.jpg"><h3>Frappé Oreo</h3><a href="#" class="btn-comprar">Pedir ahora</a></div></div>
+            <div class="slide"><div class="card"><img src="pinguino.jpg"><h3>Frappé Pingüino</h3><a href="#" class="btn-comprar">Pedir ahora</a></div></div>
+            <div class="slide"><div class="card"><img src="nutella.jpg"><h3>Frappé Nutella</h3><a href="#" class="btn-comprar">Pedir ahora</a></div></div>
+            <div class="slide"><div class="card"><img src="durazno.jpg"><h3>Soda Durazno</h3><a href="#" class="btn-comprar">Pedir ahora</a></div></div>
+            <div class="slide"><div class="card"><img src="fresa.jpg"><h3>Soda Fresa</h3><a href="#" class="btn-comprar">Pedir ahora</a></div></div>
+            <div class="slide"><div class="card"><img src="blueberry.jpg"><h3>Soda Blueberry</h3><a href="#" class="btn-comprar">Pedir ahora</a></div></div>
+            <div class="slide"><div class="card"><img src="mazapan.jpg"><h3>Frappé Mazapán</h3><a href="#" class="btn-comprar">Pedir ahora</a></div></div>
+            <div class="slide"><div class="card"><img src="chocoreta.jpeg"><h3>Frappé Chocoreta</h3><a href="#" class="btn-comprar">Pedir ahora</a></div></div>
+            <div class="slide"><div class="card"><img src="redvelvet.jpg"><h3>Frappé Red Velvet</h3><a href="#" class="btn-comprar">Pedir ahora</a></div></div>
+            <div class="slide"><div class="card"><img src="piña.jpg"><h3>Smoothie Piña-Colada</h3><a href="#" class="btn-comprar">Pedir ahora</a></div></div>
+            <div class="slide"><div class="card"><img src="limon.jpg"><h3>Soda Limón</h3><a href="#" class="btn-comprar">Pedir ahora</a></div></div>
         </div>
     </section>
 
     <section class="info">
-        <div class="info-item" data-aos="fade-right">
+        <div class="info-item" data-aos="fade-up">
             <div class="info-content">
                 <img src="boba.jpg" alt="Bobas">
                 <div class="info-text">
@@ -119,7 +137,7 @@
                 </div>
             </div>
         </div>
-        <div class="info-item" data-aos="fade-left">
+        <div class="info-item" data-aos="fade-up">
             <div class="info-content">
                 <img src="frappe_info.jpg" alt="Frappes">
                 <div class="info-text">
@@ -128,12 +146,12 @@
                 </div>
             </div>
         </div>
-        <div class="info-item" data-aos="fade-right">
+        <div class="info-item" data-aos="fade-up">
             <div class="info-content">
                 <img src="calidad.jpg" alt="Calidad">
                 <div class="info-text">
                     <h2>¿Por qué elegir Pova Tea?</h2>
-                    <p>Porque no solo vendemos bebidas, creamos experiencias con ingredientes de alta gama y dedicación artesanal.</p>
+                    <p>Porque no solo vendemos bebidas, creamos experiencias únicas con ingredientes de alta calidad.</p>
                 </div>
             </div>
         </div>
@@ -141,9 +159,9 @@
 
     <div id="ubicacion" class="seccion-pova" data-aos="fade-up">
         <h2 style="font-family:'Lucida Handwriting', cursive;">Horarios y Ubicación</h2>
-        <p>Lunes a Domingo: 10:00 AM - 10:00 PM</p>
+        <p>Lunes a Domingo: <strong>10:00 AM - 10:00 PM</strong></p>
         <div class="map-container">
-            <iframe src="http://googleusercontent.com/maps.google.com/4" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3727.123456789!2d-88.202!3d20.689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQxJzIwLjAiTiA4OMKwMTInMDcuMiJX!5e0!3m2!1ses!2smx!4v1647890000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 
@@ -153,25 +171,25 @@
             <span class="star" onclick="rate(1)">★</span><span class="star" onclick="rate(2)">★</span><span class="star" onclick="rate(3)">★</span><span class="star" onclick="rate(4)">★</span><span class="star" onclick="rate(5)">★</span>
         </div>
         <textarea id="opinion" placeholder="Cuéntanos qué te pareció..."></textarea><br>
-        <button onclick="postResena()" style="background:#5d4037; color:white; border:none; padding:12px 30px; border-radius:25px; cursor:pointer;">Enviar Comentario</button>
+        <button onclick="postResena()" style="background:#5d4037; color:white; border:none; padding:12px 25px; border-radius:20px; cursor:pointer; font-weight:bold;">Enviar Comentario</button>
         <div id="muro-opiniones"></div>
     </div>
 
     <footer>
-        <h2 style="font-family:'Lucida Handwriting', cursive; color: #ffcc00; font-size: 2.5rem;">Pova Tea</h2>
+        <h2 style="font-family:'Lucida Handwriting', cursive; color: #ffcc00;">Pova Tea</h2>
         <div class="social-links">
             <a href="https://www.instagram.com/povatea_valladolid" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.facebook.com/share/1ArFhoHu7y" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="https://www.tiktok.com/@pova_teavalladolid" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
-        <a href="tel:+1234567890" class="btn-call"><i class="fas fa-phone"></i> LLAMAR AHORA</a>
+        <p>© 2026 Pova Tea. Todos los derechos reservados.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        // Slider
+        // Slider Lógica
         let curIdx = 0;
         const slds = document.querySelectorAll(".slide");
         function rotate() {
@@ -190,14 +208,13 @@
             document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('selected', i < n));
         }
 
-        // Reseñas
+        // Reseña
         function postResena() {
             const txt = document.getElementById('opinion').value;
-            if(!txt || userRating === 0) return alert("Selecciona estrellas y escribe un mensaje.");
+            if(!txt || userRating === 0) return alert("Por favor selecciona estrellas.");
             const muro = document.getElementById('muro-opiniones');
             const div = document.createElement('div');
-            div.className = 'resena';
-            div.style.background = "#f9f9f9"; div.style.padding = "15px"; div.style.marginTop = "10px"; div.style.borderRadius = "15px";
+            div.style.background = "#f1f1f1"; div.style.padding = "10px"; div.style.marginTop = "10px"; div.style.borderRadius = "10px";
             div.innerHTML = `<strong>Cliente - ${userRating} ★</strong><p>${txt}</p>`;
             muro.prepend(div);
             document.getElementById('opinion').value = ""; rate(0);
