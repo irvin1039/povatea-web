@@ -10,7 +10,7 @@
     <style>
         /* --- CONFIGURACIÓN BASE --- */
         html {
-            scroll-behavior: smooth; /* Para que al dar clic al nombre suba suavemente */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -19,41 +19,46 @@
             font-family: 'Segoe UI', sans-serif;
             background: #f5f0e6;
             color: #3b2f2f;
-            /* Espacio para que el contenido no se tape con el bloque fijo */
-            padding-top: 150px; 
+            /* Espacio para el menú fijo (ajustado al nuevo tamaño) */
+            padding-top: 180px; 
         }
 
-        /* --- BLOQUE FIJO (HEADER + NAV JUNTOS SIN HUECOS) --- */
+        /* --- BLOQUE FIJO CON EFECTO TRANSPARENTE (GLASS) --- */
         .fixed-top-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 2000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            background: #e6d3b3; /* Color de fondo sólido para evitar huecos */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            
+            /* EFECTO DE TRANSPARENCIA MODERNO */
+            background: rgba(230, 211, 179, 0.85); /* Color base con transparencia */
+            backdrop-filter: blur(10px); /* Desenfoque de lo que pasa por detrás */
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* HEADER: Logo y Nombre a la izquierda */
+        /* HEADER: Logo Grande y Nombre */
         header {
-            height: 90px;
+            height: 120px; /* Aumentamos la altura para el logo grande */
             display: flex;
             align-items: center;
-            justify-content: center; /* Centra el logo */
+            justify-content: center;
             padding: 0 30px;
             position: relative;
         }
 
-        /* EL NOMBRE A LA IZQUIERDA QUE REGRESA AL INICIO */
         .nombre-inicio {
             position: absolute;
-            left: 30px;
+            left: 40px;
             font-family: 'Lucida Handwriting', cursive;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #5d4037;
             text-decoration: none;
             font-weight: bold;
             transition: 0.3s;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
         }
 
         .nombre-inicio:hover {
@@ -61,47 +66,62 @@
             transform: scale(1.05);
         }
 
+        /* LOGO MÁS GRANDE CON ANIMACIÓN */
         header img {
-            height: 75px;
+            height: 100px; /* Logo notablemente más grande */
             width: auto;
             display: block;
+            transition: transform 0.3s ease;
+            animation: aparecerLogo 1.2s ease-out; /* Animación al cargar */
         }
 
-        /* NAV: Pegado al header sin separación */
+        header img:hover {
+            transform: scale(1.1); /* Se agranda un poquito al pasar el mouse */
+        }
+
+        @keyframes aparecerLogo {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* NAV: Estilo limpio */
         nav {
-            background: #d9c2a3;
             display: flex;
             justify-content: center;
-            padding: 12px 0;
+            padding: 15px 0;
             margin: 0;
-            border-top: 1px solid rgba(0,0,0,0.05);
+            background: rgba(217, 194, 163, 0.4); /* Transparencia sutil también aquí */
         }
 
         nav a {
-            margin: 0 15px;
+            margin: 0 20px;
             text-decoration: none;
             color: #3b2f2f;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        nav a:hover { color: #7a5a3a; }
+        nav a:hover { 
+            color: #7a5a3a; 
+            border-bottom: 2px solid #7a5a3a;
+        }
 
-        /* --- SECCIÓN PREGUNTAS (INFORMACIÓN) --- */
+        /* --- SECCIÓN DE CONTENIDO --- */
         .info {
             max-width: 1000px;
-            margin: 40px auto;
+            margin: 60px auto;
             padding: 0 20px;
         }
 
         .info-item {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             margin-bottom: 60px;
             padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         .info-item h2 {
@@ -109,60 +129,52 @@
             text-align: center;
             margin-bottom: 30px;
             color: #5d4037;
-            font-size: 1.8rem;
+            font-size: 2rem;
         }
 
         .info-content {
             display: flex;
-            flex-direction: column; /* Móvil */
+            flex-direction: column;
             align-items: center;
-            gap: 35px;
+            gap: 40px;
         }
 
         .info-content img {
             width: 100%;
-            max-width: 320px;
-            height: 260px;
+            max-width: 350px;
+            height: 300px;
             object-fit: cover;
-            border-radius: 18px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .info-text {
-            flex: 1;
-            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
         .info-text p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 15px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #444;
         }
 
         /* --- RESPONSIVE --- */
         @media (min-width: 768px) {
-            .info-content { flex-direction: row; text-align: left; }
-            /* Efecto Zig-Zag en PC */
+            .info-content { flex-direction: row; }
             .info-item:nth-child(even) .info-content { flex-direction: row-reverse; }
-            .info-text { text-align: left; }
         }
 
-        @media (max-width: 650px) {
-            body { padding-top: 130px; }
-            header { height: 75px; }
-            .nombre-inicio { font-size: 1.1rem; left: 15px; }
-            header img { height: 55px; }
-            nav { padding: 8px 0; }
-            nav a { margin: 0 8px; font-size: 0.85rem; }
-            .info-item { padding: 25px; }
+        @media (max-width: 767px) {
+            body { padding-top: 150px; }
+            header { height: 90px; }
+            .nombre-inicio { font-size: 1.2rem; left: 20px; position: static; margin-right: 15px; }
+            header img { height: 70px; }
+            nav a { margin: 0 10px; font-size: 0.9rem; }
         }
     </style>
 </head>
-<body id="top"> <div class="fixed-top-container">
+<body id="top">
+
+    <div class="fixed-top-container">
         <header>
             <a href="#top" class="nombre-inicio">Pova Tea</a>
-            <img src="logo.png" alt="Logo">
+            <img src="logo.png" alt="Logo Principal">
         </header>
 
         <nav>
@@ -173,8 +185,10 @@
         </nav>
     </div>
 
-    <div style="margin-top: 40px; text-align: center;">
-        <h2 style="font-family:'Lucida Handwriting', cursive; font-size: 2rem;">Selecciona tu bebida favorita</h2>
+    <div style="margin-top: 50px; text-align: center;" data-aos="zoom-in">
+        <h2 style="font-family:'Lucida Handwriting', cursive; font-size: 2.5rem; color: #3b2f2f;">
+            Nuestra Esencia
+        </h2>
     </div>
 
     <section class="info">
@@ -184,29 +198,16 @@
                 <img src="boba.jpg" alt="Bobas">
                 <div class="info-text">
                     <p>Las bobas son pequeñas perlas de tapioca que brindan una textura única y divertida. Su consistencia suave y ligeramente masticable convierte cada sorbo en una experiencia sensorial especial.</p>
-                    <p>En Pova Tea nos aseguramos de que nuestras bobas sean siempre frescas, tiernas y llenas de sabor.</p>
                 </div>
             </div>
         </div>
 
         <div class="info-item" data-aos="fade-up">
-            <h2>¿Qué son los Frappés?</h2>
+            <h2>Calidad Pova Tea</h2>
             <div class="info-content">
-                <img src="frappe.jpg" alt="Frappes">
+                <img src="ingredientes.jpg" alt="Ingredientes">
                 <div class="info-text">
-                    <p>Los frappés son bebidas frías elaboradas con hielo triturado, leche y una variedad de sabores irresistibles. Son la opción perfecta para refrescarte en cualquier momento del día.</p>
-                    <p>Su textura cremosa y fría se combina con ingredientes de alta calidad para crear una bebida llena de personalidad.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="info-item" data-aos="fade-up">
-            <h2>¿Por qué Pova Tea?</h2>
-            <div class="info-content">
-                <img src="ingredientes.jpg" alt="Calidad">
-                <div class="info-text">
-                    <p>En Pova Tea, la excelencia está en cada detalle. Usamos ingredientes de la más alta calidad, desde leches frescas hasta frutas seleccionadas.</p>
-                    <p>Nuestro equipo cuida cada preparación con precisión y amor, asegurando que disfrutes de un frappé equilibrado y absolutamente delicioso.</p>
+                    <p>En Pova Tea, la excelencia está en cada detalle. Usamos ingredientes de la más alta calidad, desde leches frescas hasta frutas seleccionadas con el mayor cuidado.</p>
                 </div>
             </div>
         </div>
@@ -214,11 +215,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ 
-            duration: 1000, 
-            once: true,
-            offset: 100
-        });
+        AOS.init({ duration: 1000, once: true });
     </script>
 
 </body>
