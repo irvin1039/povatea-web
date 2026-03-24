@@ -49,7 +49,7 @@ nav a:hover {
     color: #7a5a3a;
 }
 
-/* ====== SLIDER ====== */
+/* ====== SLIDER 3D ====== */
 .slider {
     width: 100%;
     height: 420px;
@@ -63,8 +63,8 @@ nav a:hover {
 
 .slide {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     opacity: 0;
     transform: translateX(200px) scale(.7) rotateY(40deg);
     transition: 1s;
@@ -107,7 +107,6 @@ nav a:hover {
     background: white;
     border-radius: 20px;
     overflow: hidden;
-    transform-style: preserve-3d;
     text-align: center;
 }
 
@@ -352,7 +351,7 @@ nav a:hover {
 <h2 class="titulo-slider">Selecciona tu bebida favorita</h2>
 
 <section class="slider">
-  <!-- Todos los sabores -->
+  <!-- TODOS LOS SABORES -->
   <div class="slide active" data-nombre="taro"><div class="card"><img src="taro.jpg"><h3>Frappé Taro</h3><button onclick="window.location.href='menu.html#taro'">Pedir</button></div></div>
   <div class="slide" data-nombre="matcha"><div class="card"><img src="matcha.jpg"><h3>Frappé Matcha</h3><button onclick="window.location.href='menu.html#matcha'">Pedir</button></div></div>
   <div class="slide" data-nombre="latte"><div class="card"><img src="latte.jpg"><h3>Latte frío</h3><button onclick="window.location.href='menu.html#latte'">Pedir</button></div></div>
@@ -395,13 +394,11 @@ nav a:hover {
         <div class="footer-logo">
             <img src="buho.jpeg" alt="Logo Povatea" class="logo">
         </div>
-
         <div class="footer-contacto">
             <h2>Contáctanos</h2>
             <p>Llama: <a href="tel:+529852578885" class="btn-llamar">Realiza tu encargo</a></p>
             <p>Email: <a href="mailto:contacto@povatea.com">contacto@povatea.com</a></p>
         </div>
-
         <div class="footer-redes">
             <h2>Síguenos en Redes Sociales</h2>
             <div class="iconos-redes">
@@ -416,7 +413,6 @@ nav a:hover {
 <script>
 let slides = document.querySelectorAll(".slide");
 let index = 0;
-
 function update() {
     slides.forEach(s => s.classList.remove("active","prev","next"));
     slides[index].classList.add("active");
@@ -425,7 +421,6 @@ function update() {
     slides[prev].classList.add("prev");
     slides[next].classList.add("next");
 }
-
 update();
 setInterval(() => {
     index = (index + 1) % slides.length;
